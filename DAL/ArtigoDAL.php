@@ -8,6 +8,7 @@
 
 namespace ClippingBlog\DAL;
 
+use ClippingBlog\Model\ArtigoRetornoInfo;
 use PDO;
 use PDOStatement;
 use ClippingBlog\Model\ArtigoInfo;
@@ -15,11 +16,12 @@ use ClippingBlog\Model\ArtigoInfo;
 class ArtigoDAL
 {
     /**
+     * @param bool $paginado
      * @return string
      */
-    private function query() {
+    private function query($paginado = false) {
         return "
-            SELECT 
+            SELECT " . (($paginado) ? "SQL_CALC_FOUND_ROWS" : "") . " 
                 artigo.id_artigo,
                 artigo.data_inclusao,
                 artigo.ultima_alteracao,
@@ -29,6 +31,7 @@ class ArtigoDAL
                 artigo.texto,
                 artigo.autor,
                 artigo.url_fonte,
+                artigo.tags,
                 artigo.cod_situacao
             FROM artigo
         ";
@@ -50,6 +53,30 @@ class ArtigoDAL
         }
         $db->execute();
         return DB::getResult($db, "\\ClippingBlog\\Model\\ArtigoInfo");
+    }
+
+    /**
+     * @param int $codSituacao
+     * @param int $pg Pagina atual
+     * @param int $numpg Quantidade de itens visualizados
+     * @return ArtigoRetornoInfo
+     */
+    public function listarPaginado($codSituacao = 0, $pg = 1, $numpg = 10) {
+        $query = $this->query(true);
+        if ($codSituacao > 0) {
+            $query .= " WHERE artigo.cod_situacao = :cod_situacao ";
+        }
+        $query .= " ORDER BY artigo.data DESC ";
+        $pgini = (($pg - 1) * $numpg);
+        $query .= " LIMIT " . $pgini . ", " . $numpg;
+        $db = DB::getDB()->prepare($query);
+        if ($codSituacao > 0) {
+            $db->bindValue(":cod_situacao", $codSituacao, PDO::PARAM_INT);
+        }
+        $db->execute();
+        $artigos = DB::getResult($db, "\\ClippingBlog\\Model\\ArtigoInfo");
+        $total = DB::getDB()->query('SELECT FOUND_ROWS();')->fetch(PDO::FETCH_COLUMN);
+        return new ArtigoRetornoInfo($artigos, $total);
     }
 
     /**
@@ -86,7 +113,7 @@ class ArtigoDAL
         $db = DB::getDB()->prepare($query);
         $db->bindValue(":id_artigo", $idArtigo, PDO::PARAM_INT);
         $db->execute();
-        return DB::getValue($db, "\\ClippingBlog\\Model\\ArtigoInfo");
+        return DB::getValueClass($db, "\\ClippingBlog\\Model\\ArtigoInfo");
     }
 
     /**
@@ -100,7 +127,7 @@ class ArtigoDAL
         $db = DB::getDB()->prepare($query);
         $db->bindValue(":slug", $slug);
         $db->execute();
-        return DB::getValue($db, "\\ClippingBlog\\Model\\ArtigoInfo");
+        return DB::getValueClass($db, "\\ClippingBlog\\Model\\ArtigoInfo");
     }
 
     /**
@@ -114,6 +141,7 @@ class ArtigoDAL
         $db->bindValue(":texto", $artigo->getTexto());
         $db->bindValue(":autor", $artigo->getAutor());
         $db->bindValue(":url_fonte", $artigo->getUrlFonte());
+        $db->bindValue(":tags", trim($artigo->getTags()));
         $db->bindValue(":cod_situacao", $artigo->getCodSituacao(), PDO::PARAM_INT);
     }
 
@@ -132,6 +160,7 @@ class ArtigoDAL
                 texto,
                 autor,
                 url_fonte,
+                tags,
                 cod_situacao
             ) VALUES (
                 NOW(),
@@ -142,6 +171,7 @@ class ArtigoDAL
                 :texto,
                 :autor,
                 :url_fonte,
+                :tags,
                 :cod_situacao
             )
         ";
@@ -165,6 +195,7 @@ class ArtigoDAL
                 texto = :texto,
                 autor = :autor,
                 url_fonte = :url_fonte,
+                tags = :tags,
                 cod_situacao = :cod_situacao
             WHERE id_artigo = :id_artigo
         ";

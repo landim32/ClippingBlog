@@ -8,6 +8,7 @@
 
 namespace ClippingBlog\BLL;
 
+use ClippingBlog\Model\ArtigoRetornoInfo;
 use Exception;
 use ClippingBlog\DAL\DB;
 use ClippingBlog\DAL\ArtigoDAL;
@@ -17,12 +18,34 @@ use ClippingBlog\Model\ArtigoInfo;
 class ArtigoBLL
 {
     /**
+     * @return array<int, string>
+     */
+    public function listarSituacao() {
+        return array(
+            ArtigoInfo::ATIVO => "Ativo",
+            ArtigoInfo::RASCUNHO => "Rascunho",
+            ArtigoInfo::INATIVO => "Inativo"
+        );
+    }
+
+    /**
      * @param int $codSituacao
      * @return ArtigoInfo[]
      */
     public function listar($codSituacao = 0) {
         $dal = new ArtigoDAL();
         return $dal->listar($codSituacao);
+    }
+
+    /**
+     * @param int $codSituacao
+     * @param int $pg Pagina atual
+     * @param int $numpg Quantidade de itens visualizados
+     * @return ArtigoRetornoInfo
+     */
+    public function listarPaginado($codSituacao = 0, $pg = 1, $numpg = 10) {
+        $dal = new ArtigoDAL();
+        return $dal->listarPaginado($codSituacao, $pg, $numpg);
     }
 
     /**
@@ -96,6 +119,7 @@ class ArtigoBLL
 
     /**
      * @param ArtigoInfo $artigo
+     * @throws Exception
      * @return int
      */
     public function inserir($artigo) {
@@ -120,13 +144,14 @@ class ArtigoBLL
         }
         catch (Exception $e) {
             DB::rollBack();
+            throw $e;
         }
         return $id_artigo;
     }
 
     /**
      * @param ArtigoInfo $artigo
-     * @return int
+     * @throws Exception
      */
     public function alterar($artigo) {
         $this->validar($artigo);
@@ -149,6 +174,7 @@ class ArtigoBLL
         }
         catch (Exception $e) {
             DB::rollBack();
+            throw $e;
         }
     }
 

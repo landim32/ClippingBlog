@@ -8,7 +8,10 @@
 
 namespace ClippingBlog\Model;
 
-class CategoriaInfo
+use stdClass;
+use JsonSerializable;
+
+class CategoriaInfo implements JsonSerializable
 {
     private $id_categoria;
     private $slug;
@@ -54,6 +57,17 @@ class CategoriaInfo
      */
     public function setNome($value) {
         $this->nome = $value;
+    }
+
+    /**
+     * @return stdClass
+     */
+    public function jsonSerialize() {
+        $categoria = new stdClass();
+        $categoria->id_categoria = $this->getId();
+        $categoria->slug = $this->getSlug();
+        $categoria->nome = $this->getNome();
+        return $categoria;
     }
 
 }

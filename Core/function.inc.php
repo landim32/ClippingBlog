@@ -35,6 +35,10 @@ if (!function_exists("_")) :
     }
 endif;
 
+function get_tema_path() {
+    return TEMA_PATH;
+}
+
 /**
  * @param string|null $texto
  * @return bool
@@ -319,6 +323,66 @@ function remove_accents($string) {
     }
 
     return $string;
+}
+
+function admin_pagination($fetchNumberPages, $currentPage = null) {
+    if (is_null($currentPage))
+        $currentPage = intval($_GET['pg']);
+    if ($currentPage < 1)
+        $currentPage = 1;
+    $queryVars = '';
+    foreach ($_GET as $key => $value)
+        if (!in_array($key, array('tema', 'slug', 'pg')))
+            $queryVars .= "&$key=".urlencode($value);
+    $isFirstPage = ($currentPage <= 1);
+    $isLastPage = ($currentPage >= $fetchNumberPages);
+    $str = "";
+
+    $str .= '<div class="dataTables_paginate paging_bootstrap">';
+    $str .= '<ul class="pagination">';
+
+    /*
+    if(!$isFirstPage) {
+        if($currentPage != 1 && $currentPage != 2 && $currentPage != 3) {
+            $str .= "<a class=\"first pagelink greenelement\" href='?pg=1$queryVars' title='Primeiro'>Primeiro</a> &lt; ";
+        }
+    }
+     */
+
+    if(!$isFirstPage) {
+        $previousPage = $currentPage - 1;
+        $str .= '<li class="prev"><a href="?pg='.$previousPage.$queryVars.'" data-pg="'.$previousPage.'">← '._('Prior').'</a></li>';
+        //$str .= "<a class=\"previous pagelink greenelement\" href=\"?pg=$previousPage$queryVars\">&lt; Anterior</a> ";
+    }
+
+    for($i = $currentPage - 5; $i <= $currentPage + 5; $i++) {
+
+        if($i < 1) continue;
+        if($i > $fetchNumberPages) break;
+
+        if($i == $currentPage)
+            //$str .= "<span class=\"current_page pagelink\">$i</span>";
+            $str .= '<li class="active"><a href="#">'.$i.'</a></li>';
+        else
+            //$str .= "<a class=\"page pagelink greenelement\" href=\"?pg=$i$queryVars\">$i</a>";
+            $str .= '<li><a href="?pg='.$i.$queryVars.'" data-pg="'.$i.'">'.$i.'</a></li>';
+        //($i == $currentPage + 2 || $i == $fetchNumberPages) ? $str .= " " : $str .= " | ";
+    }//end for
+
+    /*
+    if (!$isLastPage) {
+        if($currentPage != $fetchNumberPages && $currentPage != $fetchNumberPages -1 && $currentPage != $fetchNumberPages - 2)
+            $str .= " &gt; <a class=\"last pagelink greenelement\" href=\"?pg=".$fetchNumberPages."$queryVars\" title=\"Último\">Último(".$fetchNumberPages.") </a>";
+    }
+    */
+
+    if(!$isLastPage) {
+        $nextPage = $currentPage + 1;
+        //$str .= "<a class=\"next pagelink greenelement\" href=\"?pg=$nextPage$queryVars\">Proximo &gt;</a>";
+        $str .= '<li class="next"><a href="?pg='.$nextPage.$queryVars.'" data-pg="'.$nextPage.'">'._('Next').' → </a></li>';
+    }
+    $str .= '</ul></div>';
+    return $str;
 }
 
 spl_autoload_register(function ($class) {

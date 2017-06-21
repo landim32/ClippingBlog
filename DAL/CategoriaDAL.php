@@ -49,7 +49,7 @@ class CategoriaDAL
         $db = DB::getDB()->prepare($query);
         $db->bindValue(":id_categoria", $id_categoria, PDO::PARAM_INT);
         $db->execute();
-        return DB::getValue($db, "\\ClippingBlog\\Model\\CategoriaInfo");
+        return DB::getValueClass($db, "\\ClippingBlog\\Model\\CategoriaInfo");
     }
 
     /**
@@ -63,7 +63,7 @@ class CategoriaDAL
         $db = DB::getDB()->prepare($query);
         $db->bindValue(":slug", $slug);
         $db->execute();
-        return DB::getValue($db, "\\ClippingBlog\\Model\\CategoriaInfo");
+        return DB::getValueClass($db, "\\ClippingBlog\\Model\\CategoriaInfo");
     }
 
     /**
@@ -72,7 +72,7 @@ class CategoriaDAL
      */
     public function listarPorArtigo($id_artigo) {
         $query = $this->query() . "
-            INNER JOIN artigo_categoria on artigo_catregoria.id_categoria = categoria.id_categoria
+            INNER JOIN artigo_categoria on artigo_categoria.id_categoria = categoria.id_categoria
             WHERE artigo_categoria.id_artigo = :id_artigo
             ORDER BY categoria.nome
         ";

@@ -1,0 +1,7 @@
+php_flag display_errors on
+php_value error_reporting 6143
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([a-z,A-Z,0-9]+)/([a-z,A-Z,0-9,_]+) index.php?classe=$1&metodo=$2 [QSA,L]
+</IfModule>
