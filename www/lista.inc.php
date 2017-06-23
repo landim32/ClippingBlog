@@ -10,8 +10,23 @@ $pg = intval($_GET['pg']);
 if ($pg < 1) $pg = 1;
 
 $usuario = UsuarioBLL::pegarUsuarioAtual();
-$cod_situacao = (is_null($usuario)) ? ArtigoInfo::ATIVO : 0;
-$retorno = $regraArtigo->listarPaginado($cod_situacao, "", $pg, MAX_PAGE_COUNT);
+if (!is_null($usuario)) {
+    $cod_situacao = intval($_GET['situacao']);
+}
+else {
+    $cod_situacao = ArtigoInfo::ATIVO;
+}
+if (App::getPagina() == App::HOME) {
+    if (array_key_exists('p', $_GET)) {
+        $retorno = $regraArtigo->buscaPaginado($_GET['p'], $cod_situacao, $pg, MAX_PAGE_COUNT);
+    }
+    else {
+        $retorno = $regraArtigo->listarPaginado($cod_situacao, "", $pg, MAX_PAGE_COUNT);
+    }
+}
+elseif (App::getPagina() == App::TAG) {
+    $retorno = $regraArtigo->listarPaginado($cod_situacao, App::getSlug(), $pg, MAX_PAGE_COUNT);
+}
 $paginacao = admin_pagination(ceil($retorno->getTotal() / MAX_PAGE_COUNT));
 
 ?>
@@ -29,6 +44,7 @@ $paginacao = admin_pagination(ceil($retorno->getTotal() / MAX_PAGE_COUNT));
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
             <?php endif; ?>
+            <?php if (count($retorno->getArtigos()) > 0) : ?>
             <?php foreach ($retorno->getArtigos() as $artigo) : ?>
                 <div id="<?php echo "artigo-" . $artigo->getId(); ?>" class="artigo">
                     <h2><a href="<?php echo $artigo->getUrl(); ?>"><?php echo $artigo->getTitulo(); ?></a></h2>
@@ -70,6 +86,12 @@ $paginacao = admin_pagination(ceil($retorno->getTotal() / MAX_PAGE_COUNT));
             <div class="text-center">
                 <?php echo $paginacao; ?>
             </div>
+            <?php else : ?>
+            <div class="text-center">
+                <h2>Ops! :(</h2>
+                <p>Nenhum artigo encontrado com esse busca.</p>
+            </div>
+            <?php endif; ?>
         </div>
         <?php require( "sidebar.php" ); ?>
     </div><!-- /.container -->

@@ -31,7 +31,15 @@ class TagBLL
             "qrcode" => "QRCode",
             ".net" => ".NET",
             "angular" => "Angular",
-            "angularjs" => "AngularJs"
+            "angularjs" => "AngularJs",
+            "visual studio" => "Visual Studio",
+            "emprego" => "Emprego",
+            "segurança" => "Segurança",
+            "wordpress" => "Wordpress",
+            "magento" => "Magento",
+            "android" => "Android",
+            "ios" => "iOS",
+            "apple" => "iOS",
         );
     }
 

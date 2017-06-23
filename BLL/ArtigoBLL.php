@@ -57,7 +57,19 @@ class ArtigoBLL
      */
     public function listarPaginado($cod_situacao = 0, $tag_slug = "", $pg = 1, $numpg = 10) {
         $dal = new ArtigoDAL();
-        return $dal->listarPaginado($cod_situacao, $tag_slug, $pg, $numpg);
+        return $dal->listarPaginado($cod_situacao, '', $tag_slug, $pg, $numpg);
+    }
+
+    /**
+     * @param string $palavra_chave
+     * @param int $cod_situacao
+     * @param int $pg
+     * @param int $numpg
+     * @return ArtigoRetornoInfo
+     */
+    public function buscaPaginado($palavra_chave, $cod_situacao = 0, $pg = 1, $numpg = 10) {
+        $dal = new ArtigoDAL();
+        return $dal->listarPaginado($cod_situacao, $palavra_chave, '', $pg, $numpg);
     }
 
     /**

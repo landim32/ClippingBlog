@@ -44,4 +44,9 @@ else {
     App::setPagina($params[0]);
     App::setSlug($params[1]);
 }
-require dirname(__DIR__) . "/www/" . App::getPagina() . ".php";
+if (App::getPagina() == App::HOME || App::getPagina() == App::TAG) {
+    require dirname(__DIR__) . "/www/lista.inc.php";
+}
+else {
+    require dirname(__DIR__) . "/www/" . App::getPagina() . ".php";
+}

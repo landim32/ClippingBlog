@@ -67,14 +67,22 @@ class ArtigoDAL
 
     /**
      * @param int $cod_situacao
+     * @param string $palavra_chave
      * @param string $tag_slug
      * @param int $pg Pagina atual
      * @param int $numpg Quantidade de itens visualizados
      * @return ArtigoRetornoInfo
      */
-    public function listarPaginado($cod_situacao = 0, $tag_slug = '', $pg = 1, $numpg = 10) {
+    public function listarPaginado($cod_situacao = 0, $palavra_chave = '', $tag_slug = '', $pg = 1, $numpg = 10) {
         $query = $this->query(true);
         $query .= " WHERE (1=1) ";
+        if (!isNullOrEmpty($palavra_chave)) {
+            $query .= " AND (
+                artigo.titulo LIKE :titulo OR
+                artigo.texto LIKE :texto OR
+                artigo.autor LIKE :autor
+            ) ";
+        }
         if (!isNullOrEmpty($tag_slug)) {
             $query .= " AND artigo.id_artigo IN (
                 SELECT artigo_tag.id_artigo
@@ -89,7 +97,16 @@ class ArtigoDAL
         $query .= " ORDER BY artigo.data DESC ";
         $pgini = (($pg - 1) * $numpg);
         $query .= " LIMIT " . $pgini . ", " . $numpg;
+
+        //var_dump($query);
+
         $db = DB::getDB()->prepare($query);
+        if (!isNullOrEmpty($palavra_chave)) {
+            $palavra = '%' . $palavra_chave . '%';
+            $db->bindValue(":titulo", $palavra, PDO::PARAM_STR);
+            $db->bindValue(":texto", $palavra, PDO::PARAM_STR);
+            $db->bindValue(":autor", $palavra, PDO::PARAM_STR);
+        }
         if (!isNullOrEmpty($tag_slug)) {
             $db->bindValue(":slug", $tag_slug);
         }

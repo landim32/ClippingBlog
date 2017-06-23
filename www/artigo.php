@@ -16,6 +16,16 @@ App::setArtigo( $artigo );
     <div class="container" style="padding-top: 40px;">
         <form class="form-horizontal" method="POST">
         <div class="col-md-8">
+            <?php if (!(UsuarioBLL::pegarUsuarioAtual() > 0)) : ?>
+                <!-- FullBanner -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-5769680090282398"
+                     data-ad-slot="7796230641"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            <?php endif; ?>
             <h1 id="artigo-titulo"><?php echo $artigo->getTitulo(); ?></h1>
             <div class="form-group">
                 <label class="col-md-2 control-label text-right">

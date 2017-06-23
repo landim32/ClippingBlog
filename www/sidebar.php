@@ -33,13 +33,12 @@ $tags = $regraTag->listarPopular();
     </div>
     <?php endif; ?>
     <div class="well">
+        <form method="GET" action="<?php echo get_tema_path(); ?>">
         <h4><i class="fa fa-search"></i> Busca no Blog</h4>
         <div class="input-group">
-            <input type="text" class="form-control">
+            <input type="text" name="p" class="form-control" placeholder="Preencha a palavra-chave" value="<?php echo $_GET['p']?>" />
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    <i class="fa fa-search"></i>
-                </button>
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
             </span>
         </div>
         <!-- /input-group -->
@@ -125,13 +124,13 @@ $tags = $regraTag->listarPopular();
         </ul>
     </div>
     <?php if (!(UsuarioBLL::pegarUsuarioAtual() > 0)) : ?>
-    <!-- Sidebar Banner 2 -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:728px;height:90px"
-         data-ad-client="ca-pub-5769680090282398"
-         data-ad-slot="9272963841"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+        <!-- Sidebar Banner 3 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:336px;height:280px"
+             data-ad-client="ca-pub-5769680090282398"
+             data-ad-slot="7656629846"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     <?php endif; ?>
 </div>

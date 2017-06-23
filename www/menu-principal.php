@@ -24,30 +24,32 @@ $tags = $regraTag->listarPopular();
     </div>
     <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <!--li class="active"><a href="<?php echo get_tema_path(); ?>"><i class="fa fa-home"></i> Home</a></li-->
-            <?php if (!is_null($usuario)) : ?>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-book"></i> Artigos <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo get_tema_path() . "/?situacao=" . ArtigoInfo::ATIVO; ?>"><i class="fa fa-dashcube"></i> Rascunho</a></li>
-                        <li><a href="<?php echo get_tema_path() . "/?situacao=" . ArtigoInfo::INATIVO; ?>"><i class="fa fa-ban"></i> Inativo</a></li>
-                    </ul>
-                </li>
-            <?php endif; ?>
             <?php if (count($tags) > 0) : ?>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-tags"></i> Tags <span class="caret"></span>
+                        <?php echo (!is_null($usuario)) ? "<i class=\"fa fa-book\"></i> Artigos" : "<i class=\"fa fa-tags\"></i> Tags"; ?> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
+                        <?php if (!is_null($usuario)) : ?>
+                        <li><a href="<?php echo get_tema_path() . "/?situacao=" . ArtigoInfo::RASCUNHO; ?>"><i class="fa fa-dashcube"></i> Apenas rascunho</a></li>
+                        <li><a href="<?php echo get_tema_path() . "/?situacao=" . ArtigoInfo::INATIVO; ?>"><i class="fa fa-ban"></i> Apenas inativo</a></li>
+                        <li role="separator" class="divider"></li>
+                        <?php endif; ?>
                         <?php foreach ($tags as $tag) : ?>
                             <li><a href="<?php echo $tag->getUrl(); ?>"><i class="fa fa-tag"></i> <?php echo $tag->getNome(); ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
             <?php endif; ?>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-comment"></i> Contato <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://emagine.com.br"><i class="fa fa-fw fa-cogs"></i> Preciso de um Dev</a></li>
+                    <li><a href="http://emagine.com.br"><i class="fa fa-fw fa-dollar"></i> Orçamento</a></li>
+                </ul>
+            </li>
             <!--li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li-->
         </ul>
