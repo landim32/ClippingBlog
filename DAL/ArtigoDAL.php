@@ -15,6 +15,9 @@ use ClippingBlog\Model\ArtigoInfo;
 
 class ArtigoDAL
 {
+    const ORDENAR_DATA = "artigo.data DESC";
+    const ORDENAR_PAGEVIEW = "artigo.pageview DESC";
+
     /**
      * @param bool $paginado
      * @return string
@@ -31,22 +34,29 @@ class ArtigoDAL
                 artigo.texto,
                 artigo.autor,
                 artigo.url_fonte,
-                artigo.tags,
-                artigo.cod_situacao
+                artigo.cod_situacao,
+                artigo.pageview
             FROM artigo
         ";
     }
 
     /**
      * @param int $codSituacao
+     * @param string $orderby
+     * @param int $limite
      * @return ArtigoInfo[]
      */
-    public function listar($codSituacao = 0) {
+    public function listar($codSituacao = 0, $orderby = "", $limite = 0) {
         $query = $this->query();
         if ($codSituacao > 0) {
             $query .= " WHERE artigo.cod_situacao = :cod_situacao ";
         }
-        $query .= " ORDER BY artigo.data DESC ";
+        if (!isNullOrEmpty($orderby)) {
+            $query .= " ORDER BY " . $orderby . " ";
+        }
+        if ($limite > 0) {
+            $query .= " LIMIT " . $limite . " ";
+        }
         $db = DB::getDB()->prepare($query);
         if ($codSituacao > 0) {
             $db->bindValue(":cod_situacao", $codSituacao, PDO::PARAM_INT);
@@ -56,22 +66,35 @@ class ArtigoDAL
     }
 
     /**
-     * @param int $codSituacao
+     * @param int $cod_situacao
+     * @param string $tag_slug
      * @param int $pg Pagina atual
      * @param int $numpg Quantidade de itens visualizados
      * @return ArtigoRetornoInfo
      */
-    public function listarPaginado($codSituacao = 0, $pg = 1, $numpg = 10) {
+    public function listarPaginado($cod_situacao = 0, $tag_slug = '', $pg = 1, $numpg = 10) {
         $query = $this->query(true);
-        if ($codSituacao > 0) {
-            $query .= " WHERE artigo.cod_situacao = :cod_situacao ";
+        $query .= " WHERE (1=1) ";
+        if (!isNullOrEmpty($tag_slug)) {
+            $query .= " AND artigo.id_artigo IN (
+                SELECT artigo_tag.id_artigo
+                FROM artigo_tag
+                INNER JOIN tag ON tag.id_tag = artigo_tag.id_tag
+                WHERE tag.slug = :slug
+            ) ";
+        }
+        if ($cod_situacao > 0) {
+            $query .= " AND artigo.cod_situacao = :cod_situacao ";
         }
         $query .= " ORDER BY artigo.data DESC ";
         $pgini = (($pg - 1) * $numpg);
         $query .= " LIMIT " . $pgini . ", " . $numpg;
         $db = DB::getDB()->prepare($query);
-        if ($codSituacao > 0) {
-            $db->bindValue(":cod_situacao", $codSituacao, PDO::PARAM_INT);
+        if (!isNullOrEmpty($tag_slug)) {
+            $db->bindValue(":slug", $tag_slug);
+        }
+        if ($cod_situacao > 0) {
+            $db->bindValue(":cod_situacao", $cod_situacao, PDO::PARAM_INT);
         }
         $db->execute();
         $artigos = DB::getResult($db, "\\ClippingBlog\\Model\\ArtigoInfo");
@@ -80,21 +103,21 @@ class ArtigoDAL
     }
 
     /**
-     * @param int $idCategoria
+     * @param int $id_tag
      * @param int $codSituacao
      * @return ArtigoInfo[]
      */
-    public function listarPorCategoria($idCategoria, $codSituacao = 0) {
+    public function listarPorTag($id_tag, $codSituacao = 0) {
         $query = $this->query() . "
-            INNER JOIN artigo_categoria ON artigo_categoria.id_artigo = artigo.id_artigo
-            WHERE artigo_categoria.id_categoria = :id_categoria
+            INNER JOIN artigo_tag ON artigo_tag.id_artigo = artigo.id_artigo
+            WHERE artigo_tag.id_tag = :id_tag
         ";
         if ($codSituacao > 0) {
             $query .= " AND artigo.cod_situacao = :cod_situacao ";
         }
         $query .= " ORDER BY artigo.data DESC ";
         $db = DB::getDB()->prepare($query);
-        $db->bindValue(":id_categoria", $idCategoria, PDO::PARAM_INT);
+        $db->bindValue(":id_tag", $id_tag, PDO::PARAM_INT);
         if ($codSituacao > 0) {
             $db->bindValue(":cod_situacao", $codSituacao, PDO::PARAM_INT);
         }
@@ -112,6 +135,20 @@ class ArtigoDAL
         ";
         $db = DB::getDB()->prepare($query);
         $db->bindValue(":id_artigo", $idArtigo, PDO::PARAM_INT);
+        $db->execute();
+        return DB::getValueClass($db, "\\ClippingBlog\\Model\\ArtigoInfo");
+    }
+
+    /**
+     * @param string $url_fonte
+     * @return ArtigoInfo
+     */
+    public function pegarPorUrl($url_fonte) {
+        $query = $this->query() . " 
+            WHERE artigo.url_fonte = :url_fonte 
+        ";
+        $db = DB::getDB()->prepare($query);
+        $db->bindValue(":url_fonte", $url_fonte);
         $db->execute();
         return DB::getValueClass($db, "\\ClippingBlog\\Model\\ArtigoInfo");
     }
@@ -141,7 +178,6 @@ class ArtigoDAL
         $db->bindValue(":texto", $artigo->getTexto());
         $db->bindValue(":autor", $artigo->getAutor());
         $db->bindValue(":url_fonte", $artigo->getUrlFonte());
-        $db->bindValue(":tags", trim($artigo->getTags()));
         $db->bindValue(":cod_situacao", $artigo->getCodSituacao(), PDO::PARAM_INT);
     }
 
@@ -160,7 +196,6 @@ class ArtigoDAL
                 texto,
                 autor,
                 url_fonte,
-                tags,
                 cod_situacao
             ) VALUES (
                 NOW(),
@@ -171,7 +206,6 @@ class ArtigoDAL
                 :texto,
                 :autor,
                 :url_fonte,
-                :tags,
                 :cod_situacao
             )
         ";
@@ -195,7 +229,6 @@ class ArtigoDAL
                 texto = :texto,
                 autor = :autor,
                 url_fonte = :url_fonte,
-                tags = :tags,
                 cod_situacao = :cod_situacao
             WHERE id_artigo = :id_artigo
         ";
@@ -209,9 +242,9 @@ class ArtigoDAL
     /**
      * @param int $id_artigo
      */
-    public function limparCategoria($id_artigo) {
+    public function limparTags($id_artigo) {
         $query = "
-            DELETE FROM artigo_categoria
+            DELETE FROM artigo_tag
             WHERE id_artigo = :id_artigo
         ";
         $db = DB::getDB()->prepare($query);
@@ -221,21 +254,41 @@ class ArtigoDAL
 
     /**
      * @param int $id_artigo
-     * @param int $id_categoria
+     * @param int $id_tag
+     * @return int
      */
-    public function inserirCategoria($id_artigo, $id_categoria) {
+    public function pegarQuantidadeTag($id_artigo, $id_tag) {
         $query = "
-            INSERT INTO artigo_categoria (
+            SELECT COUNT(*) AS 'quantidade'
+            FROM artigo_tag
+            WHERE id_artigo = :id_artigo
+            AND id_tag = :id_tag
+        ";
+        $db = DB::getDB()->prepare($query);
+        $db->bindValue(":id_artigo", $id_artigo, PDO::PARAM_INT);
+        $db->bindValue(":id_tag", $id_tag, PDO::PARAM_INT);
+        $db->execute();
+        return DB::getValue($db, "quantidade");
+    }
+
+    /**
+     * @param int $id_artigo
+     * @param int $id_tag
+     */
+    public function inserirTag($id_artigo, $id_tag) {
+        //var_dump($id_artigo, $id_tag);
+        $query = "
+            INSERT INTO artigo_tag (
                 id_artigo,
-                id_categoria
+                id_tag
             ) VALUES (
                 :id_artigo,
-                :id_categoria
+                :id_tag
             )
         ";
         $db = DB::getDB()->prepare($query);
         $db->bindValue(":id_artigo", $id_artigo, PDO::PARAM_INT);
-        $db->bindValue(":id_categoria", $id_categoria, PDO::PARAM_INT);
+        $db->bindValue(":id_tag", $id_tag, PDO::PARAM_INT);
         $db->execute();
     }
 
@@ -245,6 +298,20 @@ class ArtigoDAL
     public function excluir($id_artigo) {
         $query = "
             DELETE FROM artigo 
+            WHERE id_artigo = :id_artigo
+        ";
+        $db = DB::getDB()->prepare($query);
+        $db->bindValue(":id_artigo", $id_artigo, PDO::PARAM_INT);
+        $db->execute();
+    }
+
+    /**
+     * @param int $id_artigo
+     */
+    public function adicionarPageview($id_artigo) {
+        $query = "
+            UPDATE artigo SET
+                pageview = pageview + 1
             WHERE id_artigo = :id_artigo
         ";
         $db = DB::getDB()->prepare($query);

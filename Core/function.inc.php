@@ -341,18 +341,9 @@ function admin_pagination($fetchNumberPages, $currentPage = null) {
     $str .= '<div class="dataTables_paginate paging_bootstrap">';
     $str .= '<ul class="pagination">';
 
-    /*
-    if(!$isFirstPage) {
-        if($currentPage != 1 && $currentPage != 2 && $currentPage != 3) {
-            $str .= "<a class=\"first pagelink greenelement\" href='?pg=1$queryVars' title='Primeiro'>Primeiro</a> &lt; ";
-        }
-    }
-     */
-
     if(!$isFirstPage) {
         $previousPage = $currentPage - 1;
-        $str .= '<li class="prev"><a href="?pg='.$previousPage.$queryVars.'" data-pg="'.$previousPage.'">← '._('Prior').'</a></li>';
-        //$str .= "<a class=\"previous pagelink greenelement\" href=\"?pg=$previousPage$queryVars\">&lt; Anterior</a> ";
+        $str .= '<li class="prev"><a href="?pg='.$previousPage.$queryVars.'" data-pg="'.$previousPage.'"><i class="fa fa-chevron-left"></i> Anterior</a></li>';
     }
 
     for($i = $currentPage - 5; $i <= $currentPage + 5; $i++) {
@@ -361,28 +352,36 @@ function admin_pagination($fetchNumberPages, $currentPage = null) {
         if($i > $fetchNumberPages) break;
 
         if($i == $currentPage)
-            //$str .= "<span class=\"current_page pagelink\">$i</span>";
             $str .= '<li class="active"><a href="#">'.$i.'</a></li>';
         else
-            //$str .= "<a class=\"page pagelink greenelement\" href=\"?pg=$i$queryVars\">$i</a>";
             $str .= '<li><a href="?pg='.$i.$queryVars.'" data-pg="'.$i.'">'.$i.'</a></li>';
-        //($i == $currentPage + 2 || $i == $fetchNumberPages) ? $str .= " " : $str .= " | ";
     }//end for
-
-    /*
-    if (!$isLastPage) {
-        if($currentPage != $fetchNumberPages && $currentPage != $fetchNumberPages -1 && $currentPage != $fetchNumberPages - 2)
-            $str .= " &gt; <a class=\"last pagelink greenelement\" href=\"?pg=".$fetchNumberPages."$queryVars\" title=\"Último\">Último(".$fetchNumberPages.") </a>";
-    }
-    */
 
     if(!$isLastPage) {
         $nextPage = $currentPage + 1;
-        //$str .= "<a class=\"next pagelink greenelement\" href=\"?pg=$nextPage$queryVars\">Proximo &gt;</a>";
-        $str .= '<li class="next"><a href="?pg='.$nextPage.$queryVars.'" data-pg="'.$nextPage.'">'._('Next').' → </a></li>';
+        $str .= '<li class="next"><a href="?pg='.$nextPage.$queryVars.'" data-pg="'.$nextPage.'">Proxima <i class="fa fa-chevron-right"></i></a></li>';
     }
     $str .= '</ul></div>';
     return $str;
+}
+
+/**
+ * @param array $list
+ * @param int $p
+ * @return array
+ */
+function array_partition( $list, $p ) {
+    $listlen = count( $list );
+    $partlen = floor( $listlen / $p );
+    $partrem = $listlen % $p;
+    $partition = array();
+    $mark = 0;
+    for ($px = 0; $px < $p; $px++) {
+        $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
+        $partition[$px] = array_slice( $list, $mark, $incr );
+        $mark += $incr;
+    }
+    return $partition;
 }
 
 spl_autoload_register(function ($class) {

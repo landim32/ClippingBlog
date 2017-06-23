@@ -2,10 +2,9 @@
 
 namespace ClippingBlog\Model;
 
-use ClippingBlog\BLL\ArtigoBLL;
 use stdClass;
 use JsonSerializable;
-use ClippingBlog\DAL\CategoriaDAL;
+use ClippingBlog\DAL\TagDAL;
 
 /**
  * Class ArtigoInfo
@@ -28,8 +27,8 @@ class ArtigoInfo implements JsonSerializable
     private $url_fonte;
     private $url_crawler;
     private $cod_situacao;
-    private $tags;
-    private $categorias = null;
+    private $pageview;
+    private $tags = null;
 
     /**
      * @return int
@@ -200,56 +199,67 @@ class ArtigoInfo implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return int
+     */
+    public function getPageview() {
+        return $this->pageview;
+    }
+
+    /**
+     * @param int
+     */
+    public function setPageview($value) {
+        $this->pageview = $value;
+    }
+
+    /**
+     * @return TagInfo[]
      */
     public function getTags() {
         return $this->tags;
     }
 
     /**
-     * @param string $value
+     * @param TagInfo[] $value
      */
     public function setTags($value) {
         $this->tags = $value;
     }
 
     /**
-     * @return string[]
+     * @return TagInfo[]
      */
-    public function listarTags() {
-        return explode(",", $this->getTags());
+    public function listarTag() {
+        if (is_null($this->tags)) {
+            if ($this->getId() > 0) {
+                $dalTag = new TagDAL();
+                $this->tags = $dalTag->listarPorArtigo($this->getId());
+            }
+            else {
+                $this->tags = array();
+            }
+        }
+        return $this->tags;
     }
 
     /**
-     * @return CategoriaInfo[]
+     * @param TagInfo $value
      */
-    public function listarCategoria() {
-        if (is_null($this->categorias)) {
+    public function adicionarTag($value) {
+        if (is_null($this->tags)) {
             if ($this->getId() > 0) {
-                $dalCategoria = new CategoriaDAL();
-                $this->categorias = $dalCategoria->listarPorArtigo($this->getId());
+                $dalTag = new TagDAL();
+                $this->tags = $dalTag->listarPorArtigo($this->getId());
             }
             else {
-                $this->categorias = array();
+                $this->tags = array();
             }
         }
-        return $this->categorias;
+        $this->tags[] = $value;
     }
 
-    /**
-     * @param CategoriaInfo $value
-     */
-    public function adicionarCategoria($value) {
-        if (is_null($this->categorias)) {
-            if ($this->getId() > 0) {
-                $dalCategoria = new CategoriaDAL();
-                $this->categorias = $dalCategoria->listarPorArtigo($this->getId());
-            }
-            else {
-                $this->categorias = array();
-            }
-        }
-        $this->categorias[] = $value;
+    public function limparTags() {
+        $this->tags = array();
     }
 
     /**
@@ -291,12 +301,10 @@ class ArtigoInfo implements JsonSerializable
         $artigo->autor = $this->getAutor();
         $artigo->url_fonte = $this->getUrlFonte();
         $artigo->url_crawler = $this->getUrlCrawler();
-        $artigo->tags = $this->getTags();
-        $artigo->tags_lista = $this->listarTags();
         $artigo->cod_situacao = $this->getCodSituacao();
-        $artigo->categorias = array();
-        foreach ($this->listarCategoria() as $categoria) {
-            $artigo->categorias[] = $categoria->jsonSerialize();
+        $artigo->tags = array();
+        foreach ($this->listarTag() as $tag) {
+            $artigo->tags[] = $tag->jsonSerialize();
         }
         return $artigo;
     }
@@ -317,8 +325,14 @@ class ArtigoInfo implements JsonSerializable
         $artigo->setAutor( $value->autor );
         $artigo->setUrlFonte( $value->url_fonte );
         $artigo->setUrlCrawler( $value->url_crawler );
-        $artigo->setTags( $value->tags );
         $artigo->setCodSituacao( $value->cod_situacao );
+        if (isset($value->tags)) {
+            $artigo->limparTags();
+            //var_dump($value->tags);
+            foreach ($value->tags as $tag) {
+                $artigo->adicionarTag(TagInfo::fromJson($tag));
+            }
+        }
         return $artigo;
     }
 }

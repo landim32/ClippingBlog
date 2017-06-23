@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="pt-BR" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        //<![CDATA[
+        try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"0710e6464c5a0becb7392faf726b425c",petok:"4ec511c5ef71436b2b609592c712912107a84cc9-1498204882-1800",zone:"phpit.com.br",rocket:"a",apps:0}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=85b614c0f6/cloudflare.min.js"><'+'\/script>');}}catch(e){};
+        //]]>
+    </script>
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://www.phpit.com.br/xmlrpc.php">
+    <title>Introdução aos Padrões de Projeto com PHP - Parte 2 - PHPit</title>
+
+    <link rel="canonical" href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit"/>
+    <meta property="og:locale" content="pt_BR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Introdução aos Padrões de Projeto com PHP - Parte 2 - PHPit"/>
+    <meta property="og:description" content="E aí, povo! Tudo certo? Continuando a nossa série de estudos sobre Padrões de Projeto, hoje daremos uma olhada mais aprofundada nos padrões que existem e que iremos estudar. Caso você ainda não tenha lido, dê uma olhada... Continue Lendo"/>
+    <meta property="og:url" content="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit"/>
+    <meta property="og:site_name" content="PHPit - Blog de PHP do Rafa Jaques"/>
+    <meta property="article:publisher" content="https://www.facebook.com/PHPit-193957320645352/"/>
+    <meta property="article:tag" content="design patterns"/>
+    <meta property="article:tag" content="padrões de projeto"/>
+    <meta property="article:section" content="Padrões de Projeto"/>
+    <meta property="article:published_time" content="2011-04-11T15:41:06-03:00"/>
+    <meta property="article:modified_time" content="2011-04-25T21:23:07-03:00"/>
+    <meta property="og:updated_time" content="2011-04-25T21:23:07-03:00"/>
+    <meta property="fb:admins" content="1281888338"/>
+    <meta property="og:image" content="http://www.phpit.com.br/phpit_opengraph.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="E aí, povo! Tudo certo? Continuando a nossa série de estudos sobre Padrões de Projeto, hoje daremos uma olhada mais aprofundada nos padrões que existem e que iremos estudar. Caso você ainda não tenha lido, dê uma olhada... Continue Lendo"/>
+    <meta name="twitter:title" content="Introdução aos Padrões de Projeto com PHP - Parte 2 - PHPit"/>
+    <meta name="twitter:site" content="@_phpit"/>
+    <meta name="twitter:image" content="http://www.phpit.com.br/phpit_opengraph.png"/>
+    <meta name="twitter:creator" content="@_phpit"/>
+
+    <link rel='dns-prefetch' href='//s0.wp.com'/>
+    <link rel='dns-prefetch' href='//ajax.googleapis.com'/>
+    <link rel='dns-prefetch' href='//fonts.googleapis.com'/>
+    <link rel='dns-prefetch' href='//s.w.org'/>
+    <link rel="alternate" type="application/rss+xml" title="Feed para PHPit - Blog de PHP do Rafa Jaques &raquo;" href="http://www.phpit.com.br/feed"/>
+    <link rel="alternate" type="application/rss+xml" title="Feed de comentários para PHPit - Blog de PHP do Rafa Jaques &raquo;" href="http://www.phpit.com.br/comments/feed"/>
+    <link rel="alternate" type="application/rss+xml" title="Feed de comentários para PHPit - Blog de PHP do Rafa Jaques &raquo; Introdução aos Padrões de Projeto com PHP &#8211; Parte 2" href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit/feed"/>
+    <script type="text/rocketscript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.phpit.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=4f68eb62cf2fc548f626191c51c9891f"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b===c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+    <style type="text/css">img.wp-smiley,img.emoji{display:inline!important;border:none!important;box-shadow:none!important;height:1em!important;width:1em!important;margin:0 .07em!important;vertical-align:-0.1em!important;background:none!important;padding:0!important;}</style>
+    <link rel='stylesheet' id='responsive-lightbox-swipebox-css' href='http://www.phpit.com.br/wp-content/plugins/responsive-lightbox/assets/swipebox/css/swipebox.min.css?ver=1.7.1' type='text/css' media='all'/>
+    <link rel='stylesheet' id='swell-style-css' href='http://www.phpit.com.br/wp-content/themes/swell-lite-master/style.css?ver=4f68eb62cf2fc548f626191c51c9891f' type='text/css' media='all'/>
+    <link rel='stylesheet' id='swell-style-mobile-css' href='http://www.phpit.com.br/wp-content/themes/swell-lite-master/css/style-mobile.css?ver=1.0' type='text/css' media='all'/>
+    <link rel='stylesheet' id='font-awesome-css' href='http://www.phpit.com.br/wp-content/themes/swell-lite-master/css/font-awesome.css?ver=1.0' type='text/css' media='all'/>
+    <link rel='stylesheet' id='swell-fonts-css' href='//fonts.googleapis.com/css?family=Raleway%3A400%2C200%2C300%2C800%2C700%2C500%2C600%2C900%2C100%7CRoboto%3A400%2C100italic%2C100%2C300%2C300italic%2C400italic%2C500%2C500italic%2C700%2C700italic%2C900%2C900italic%7COpen+Sans%3A400%2C300%2C600%2C700%2C800%2C800italic%2C700italic%2C600italic%2C400italic%2C300italic%7CMontserrat%3A400%2C700%7CDroid+Serif%3A400%2C400italic%2C700%2C700italic&#038;subset=latin%2Clatin-ext' type='text/css' media='all'/>
+    <link rel='stylesheet' id='wordpress-popular-posts-css' href='http://www.phpit.com.br/wp-content/plugins/wordpress-popular-posts/style/wpp.css?ver=3.3.4' type='text/css' media='all'/>
+    <link rel='stylesheet' id='easy_table_style-css' href='http://www.phpit.com.br/wp-content/plugins/easy-table/themes/default/style.css?ver=1.6' type='text/css' media='all'/>
+    <link rel='stylesheet' id='enlighter-local-css' href='http://www.phpit.com.br/wp-content/plugins/enlighter/resources/EnlighterJS.min.css?ver=3.4' type='text/css' media='all'/>
+    <link rel='stylesheet' id='social-logos-css' href='http://www.phpit.com.br/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all'/>
+    <link rel='stylesheet' id='jetpack_css-css' href='http://www.phpit.com.br/wp-content/plugins/jetpack/css/jetpack.css?ver=5.0' type='text/css' media='all'/>
+
+    <script type="text/javascript" data-cfasync="false">
+        /* Function to detect opted out users */
+        function __gaTrackerIsOptedOut() {
+            return document.cookie.indexOf(disableStr + '=true') > -1;
+        }
+
+        /* Disable tracking if the opt-out cookie exists. */
+        var disableStr = 'ga-disable-UA-1034927-2';
+        if ( __gaTrackerIsOptedOut() ) {
+            window[disableStr] = true;
+        }
+
+        /* Opt-out function */
+        function __gaTrackerOptout() {
+            document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+            window[disableStr] = true;
+        }
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+        __gaTracker('create', 'UA-1034927-2', 'auto');
+        __gaTracker('set', 'forceSSL', true);
+        __gaTracker('send','pageview');
+    </script>
+
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <script type="text/rocketscript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/jetpack/modules/related-posts/related-posts.js?ver=20150408'></script>
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/responsive-lightbox/assets/swipebox/js/jquery.swipebox.min.js?ver=1.7.1'></script>
+    <script type="text/rocketscript">
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0"};
+/* ]]> */
+</script>
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/responsive-lightbox/js/front.js?ver=1.7.1'></script>
+    <!--[if lt IE 9]>
+    <script type='text/javascript' src='http://www.phpit.com.br/wp-content/themes/swell-lite-master/js/html5shiv.js?ver=4f68eb62cf2fc548f626191c51c9891f'></script>
+    <![endif]-->
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/themes/swell-lite-master/js/jquery.fitvids.js?ver=20130729'></script>
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/themes/swell-lite-master/js/hoverIntent.js?ver=20130729'></script>
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/themes/swell-lite-master/js/superfish.js?ver=20130729'></script>
+    <script type="text/rocketscript" data-rocketsrc='//ajax.googleapis.com/ajax/libs/mootools/1.6.0/mootools.min.js'></script>
+    <script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/enlighter/resources/EnlighterJS.min.js?ver=3.4'></script>
+    <link rel='https://api.w.org/' href='http://www.phpit.com.br/wp-json/'/>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.phpit.com.br/xmlrpc.php?rsd"/>
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.phpit.com.br/wp-includes/wlwmanifest.xml"/>
+    <link rel='shortlink' href='http://wp.me/p77Tyv-1W'/>
+    <link rel="alternate" type="application/json+oembed" href="http://www.phpit.com.br/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.phpit.com.br%2Fartigos%2Fintroducao-aos-padroes-de-projeto-com-php-parte-2.phpit"/>
+    <link rel="alternate" type="text/xml+oembed" href="http://www.phpit.com.br/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.phpit.com.br%2Fartigos%2Fintroducao-aos-padroes-de-projeto-com-php-parte-2.phpit&#038;format=xml"/>
+    <link rel='dns-prefetch' href='//v0.wordpress.com'>
+    <style type='text/css'>img#wpstats{display:none}</style>
+    <script type="text/rocketscript">
+
+					var sampling_active = 0;
+					var sampling_rate   = 100;
+					var do_request = false;
+
+					if ( !sampling_active ) {
+						do_request = true;
+					} else {
+						var num = Math.floor(Math.random() * sampling_rate) + 1;
+						do_request = ( 1 === num );
+					}
+
+					if ( do_request ) {
+
+						/* Create XMLHttpRequest object and set variables */
+						var xhr = ( window.XMLHttpRequest )
+						  ? new XMLHttpRequest()
+						  : new ActiveXObject( "Microsoft.XMLHTTP" ),
+						url = 'http://www.phpit.com.br/wp-admin/admin-ajax.php',
+						params = 'action=update_views_ajax&token=d7812db28b&wpp_id=120';
+						/* Set request method and target URL */
+						xhr.open( "POST", url, true );
+						/* Set request header */
+						xhr.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+						/* Hook into onreadystatechange */
+						xhr.onreadystatechange = function() {
+							if ( 4 === xhr.readyState && 200 === xhr.status ) {
+								if ( window.console && window.console.log ) {
+									window.console.log( xhr.responseText );
+								}
+							}
+						};
+						/* Send request */
+						xhr.send( params );
+
+					}
+
+				</script>
+
+    <script type="text/rocketscript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"git","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":true,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script>
+</head>
+<body class="post-template-default single single-post postid-120 single-format-standard swell-singular">
+
+<div id="wrapper">
+
+    <div class="container">
+
+        <div id="header">
+            <div id="custom-header" class="non-active">
+                <h1 id="logo" class="vertical-center text-center">
+                    <a href="http://www.phpit.com.br/">
+                        <img src="http://www.phpit.com.br/wp-content/uploads/2016/01/phpit_logo_2016_compress.png" alt=""/>
+                        <span class="logo-text">PHPit - Blog de PHP do Rafa Jaques</span>
+                    </a>
+                </h1>
+            </div>
+
+        </div>
+
+        <nav id="navigation" class="navigation-main clearfix" role="navigation">
+            <span class="menu-toggle"><i class="fa fa-bars"></i></span>
+            <div class="menu-primary-navigation-container"><ul id="menu-primary-navigation" class="menu"><li id="menu-item-653" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-653"><a href="http://www.phpit.com.br/artigos">Artigos</a></li>
+                <li id="menu-item-1030" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1030"><a href="http://www.phpit.com.br/categoria/palestras">Palestras</a></li>
+                <li id="menu-item-656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-656"><a href="http://www.phpit.com.br/sobre-rafael-jaques">Sobre Rafael Jaques</a></li>
+                <li id="menu-item-654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-654"><a href="http://www.phpit.com.br/contato">Contato</a></li>
+            </ul></div>
+
+        </nav>
+
+        <div class="post-120 post type-post status-publish format-standard hentry category-padroes-de-projeto tag-design-patterns tag-padroes-de-projeto-2" id="post-120">
+
+            <div class="row">
+
+                <div class="content">
+
+                    <div class="eleven columns">
+
+                        <div class="postarea">
+
+                            <div class="post-holder shadow radius-full">
+
+                                <div class="article">
+                                    <div class="post-date">
+                                        <p><i class="fa fa-comment"></i> <a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit#comments"><span class="dsq-postid" data-dsqidentifier="120 http://www.phpit.com.br/?p=120">3 Comments</span></a></p>
+                                        <p><i class="fa fa-clock-o"></i>
+                                            Postado em 11 de abril de 2011 </p>
+                                    </div>
+                                    <h1 class="headline">Introdução aos Padrões de Projeto com PHP &#8211; Parte 2</h1>
+                                    <div class="post-author">
+                                        <p>por <a href="http://www.phpit.com.br/artigos/author/rafajaques" title="Posts de Rafael Jaques" rel="author">Rafael Jaques</a></p>
+                                    </div>
+                                    <span class="divider-small"></span>
+                                    <p>E aí, povo! Tudo certo?</p>
+                                    <p>Continuando a nossa série de estudos sobre Padrões de Projeto, hoje daremos uma olhada mais aprofundada nos padrões que existem e que iremos estudar. Caso você ainda não tenha lido, dê uma olhada na <a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php.phpit" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php.phpit', 'primeira parte');" title="Introdução aos Padrões de Projeto com PHP">primeira parte</a> dessa série dando uma introdução aos design patterns.</p>
+                                    <p>Uma vez que os padrões de projeto foram desenvolvidos originalmente para suprir necessidades de software independente da linguagem, alguns autores gostam de selecionar apenas os padrões mais utilizados em determinada linguagem. Nesta série também não citarei todos os padrões da GoF porque alguns, como o Iterator, já estão implementados nativamente na linguagem (o Iterator é um foreach, por exemplo). Aproveitarei o espaço aberto por esses padrões e indicarei alguns outros que não fazem parte da GoF mas que são muito importantes de serem estudados.</p>
+                                    <p>Vamos dar uma olhada em como se dividem os padrões da GoF e em seguida quais serão alguns dos padrões citados mais adiante.<span id="more-120"></span></p>
+                                    <h2>Padrões da Gang of Four</h2>
+                                    <p><strong>Criacionais</strong></p>
+                                    <ul>
+                                        <li><strong>Abstract Factory:</strong> Fornece uma interface para criação de famílias de objetos relacionados ou dependentes sem especificar suas classes concretas.</li>
+                                        <li><strong>Builder:</strong> Separa a construção de um objeto da sua representação, de modo que o mesmo processo de construção possa criar diferentes representações.</li>
+                                        <li><strong>Factory Method:</strong> Define uma interface para criar um objeto, mas deixa as subclasses decidirem qual classe a ser instanciada. O Factory Method permite a uma classe postergar a instanciação às subclasses.</li>
+                                        <li><strong>Prototype:</strong> Especifica os tipos de objetos a serem criados usando uma instância prototípica e criar novos objetos copiando este protótipo.</li>
+                                        <li><strong>Singleton:</strong> Garante que uma classe tenha somente uma instância e fornece um ponto global de acesso para ela.</li>
+                                    </ul>
+                                    <p><strong>Estruturais</strong></p>
+                                    <ul>
+                                        <li><strong>Adapter: </strong>Converte a interface de uma classe em outra interface esperada pelos clientes. O Adapter permite que certas classes trabalhem em conjunto, pois de outra forma seria impossível por causa de suas interfaces incompatíveis.</li>
+                                        <li><strong>Bridge:</strong> Separa uma abstração da sua implementação, de modo que as duas possam variar independentemente.</li>
+                                        <li><strong>Composite:</strong> Compõe objetos em estrutura de árvore para representar hierarquias do tipo partes-todo. O Composite permite que os clientes tratem objetos individuais e composições de objetos de maneira uniforme.</li>
+                                        <li><strong>Decorator: </strong>Atribui responsabilidades adicionais a um objeto dinamicamente. Os decorators fornecem uma alternativa flexível a subclasses para extensão da funcionalidade.</li>
+                                        <li><strong>Façade: </strong>Fornece uma interface unificada para um conjunto de interfaces em um subsistema. O Façade define uma interface de nível mais alto que torna o subsistema mais fácil de usar.</li>
+                                        <li><strong>Flyweight: </strong>Usa compartilhamento para suportar grandes quantidades de objetos, de granularidade fina, de maneira eficiente.</li>
+                                        <li><strong>Proxy: </strong>Fornece um objeto representante (surrogate), ou um marcador de outro objeto, para controlar o acesso ao mesmo.</li>
+                                    </ul>
+                                    <p><strong>Comportamentais</strong></p>
+                                    <ul>
+                                        <li><strong>Chain of Responsability: </strong>Evita o acoplamento do remetente de uma solicitação ao seu destinatário, dando a mais de um objeto a chance de tratar a solicitação. Encadeia os objetos receptores e passa a solicitação ao longo da cadeia até que um objeto a trate.</li>
+                                        <li><strong>Command: </strong>Encapsula uma solicitação como um objeto, desta forma permitindo que você parametrize clientes com diferentes solicitações, enfileire ou registre (log) solicitações e suporte operações que podem ser desfeitas.</li>
+                                        <li><strong>Interpreter: </strong>Dada uma linguagem, define uma representação para sua gramática juntamente com um interpretador que usa a representação para interpretar sentenças nesta linguagem.</li>
+                                        <li><strong>Iterator: </strong>Cria um iterador para interagir com os objetos, retirando a iteração das responsabilidades do próprio objeto.</li>
+                                        <li><strong>Mediator: </strong>Define um objeto que encapsula como um conjunto de objetos interage. O Mediator promove o acoplamento fraco ao evitar que os objetos se refiram explicitamente uns aos outros, permitindo que você varie suas interações independentemente.</li>
+                                        <li><strong>Memento: </strong>Sem violar a encapsulação, captura e externaliza um estado interno de um objeto, de modo que o mesmo possa posteriormente ser restaurado para este estado.</li>
+                                        <li><strong>Observer: </strong>Define uma dependência um-para-muitos entre objetos, de modo que, quando um objeto muda de estado, todos os seus dependentes são automaticamente notificados e atualizados.</li>
+                                        <li><strong>State: </strong>Permite que um objeto altere seu comportamento quando seu estado interno muda. O objeto parecerá ter mudado de classe.</li>
+                                        <li><strong>Strategy: </strong>Define uma família de algoritmos, encapsula cada um deles e os faz intercambiáveis. O Strategy permite que o algoritmo varie independentemente dos clientes que o utilizam.</li>
+                                        <li><strong>Template Method: </strong>Define o esqueleto de um algoritmo em uma operação, postergando a definição de alguns passos para subclasses. O Template Method permite que as subclasses redefinam certos passos de um algoritmo sem mudar sua estrutura.</li>
+                                        <li><strong>Visitor: </strong>Representa uma operação a ser executada sobre os elementos da estrutura de um objeto. O Visitor permite que você defina uma nova operação sem mudar as classes dos elementos sobre os quais opera, criando métodos virtualmente.</li>
+                                    </ul>
+                                    <p>Além das divisões por finalidade, os padrões de projeto possuem outro tipo de divisão. Existem padrões de classe e padrões de objeto.</p>
+                                    <h2>Outros padrões de projeto</h2>
+                                    <p>O fato de estes padrões não terem sido desenvolvidos pela GoF não os torna menos importantes. Inclusive muitos destes padrões você já pode ter implementado, de uma forma ou de outra, e nem ter percebido!</p>
+                                    <p>Os padrões que veremos a seguir são mais específicos do que os vistos anteriormente. Suas finalidades são focadas na resolução de problemas não tão genéricos e na aceleração do desenvolvimento.</p>
+                                    <p>Vamos dar uma olhada:</p>
+                                    <ul>
+                                        <li><strong>Table Data Gateway: </strong>Cria objetos que referenciam tabelas no banco de dados dando acesso dando acesso simplificado à elas sem a necessidade de digitar SQL.</li>
+                                        <li><strong>Row Data Gateway: </strong>Dá acesso a um determinado registro em uma tabela do banco e permite que sejam alterados seus valores.</li>
+                                        <li><strong>MVC: </strong>O nome deste padrão é Model-view-controller. Separa a aplicação em três camadas: banco de dados, lógica de negócio e apresentação.</li>
+                                        <li><strong>Active Record: </strong>Deriva-se do Row Data Gateway. Mapeia uma linha de registro de uma determinada tabela no banco de dados e disponibiliza métodos de acesso, gravação e alteração para o mesmo, implementando algumas regras de negócio.</li>
+                                        <li><strong>Data Mapper: </strong>Uma versão aprimorada do Active Record, porém com mais camadas de separação para lidar com lógicas de negócio mais complexas.</li>
+                                        <li><strong>Lazy Load: </strong>Permite que objetos encadeados só sejam carregados quando necessário, reduzindo a carga na memória.</li>
+                                    </ul>
+                                    <h2>Conclusão</h2>
+                                    <p>E por hoje é só, pessoal! Aproveitei esse artigo pra falar um pouquinho mais sobre alguns padrões que vamos estudar daqui pra frente e espero que tenha servido para dar uma iluminada nas ideias!<br/>
+                                        Provavelmente no próximo artigo já começaremos a colocar a mão na massa! :-)</p>
+                                    <p>Um abraço para todos e fiquem com Deus!</p>
+                                    <div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Gostou do conteúdo? Compartilhe!</h3><div class="sd-content"><ul><li class="share-twitter"><a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=twitter" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=twitter', 'Clique para compartilhar no Twitter(abre em nova janela)');" rel="nofollow" data-shared="sharing-twitter-120" class="share-twitter sd-button share-icon no-text" target="_blank" title="Clique para compartilhar no Twitter"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Twitter(abre em nova janela)</span></a></li><li class="share-facebook"><a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=facebook" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=facebook', 'Clique para compartilhar no Facebook(abre em nova janela)');" rel="nofollow" data-shared="sharing-facebook-120" class="share-facebook sd-button share-icon no-text" target="_blank" title="Clique para compartilhar no Facebook"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Facebook(abre em nova janela)</span></a></li><li class="share-google-plus-1"><a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=google-plus-1" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=google-plus-1', 'Compartilhe no Google+(abre em nova janela)');" rel="nofollow" data-shared="sharing-google-120" class="share-google-plus-1 sd-button share-icon no-text" target="_blank" title="Compartilhe no Google+"><span></span><span class="sharing-screen-reader-text">Compartilhe no Google+(abre em nova janela)</span></a></li><li class="share-linkedin"><a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=linkedin" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=linkedin', 'Clique para compartilhar no LinkedIn(abre em nova janela)');" rel="nofollow" data-shared="sharing-linkedin-120" class="share-linkedin sd-button share-icon no-text" target="_blank" title="Clique para compartilhar no LinkedIn"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no LinkedIn(abre em nova janela)</span></a></li><li class="share-reddit"><a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=reddit" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=reddit', 'Clique para compartilhar no Reddit(abre em nova janela)');" rel="nofollow" data-shared="" class="share-reddit sd-button share-icon no-text" target="_blank" title="Clique para compartilhar no Reddit"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Reddit(abre em nova janela)</span></a></li><li class="share-pinterest"><a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=pinterest" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit?share=pinterest', 'Clique para compartilhar no Pinterest(abre em nova janela)');" rel="nofollow" data-shared="sharing-pinterest-120" class="share-pinterest sd-button share-icon no-text" target="_blank" title="Clique para compartilhar no Pinterest"><span></span><span class="sharing-screen-reader-text">Clique para compartilhar no Pinterest(abre em nova janela)</span></a></li><li class="share-end"></li></ul></div></div></div>
+                                    <div id='jp-relatedposts' class='jp-relatedposts'>
+                                        <h3 class="jp-relatedposts-headline"><em>Relacionado</em></h3>
+                                    </div>
+
+                                    <div class="post-meta">
+                                        <p><i class="fa fa-bars"></i> Categoria: <a href="http://www.phpit.com.br/categoria/padroes-de-projeto" rel="category tag">Padrões de Projeto</a> <i class="fa fa-tags"></i> Tags: <a href="http://www.phpit.com.br/tag/design-patterns" rel="tag">design patterns</a>, <a href="http://www.phpit.com.br/tag/padroes-de-projeto-2" rel="tag">padrões de projeto</a></p>
+
+                                    </div>
+
+                                    <div class="post-navigation">
+                                        <div class="previous-post">&larr; <a href="http://www.phpit.com.br/artigos/introducao-aos-padroes-de-projeto-com-php.phpit" rel="prev">Introdução aos Padrões de Projeto com PHP</a></div>
+                                        <div class="next-post"><a href="http://www.phpit.com.br/artigos/phpit-layout-2011.phpit" rel="next">PHPit &#8211; Layout 2011</a> &rarr;</div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div id="disqus_thread">
+                                <div id="dsq-content">
+                                    <ul id="dsq-comments">
+                                        <li class="comment even thread-even depth-1" id="dsq-comment-426">
+                                            <div id="dsq-comment-header-426" class="dsq-comment-header">
+                                                <cite id="dsq-cite-426">
+                                                    <span id="dsq-author-user-426">Daniel</span>
+                                                </cite>
+                                            </div>
+                                            <div id="dsq-comment-body-426" class="dsq-comment-body">
+                                                <div id="dsq-comment-message-426" class="dsq-comment-message"><p>Muito bom o post mas vale lembrar que n&atilde;o &eacute; preciso usar somente um padr&atilde;o no projeto, eu mesmo trabalho com mais de um, dependendo da necessidade do sistema.</p>
+                                                    <p>Digo isso porque quando comecei a trabalhar com projetos maiores, tinha em mente que o sistema suportaria somente um.</p>
+                                                    <p>Parab&eacute;ns pelo post =) </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-428">
+                                            <div id="dsq-comment-header-428" class="dsq-comment-header">
+                                                <cite id="dsq-cite-428">
+                                                    <a id="dsq-author-user-428" href="http://www.ifranca.com.br/blog" target="_blank" rel="nofollow">Fl&aacute;vio</a>
+                                                </cite>
+                                            </div>
+                                            <div id="dsq-comment-body-428" class="dsq-comment-body">
+                                                <div id="dsq-comment-message-428" class="dsq-comment-message"><p>Parab&eacute;ns pelo post. Aguardo ansiosamente pelos pr&oacute;ximos :D </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="comment even thread-even depth-1" id="dsq-comment-473">
+                                            <div id="dsq-comment-header-473" class="dsq-comment-header">
+                                                <cite id="dsq-cite-473">
+                                                    <span id="dsq-author-user-473">Gabriel</span>
+                                                </cite>
+                                            </div>
+                                            <div id="dsq-comment-body-473" class="dsq-comment-body">
+                                                <div id="dsq-comment-message-473" class="dsq-comment-message"><p>Os padr&otilde;es abaixo est&atilde;o contidos no livro Padr&otilde;es de Arquitetura de Aplica&ccedil;&otilde;es Corporativas de MARTIN FOWLER.</p>
+                                                    <p>S&atilde;o padr&otilde;es arquiteturais usados em praticamente todo framework PHP, Java&#8230; </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="five columns">
+                        <div class="sidebar">
+                            <div id="text-11" class="widget widget_text"> <div class="textwidget"><script async data-rocketsrc="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="text/rocketscript"></script>
+
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5912887351356807" data-ad-slot="2084578800" data-ad-format="auto"></ins>
+                                <script type="text/rocketscript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            </div><div id="search-3" class="widget widget_search">
+                            <form method="get" id="searchform" class="clearfix" action="http://www.phpit.com.br/" role="search">
+                                <label for="s" class="assistive-text">Pesquisar</label>
+                                <input type="text" class="field" name="s" value="" id="s" placeholder="Pesquisar &hellip;"/>
+                                <input type="submit" class="submit" name="submit" id="searchsubmit" value="Ir"/>
+                            </form></div><div id="wpcom_social_media_icons_widget-2" class="widget widget_wpcom_social_media_icons_widget"><h6 class="title">Siga o Rafa Jaques</h6><ul><li><a href="https://www.facebook.com/PHPit-193957320645352/" class="genericon genericon-facebook" target="_blank"><span class="screen-reader-text">Ver perfil de PHPit-193957320645352 no Facebook</span></a></li><li><a href="https://twitter.com/rafajaques/" class="genericon genericon-twitter" target="_blank"><span class="screen-reader-text">Ver perfil de rafajaques no Twitter</span></a></li><li><a href="https://github.com/rafajaques/" class="genericon genericon-github" target="_blank"><span class="screen-reader-text">Ver perfil de rafajaques no GitHub</span></a></li></ul></div><div id="text-7" class="widget widget_text"><h6 class="title">Sobre mim</h6> <div class="textwidget"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://www.phpit.com.br/wp-content/uploads/2016/01/rafael_jaques_2016.jpg" align="left" style="width:42%; margin-right:10px;"/><noscript><img src="http://www.phpit.com.br/wp-content/uploads/2016/01/rafael_jaques_2016.jpg" align="left" style="width:42%; margin-right:10px;"/></noscript> Meu nome é Rafael Jaques. Sou professor do <a href="http://bento.ifrs.edu.br" target="_blank">IFRS</a>, um dos coordenadores do <a href="http://phprs.com.br" target="_blank">PHPRS</a>, evangelista PHP e Electron, desenvolvedor há mais de 15 anos e viciado em segurança. Meu objetivo com este blog é compartilhar os conhecimentos que adquiro nessa longa caminhada de programador.</div>
+                        </div><div id="text-8" class="widget widget_text"><h6 class="title">PHPRS</h6> <div class="textwidget"><p><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://phprs.com.br/wp-custom/phprs_logo_pq.png" alt="PHPRS" description="PHPRS"/><noscript><img src="http://phprs.com.br/wp-custom/phprs_logo_pq.png" alt="PHPRS" description="PHPRS"/></noscript></p>
+                            Participe do PHPRS, o Grupo de Programadores PHP do Rio Grande do Sul.<br/>
+                            Acesse nosso <a href="http://www.facebook.com/rs.elephants/" target="_blank">Facebook</a> ou o nosso <a href="http://www.php-rs.org/" target="_blank">site</a> e saiba mais sobre nossas iniciativas.</div>
+                        </div><div id="responsivefacebook-4" class="widget widget_responsivefacebook"><h6 class="title">PHPit no Facebook</h6><div id="fb-root"></div>
+                            <script type="text/rocketscript">(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+                            <div class="responsive-facebook">
+                                <div class="fb-page" data-href="https://www.facebook.com/PHPit-193957320645352" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/PHPit-193957320645352"><a href="https://www.facebook.com/PHPit-193957320645352">Facebook</a></blockquote></div></div>
+                            </div>
+                        </div>
+
+                            <div id="wpp-4" class="widget popular-posts">
+                                <h6 class="title">Artigos mais lidos recentemente</h6>
+                                <ul class="wpp-list">
+                                    <li><a href="http://www.phpit.com.br/artigos/7-coisas-simples-em-php-que-alguns-ainda-complicam.phpit" title="7 coisas simples em PHP que alguns ainda complicam" class="wpp-post-title" target="_self">7 coisas simples em PHP que alguns ainda complicam</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/dicas" class="cat-id-7">Dicas</a></span></span> </li>
+                                    <li><a href="http://www.phpit.com.br/artigos/configurando-ssl-servidor-de-desenvolvimento-apache.phpit" title="Configurando SSL no servidor de desenvolvimento (Apache)" class="wpp-post-title" target="_self">Configurando SSL no servidor de desenvolvimento (Apache)</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/seguranca" class="cat-id-31">Segurança</a></span></span> </li>
+                                    <li><a href="http://www.phpit.com.br/artigos/o-que-e-um-framework.phpit" title="O que é um Framework? Para que serve?" class="wpp-post-title" target="_self">O que é um Framework? Para que serve?</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/frameworks" class="cat-id-18">Frameworks</a></span></span> </li>
+                                    <li><a href="http://www.phpit.com.br/artigos/gerando-numeros-de-identificacao-id-unicos-com-php.phpit" title="Gerando números de identificação (ID) únicos com PHP" class="wpp-post-title" target="_self">Gerando números de identificação (ID) únicos com PHP</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/topicos-basicos" class="cat-id-10">Tópicos Básicos</a></span></span> </li>
+                                    <li><a href="http://www.phpit.com.br/artigos/forcar-o-download-de-um-arquivo-melhorado-e-bug-corrigido.phpit" title="Forçar o download de um arquivo com PHP" class="wpp-post-title" target="_self">Forçar o download de um arquivo com PHP</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/geral" class="cat-id-4">Geral</a></span></span> </li>
+                                    <li><a href="http://www.phpit.com.br/artigos/entendendo-as-expressoes-regulares.phpit" title="Entendendo as Expressões Regulares" class="wpp-post-title" target="_self">Entendendo as Expressões Regulares</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/expressoes-regulares" class="cat-id-5">Expressões Regulares</a></span></span> </li>
+                                    <li><a href="http://www.phpit.com.br/artigos/descobrindo-a-idade-atraves-da-data-de-nascimento.phpit" title="Descobrindo a idade através da data de nascimento" class="wpp-post-title" target="_self">Descobrindo a idade através da data de nascimento</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/dicas" class="cat-id-7">Dicas</a></span></span> </li>
+                                    <li><a href="http://www.phpit.com.br/artigos/entendendo-pra-que-serve-ob-start-ob-end-flush-ob-get-contents-e-afins.phpit" title="Entendendo pra que serve ob_start(), ob_end_flush(), ob_get_contents() e afins" class="wpp-post-title" target="_self">Entendendo pra que serve ob_start(), ob_end_flush(), ob_get_contents() e afins</a> <span class="post-stats"><span class="wpp-category">under <a href="http://www.phpit.com.br/categoria/comandos-avancados" class="cat-id-13">Comandos Avançados</a></span></span> </li>
+                                </ul>
+                            </div>
+
+                            <div id="categories-4" class="widget widget_categories"><h6 class="title">Categorias</h6> <ul>
+                                <li class="cat-item cat-item-152"><a href="http://www.phpit.com.br/categoria/analise">Análise</a> (5)
+                                </li>
+                                <li class="cat-item cat-item-19"><a href="http://www.phpit.com.br/categoria/apis-e-webservices">APIs e WebServices</a> (4)
+                                </li>
+                                <li class="cat-item cat-item-184"><a href="http://www.phpit.com.br/categoria/bancos-de-dados">Bancos de Dados</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-12"><a href="http://www.phpit.com.br/categoria/buffer">Buffer</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-13"><a href="http://www.phpit.com.br/categoria/comandos-avancados">Comandos Avançados</a> (7)
+                                </li>
+                                <li class="cat-item cat-item-8"><a href="http://www.phpit.com.br/categoria/comandos-do-sistema">Comandos do Sistema</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-15"><a href="http://www.phpit.com.br/categoria/curiosidades">Curiosidades</a> (4)
+                                </li>
+                                <li class="cat-item cat-item-3"><a href="http://www.phpit.com.br/categoria/data-e-hora">Data e hora</a> (4)
+                                </li>
+                                <li class="cat-item cat-item-7"><a href="http://www.phpit.com.br/categoria/dicas">Dicas</a> (33)
+                                </li>
+                                <li class="cat-item cat-item-16"><a href="http://www.phpit.com.br/categoria/escalabilidade">Escalabilidade</a> (2)
+                                </li>
+                                <li class="cat-item cat-item-134"><a href="http://www.phpit.com.br/categoria/eventos">Eventos</a> (12)
+                                </li>
+                                <li class="cat-item cat-item-5"><a href="http://www.phpit.com.br/categoria/expressoes-regulares">Expressões Regulares</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-21"><a href="http://www.phpit.com.br/categoria/ferramentas">Ferramentas</a> (5)
+                                </li>
+                                <li class="cat-item cat-item-18"><a href="http://www.phpit.com.br/categoria/frameworks">Frameworks</a> (5)
+                                </li>
+                                <li class="cat-item cat-item-180"><a href="http://www.phpit.com.br/categoria/geolocalizacao">Geolocalização</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-4"><a href="http://www.phpit.com.br/categoria/geral">Geral</a> (7)
+                                </li>
+                                <li class="cat-item cat-item-178"><a href="http://www.phpit.com.br/categoria/google-maps-api">Google Maps API</a> (2)
+                                </li>
+                                <li class="cat-item cat-item-171"><a href="http://www.phpit.com.br/categoria/gratis-2">Grátis</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-166"><a href="http://www.phpit.com.br/categoria/hangouts">Hangouts</a> (3)
+                                </li>
+                                <li class="cat-item cat-item-174"><a href="http://www.phpit.com.br/categoria/ides-e-editores">IDEs e Editores</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-9"><a href="http://www.phpit.com.br/categoria/imagens">Imagens</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-183"><a href="http://www.phpit.com.br/categoria/linux">Linux</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-6"><a href="http://www.phpit.com.br/categoria/matematica">Matemática</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-11"><a href="http://www.phpit.com.br/categoria/mysql">MySQL</a> (2)
+                                </li>
+                                <li class="cat-item cat-item-17"><a href="http://www.phpit.com.br/categoria/off-topic">Off-topic</a> (7)
+                                </li>
+                                <li class="cat-item cat-item-22"><a href="http://www.phpit.com.br/categoria/padroes-de-projeto">Padrões de Projeto</a> (2)
+                                </li>
+                                <li class="cat-item cat-item-20"><a href="http://www.phpit.com.br/categoria/palestras">Palestras</a> (11)
+                                </li>
+                                <li class="cat-item cat-item-14"><a href="http://www.phpit.com.br/categoria/php-6">PHP 6</a> (5)
+                                </li>
+                                <li class="cat-item cat-item-177"><a href="http://www.phpit.com.br/categoria/php-7">PHP 7</a> (3)
+                                </li>
+                                <li class="cat-item cat-item-42"><a href="http://www.phpit.com.br/categoria/promocoes">Promoções</a> (4)
+                                </li>
+                                <li class="cat-item cat-item-127"><a href="http://www.phpit.com.br/categoria/resenhas">Resenhas</a> (2)
+                                </li>
+                                <li class="cat-item cat-item-31"><a href="http://www.phpit.com.br/categoria/seguranca">Segurança</a> (5)
+                                </li>
+                                <li class="cat-item cat-item-154"><a href="http://www.phpit.com.br/categoria/topicos-avancados">Tópicos Avançados</a> (5)
+                                </li>
+                                <li class="cat-item cat-item-10"><a href="http://www.phpit.com.br/categoria/topicos-basicos">Tópicos Básicos</a> (3)
+                                </li>
+                                <li class="cat-item cat-item-179"><a href="http://www.phpit.com.br/categoria/truques">Truques</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-169"><a href="http://www.phpit.com.br/categoria/wordpress-2">WordPress</a> (1)
+                                </li>
+                                <li class="cat-item cat-item-153"><a href="http://www.phpit.com.br/categoria/zend-framework-2">Zend Framework 2</a> (5)
+                                </li>
+                            </ul>
+                            </div><div id="twitter-4" class="widget widget_twitter"><div><h6 class="title"><span class='twitterwidget twitterwidget-title'>@_phpit no Twitter</span></h6><ul><li><span class='entry-content'>PHPit recomenda pra você: Contar número de linhas de um arquivo de texto com PHP <a href="https://t.co/aqB6XjmZrJ" target="_blank">https://t.co/aqB6XjmZrJ</a> <a href="http://twitter.com/search?q=%23PHP" class="twitter-hashtag" target="_blank">#PHP</a> <a href="http://twitter.com/search?q=%23SouDev" class="twitter-hashtag" target="_blank">#SouDev</a></span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/_phpit/statuses/876305128592158722" target="_blank">18/06/2017 02:06</a></span> <span class='from-meta'>from <a href="http://www.ajaymatharu.com/" rel="nofollow">Tweet Old Post</a></span></span></li><li><span class='entry-content'>PHPit recomenda pra você: Criando um View Helper básico no Zend Framework 2 <a href="https://t.co/FrLTTWuCfv" target="_blank">https://t.co/FrLTTWuCfv</a> <a href="http://twitter.com/search?q=%23PHP" class="twitter-hashtag" target="_blank">#PHP</a> <a href="http://twitter.com/search?q=%23SouDev" class="twitter-hashtag" target="_blank">#SouDev</a></span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/_phpit/statuses/875942727392931840" target="_blank">17/06/2017 02:06</a></span> <span class='from-meta'>from <a href="http://www.ajaymatharu.com/" rel="nofollow">Tweet Old Post</a></span></span></li><li><span class='entry-content'>PHPit recomenda pra você: Iniciando com Zend Framework 2: Skeleton e ZfcUser <a href="https://t.co/cM8cxE7LNp" target="_blank">https://t.co/cM8cxE7LNp</a> <a href="http://twitter.com/search?q=%23PHP" class="twitter-hashtag" target="_blank">#PHP</a> <a href="http://twitter.com/search?q=%23SouDev" class="twitter-hashtag" target="_blank">#SouDev</a></span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/_phpit/statuses/875579889377697792" target="_blank">16/06/2017 02:04</a></span> <span class='from-meta'>from <a href="http://www.ajaymatharu.com/" rel="nofollow">Tweet Old Post</a></span></span></li><li><span class='entry-content'>PHPit recomenda pra você: Zend Framework 2 - Hydrators, Models e o Padrão TableGateway <a href="https://t.co/CzOxrNiQra" target="_blank">https://t.co/CzOxrNiQra</a> <a href="http://twitter.com/search?q=%23PHP" class="twitter-hashtag" target="_blank">#PHP</a> <a href="http://twitter.com/search?q=%23SouDev" class="twitter-hashtag" target="_blank">#SouDev</a></span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/_phpit/statuses/875217486643216389" target="_blank">15/06/2017 02:04</a></span> <span class='from-meta'>from <a href="http://www.ajaymatharu.com/" rel="nofollow">Tweet Old Post</a></span></span></li><li><span class='entry-content'>PHPit recomenda pra você: 10 coisas para não fazer no PHP 7 <a href="https://t.co/AZGOtKfFD8" target="_blank">https://t.co/AZGOtKfFD8</a> <a href="http://twitter.com/search?q=%23PHP" class="twitter-hashtag" target="_blank">#PHP</a> <a href="http://twitter.com/search?q=%23SouDev" class="twitter-hashtag" target="_blank">#SouDev</a></span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/_phpit/statuses/874854680970629120" target="_blank">14/06/2017 02:03</a></span> <span class='from-meta'>from <a href="http://www.ajaymatharu.com/" rel="nofollow">Tweet Old Post</a></span></span></li></ul><div class="follow-button"><a href="http://twitter.com/_phpit" class="twitter-follow-button" title="Follow @_phpit" target="_blank">@_phpit</a></div></div></div><div id="text-13" class="widget widget_text"> <div class="textwidget"><script async data-rocketsrc="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="text/rocketscript"></script>
+
+                            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-5912887351356807" data-ad-slot="8798763604"></ins>
+                            <script type="text/rocketscript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                        </div> </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+
+        <div class="row">
+
+            <div class="footer-information">
+
+                <div class="content">
+                    <div class="align-left">
+                        <p>Copyright &copy; 2017 &middot; Todos os Direitos Reservados &middot; PHPit &#8211; Blog de PHP do Rafa Jaques</p>
+                        <p>
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.pt_BR" target="_blank"><img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" width="88" height="31"></a>
+                            <br>
+                            Conteúdo licenciado sob a
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.pt_BR" target="_blank">Creative Commons Atribuição-NãoComercial-CompartilhaIgual 3.0</a>
+                        </p>
+                        <p>Este blog possui uma <a href="/politica-de-privacidade">Política de Privacidade</a>.</p>
+                        <p>Swell Lite de <a href="http://organicthemes.com" target="_blank">Organic Themes</a> &middot; <a href="http://www.phpit.com.br/feed">RSS Feed</a></p>
+                        <p>“Bom e reto é o Senhor, por isso aponta o caminho aos pecadores.” (Salmos 25:8)</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script type="text/rocketscript">
+		window.WPCOM_sharing_counts = {"http:\/\/www.phpit.com.br\/artigos\/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit":120};
+	</script>
+<link rel='stylesheet' id='genericons-css' href='http://www.phpit.com.br/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all'/>
+<script type="text/rocketscript" data-rocketsrc='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201725'></script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/themes/swell-lite-master/js/jquery.custom.js?ver=20130729'></script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/themes/swell-lite-master/js/navigation.js?ver=20130729'></script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-includes/js/comment-reply.min.js?ver=4f68eb62cf2fc548f626191c51c9891f'></script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/bj-lazy-load/js/bj-lazy-load.min.js?ver=2'></script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-includes/js/wp-embed.min.js?ver=4f68eb62cf2fc548f626191c51c9891f'></script>
+<script type="text/rocketscript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"platform":"wordpress@4.8","language":""},"disqusIdentifier":"120 http:\/\/www.phpit.com.br\/?p=120","disqusShortname":"phpit","disqusTitle":"Introdu\u00e7\u00e3o aos Padr\u00f5es de Projeto com PHP \u2013 Parte 2","disqusUrl":"http:\/\/www.phpit.com.br\/artigos\/introducao-aos-padroes-de-projeto-com-php-parte-2.phpit","options":{"manualSync":false},"postId":"120"};
+/* ]]> */
+</script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/disqus-comment-system/media/js/disqus.js?ver=4f68eb62cf2fc548f626191c51c9891f'></script>
+<script type="text/rocketscript" data-rocketsrc='http://platform.twitter.com/widgets.js?ver=1.0.0'></script>
+<script type="text/rocketscript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"phpit"};
+/* ]]> */
+</script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/disqus-comment-system/media/js/count.js?ver=4f68eb62cf2fc548f626191c51c9891f'></script>
+<script type="text/rocketscript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/rocketscript" data-rocketsrc='http://www.phpit.com.br/wp-content/plugins/jetpack/modules/sharedaddy/sharing.js?ver=5.0'></script>
+<script type="text/rocketscript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+</script>
+<script type="text/rocketscript" data-rocketsrc='https://stats.wp.com/e-201725.js' async defer></script>
+<script type="text/rocketscript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:5.0',blog:'105316207',post:'120',tz:'-3',srv:'www.phpit.com.br'} ]);
+	_stq.push([ 'clickTrackerInit', '105316207', '120' ]);
+</script>
+</body>
+</html>

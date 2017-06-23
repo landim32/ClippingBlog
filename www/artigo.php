@@ -2,6 +2,7 @@
 
 use ClippingBlog\BLL\ArtigoBLL;
 use ClippingBlog\BLL\App;
+use ClippingBlog\Model\ArtigoInfo;
 
 $regraArtigo = new ArtigoBLL();
 $artigo = $regraArtigo->pegarPorSlug( App::getSlug() );
@@ -20,15 +21,32 @@ App::setArtigo( $artigo );
                 <label class="col-md-2 control-label text-right">
                     <i class="fa fa-tags"></i> Tags:
                 </label>
-                <div id="artigo-tags" class="col-md-10">
+                <div id="artigo-tags" class="<?php echo is_null($usuario) ? "col-md-10" : "col-md-8"; ?>">
                     <div class="form-span">
-                        <?php foreach ($artigo->listarTags() as $tag) : ?>
-                            <a href="<?php echo get_tema_path() . "/tag/" . $tag; ?>">
-                                <span class="badge badge-info"><?php echo $tag; ?></span>
+                        <?php foreach ($artigo->listarTag() as $tag) : ?>
+                            <a href="<?php echo get_tema_path() . "/tag/" . $tag->getSlug(); ?>">
+                                <span class="badge badge-info"><?php echo $tag->getNome(); ?></span>
                             </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
+                <?php if (!is_null($usuario)) : ?>
+                <div id="artigo-situacao" class="col-md-2 text-right">
+                    <?php
+                    switch ($artigo->getCodSituacao()) {
+                        case ArtigoInfo::ATIVO:
+                            echo "<label class='label label-success'>Ativo</label>";
+                            break;
+                        case ArtigoInfo::INATIVO:
+                            echo "<label class='label label-danger'>Inativo</label>";
+                            break;
+                        case ArtigoInfo::RASCUNHO:
+                            echo "<label class='label label-warning'>Rascunho</label>";
+                            break;
+                    }
+                    ?>
+                </div>
+                <?php endif; ?>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label text-right">
@@ -54,8 +72,32 @@ App::setArtigo( $artigo );
                 <?php echo $artigo->getTexto(); ?>
             </div>
             <hr />
+            <div>
+                Fonte: <a href="<?php echo $artigo->getUrlFonte(); ?>"><?php echo $artigo->getUrlFonte(); ?></a>
+            </div>
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                 var disqus_config = function () {
+                 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                 };
+                 */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://emagine-blog.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
         </form>
         <?php require( "sidebar.php" ); ?>
     </div><!-- /.container -->
+<?php $regraArtigo->adicionarPageview($artigo->getId()); ?>
 <?php require( "footer.php" ); ?>

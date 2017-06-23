@@ -3,6 +3,7 @@
 namespace ClippingBlog\BLL;
 
 use ClippingBlog\Model\ArtigoInfo;
+use Exception;
 use PHPCrawler;
 use PHPCrawlerDocumentInfo;
 
@@ -14,6 +15,7 @@ class ArtigoCrawler extends PHPCrawler
     private $texto;
     private $url_fonte;
     private $autor;
+    private $autor_padrao;
 
     /**
      * @return string
@@ -69,6 +71,20 @@ class ArtigoCrawler extends PHPCrawler
      */
     public function setRegexAutor($value) {
         $this->autor = $value;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAutorPadrao() {
+        return $this->autor_padrao;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setAutorPadrao($value) {
+        $this->autor_padrao = $value;
     }
 
     /**
@@ -155,11 +171,22 @@ class ArtigoCrawler extends PHPCrawler
      */
     public function gerarArtigo($content) {
         $artigo = new ArtigoInfo();
-        $artigo->setTitulo( $this->getRegex($content, $this->getRegexTitulo()) );
-        $artigo->setData( $this->getRegex($content, $this->getRegexData()) );
-        $artigo->setAutor( $this->getRegex($content, $this->getRegexAutor()) );
+        if (!isNullOrEmpty($this->getRegexTitulo())) {
+            $artigo->setTitulo($this->getRegex($content, $this->getRegexTitulo()));
+        }
+        if (!isNullOrEmpty($this->getRegexData())) {
+            $artigo->setData($this->getRegex($content, $this->getRegexData()));
+        }
+        if (!isNullOrEmpty($this->getRegexAutor())) {
+            $artigo->setAutor($this->getRegex($content, $this->getRegexAutor()));
+        }
+        if (!isNullOrEmpty($this->getAutorPadrao())) {
+            $artigo->setAutor($this->getAutorPadrao());
+        }
+        if (!isNullOrEmpty($this->getRegexUrlFonte())) {
+            $artigo->setUrlFonte($this->getRegex($content, $this->getRegexUrlFonte()));
+        }
         $artigo->setTexto( $this->getRegex($content, $this->getRegexTexto()) );
-        $artigo->setUrlFonte( $this->getRegex($content, $this->getRegexUrlFonte()) );
         return $artigo;
     }
 
@@ -168,31 +195,45 @@ class ArtigoCrawler extends PHPCrawler
      * @return int
      */
     public function handleDocumentInfo(PHPCrawlerDocumentInfo $DocInfo){
+        //var_dump($DocInfo);
+        if ($DocInfo->error_occured == true) {
+            echo "-" . $DocInfo->error_string;
+        }
         if (preg_match($this->getRegexUrlArtigo(), $DocInfo->url)) {
-            echo "> " . $DocInfo->url . " (" . $DocInfo->http_status_code . ")\n";
-
-            $artigo = $this->gerarArtigo($DocInfo->content);
-            if (isNullOrEmpty($artigo->getTitulo())) {
-                return 0;
-            }
-            if (isNullOrEmpty($artigo->getData())) {
-                return 0;
-            }
-            if (isNullOrEmpty($artigo->getTexto())) {
-                return 0;
-            }
-            if (isNullOrEmpty($artigo->getUrlFonte())) {
-                $artigo->setUrlFonte($DocInfo->url);
-            }
-            $artigo->setUrlCrawler($DocInfo->url);
 
             $regraArtigo = new ArtigoBLL();
-            $regraArtigo->inserir($artigo);
+            $artigoOld = $regraArtigo->pegarPorUrl( $DocInfo->url );
+            if (!is_null($artigoOld)) {
+                echo "=" . $DocInfo->url . " (" . $DocInfo->http_status_code . ")\n";
+            }
+            else {
+                echo "+" . $DocInfo->url . " (" . $DocInfo->http_status_code . ")\n";
+                $artigo = $this->gerarArtigo($DocInfo->content);
+                if (isNullOrEmpty($artigo->getTitulo())) {
+                    return 0;
+                }
+                if (isNullOrEmpty($artigo->getTexto())) {
+                    return 0;
+                }
+                if (isNullOrEmpty($artigo->getData())) {
+                    $artigo->setData(date("Y-m-d H:i:s"));
+                }
+                if (isNullOrEmpty($artigo->getUrlFonte())) {
+                    $artigo->setUrlFonte($DocInfo->url);
+                }
+                $artigo->setUrlCrawler($DocInfo->url);
 
-            $this->preview($artigo);
+                try {
+                    $regraArtigo->inserir($artigo);
+                    $this->preview($artigo);
+                }
+                catch (Exception $e) {
+                    echo "-" . $e->getMessage();
+                }
+            }
         }
         else {
-            echo "* " . $DocInfo->url . " (" . $DocInfo->http_status_code . ")\n";
+            echo "-" . $DocInfo->url . " (" . $DocInfo->http_status_code . ")\n";
         }
     }
 }

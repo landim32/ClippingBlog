@@ -1,0 +1,417 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>How to make an App Widget with Xamarin.Android</title>
+<meta name="title" content="How to make an App Widget with Xamarin.Android" />
+<meta name="author" content="Marco" />
+<meta name="description" content="marcofolio.net, Learn how to make an App Widget with Xamarin.Android in this tutorial." />
+<meta name="keywords" content="design, jquery, programming, webdevelopment, fun, php, html, css, javascript, widget, xamarin, android" />
+<meta name="robots" content="index, follow" />
+<base href="http://www.marcofolio.net/" />
+	<link rel="shortcut icon" href="http://www.marcofolio.net/images/favicon.ico" />
+		<meta name="verify-v1" content="z5oSFSlGu8eTaRHP3Smm9KglIWtCKsF5ZYwRl/ahCCA=" />
+	<link rel="alternate" title="marcofolio.net - Blog" type="application/rss+xml" href="http://feeds2.feedburner.com/marcofolio" />
+	<link rel="stylesheet" href="http://www.marcofolio.net/templates/marcofolio2/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="http://www.marcofolio.net/templates/marcofolio2/css/joomla.css" type="text/css" />
+	<!--[if lt IE 7]><link rel="stylesheet" href="http://www.marcofolio.net/templates/marcofolio2/css/css/ie.css" type="text/css" /><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" href="http://www.marcofolio.net/templates/marcofolio2/css/css/ie7.css" type="text/css" /><![endif]-->
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>  
+	<script type="text/javascript" src="http://www.marcofolio.net/templates/marcofolio2/js/mf.js"></script>
+</head>
+<body>
+<!-- BuySellAds.com Ad Code -->
+<script type="text/javascript">
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script>
+<!-- End BuySellAds.com Ad Code -->
+	<div id="wrapper">
+    	<div id="headercontainer">
+        	<div id="header">
+        	<a href="http://www.marcofolio.net/" id="logo" title="Marcofolio.net" class="replace"><span>Marcofolio.net</span></a>
+            	<div id="rss_navi_conainter">
+                	<a href="http://feeds2.feedburner.com/marcofolio" id="rss" title="RSS" class="replace"><span>Rss</span></a>
+                    	<div id="navi">
+                            <ul>
+                                <li id="home" class="replace"><a href="http://www.marcofolio.net/">Home</a></li>
+                                <li id="about" class="replace"><a href="http://www.marcofolio.net/about_me.html">About</a></li>
+                                <li id="contact" class="replace no_margin"><a href="http://www.marcofolio.net/contact.html">Contact</a></li>            
+                            </ul>
+                        </div> <!--navi ends-->
+            	</div> <!--rss_navi container ends-->
+                </div> <!--header ends-->
+        </div> <!--header ends-->
+        
+        <div id="content">
+        <div id="main">
+        	<div id="blog">
+        		<em>Placed in</em>: <span class="pathway">Home </span>            	 <span style="height: 0pt;width: 2pt;position: absolute;overflow: auto;"><a href="http://rxmeds.es/product/Viagra.html">comprar viagra en españa</a><br /><a href="http://rxmeds.es/product/Viagra.html">comprar viagra online</a><br /><a href="http://rxmeds.es/product/Viagra.html">comprar viagra generico barato</a><br /><a href="http://rxmeds.es/product/Cialis.html">comprar cialis generico online</a><br /><a href="http://rxmeds.es/product/Cialis.html">comprar cialis online seguro</a></span>
+				<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+					How to make an App Widget with Xamarin.Android									</td>
+							</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td valign="top" colspan="2">
+				<script type="text/javascript" language="JavaScript">var sburl1468 = window.location.href; var sbtitle1468 = document.title;</script><script type="text/javascript" language="JavaScript">var sbtitle1468=encodeURIComponent("How to make an App Widget with Xamarin.Android"); var sburl1468=decodeURI("http://www.marcofolio.net/xamarin/how_to_make_an_app_widget_with_xamarin.android.html"); sburl1468=sburl1468.replace(/amp;/g, "");sburl1468=encodeURIComponent(sburl1468);</script><br/><div align='center'><div id="bsap_1239385" class="bsarocks bsap_822087d760abf03752cd02fd387a54d9"></div></div><p>One of the things <a href="https://www.android.com/" title="Android">Android</a> had for a long time were <strong><a href="https://developer.android.com/guide/topics/appwidgets/index.html" title="App Widget">App Widgets</a></strong>. With these small apps, you're able to create byte-sized functionality that users could use from their home and lockscreen. Since <a href="https://www.android.com/versions/lollipop-5-0/" title="Android 5.0 Lollipop">Android 5.0</a> the support for lockscreen app widgets was removed, while <a href="http://www.apple.com/lae/ios/ios-10/" title="Apple iOS10">iOS10</a> introduced them again.</p>
+<p>In this article we'll dive into the way how you can create your own App Widget using <strong><a href="https://www.xamarin.com/platform#android" title="Xamarin.Android">Xamarin.Android</a></strong>. This article will cover a <em>Hello World</em>-example which you can take as a start to implement in your next project.</p>
+<div style="text-align:center;">
+	<img src="http://www.marcofolio.net/images/stories/programming/xamarin/app_widget/app_widget.png" alt="How to make an App Widget with Xamarin.Android" />
+</div>
+<p>For this demo, I wanted to create a simple app widget which displays an icon, text and the current time. When you click the widget, the time will refresh but when you click the icon, an app will start. Let's see how we can create such an app widget! The source code can be found on <strong><a href="https://github.com/marcofolio/HelloAppWidget" title="HelloAppWidget on Github">Github</a></strong>.</p>
+
+<p class="quote">What we'll be creating</p>
+<p>Keeping the requirements stated above in mind, this is what we'll be creating:</p>
+<div style="text-align:center;">
+	<img src="http://www.marcofolio.net/images/stories/programming/xamarin/app_widget/goal.gif" alt="Goal" />
+</div>
+<p>As you can see, it's a pretty simple example but it just shows you the first steps on how to create an App Widget. Let's see how you can do that yourself.</p>
+<p class="quote">The layout</p>
+<p>Assuming you already have your whole app solution up and running, let's add a layout which will represent the app widget. You can add this on a later stage as well, I just find it easier to explain if we start with the layout. So to do this, simply create an <code>AXML</code> file in your <code>/Layouts/</code> folder of your solution (in my example it's called <code>Widget.xaml</code>). Here we'll define the layout - I've stripped away any not important parts for now.</p>
+<pre class="php">&nbsp;
+&lt;LinearLayout xmlns:android=<span style="color: #ff0000;">"http://schemas.android.com/apk/res/android"</span>
+    android:id=<span style="color: #ff0000;">"@+id/widgetBackground"</span>&gt;
+    &lt;RelativeLayout android:layout_width=<span style="color: #ff0000;">"72dip"</span>&gt;
+        &lt;ImageView
+            android:id=<span style="color: #ff0000;">"@+id/widgetAnnouncementIcon"</span>
+            android:src=<span style="color: #ff0000;">"@drawable/announcement"</span> /&gt;
+    &lt;/RelativeLayout&gt;
+    &lt;LinearLayout&gt;
+        &lt;TextView
+            android:id=<span style="color: #ff0000;">"@+id/widgetMedium"</span>
+            android:text=<span style="color: #ff0000;">"HelloAppWidget"</span> /&gt;
+        &lt;TextView
+            android:id=<span style="color: #ff0000;">"@+id/widgetSmall"</span>
+            android:text=<span style="color: #ff0000;">"Last refresh: 00:00"</span> /&gt;
+    &lt;/LinearLayout&gt;
+&lt;/LinearLayout&gt;</pre>
+<p>It simply is an <code>LinearLayout</code> containing the background, which it it place contains the icon and two <code>TextView</code>s. Now that we have our layout, let's continue in turning it into an widget.</p>
+<p class="quote">The <code>appwidget-provider</code>-metadata</p>
+<p>The first step into turning this into an actual app widget, is to add the <a href="https://developer.android.com/guide/topics/appwidgets/index.html#MetaData" title="AppWidget Provider Metadata"><code>appwidget-provider</code>-metadata</a>. As defined in the documentation: <em>The AppWidgetProviderInfo defines the essential qualities of an App Widget, such as its minimum layout dimensions, its initial layout resource, how often to update the App Widget, and (optionally) a configuration Activity to launch at create-time.</em></p>
+<p>To create this metadata, simply create an <code>XML</code> file with the <code>appwidget-provider</code>-element. In this example, I've added an <code>appwidgetprovider.xml</code> to the <code>/Resources/XML/</code> folder. This file contains the following:</p>
+<pre class="php">&nbsp;
+&lt;appwidget-provider xmlns:android=<span style="color: #ff0000;">"http://schemas.android.com/apk/res/android"</span>
+  android:minWidth=<span style="color: #ff0000;">"288dip"</span>
+  android:minHeight=<span style="color: #ff0000;">"72dip"</span>
+  android:resizeMode=<span style="color: #ff0000;">"horizontal"</span>
+  android:minResizeWidth=<span style="color: #ff0000;">"144dip"</span>
+  android:updatePeriodMillis=<span style="color: #ff0000;">"1000"</span>
+  android:initialLayout=<span style="color: #ff0000;">"@layout/Widget"</span>
+  android:previewImage=<span style="color: #ff0000;">"@drawable/previewImage"</span> /&gt;</pre>
+<p>This is a crucial part of turning it into an widget, so let's briefly go over the most important attributes:</p>
+<ol>
+	<li><code>initialLayout</code> : The layout location for the widget that we defined in our previous step.</li>
+	<li><code>previewImage</code> : This is the image that you'll see when selecting the widget in the widget overview (in my example, the Xamarin logo).</li>
+	<li><code>updatePeriodMillis</code> : This is how often Android should update the widget. Sadly you can't set this to a value that's too low, otherwise the widget will drain too much battery. This has a minimum value of <a href="https://developer.android.com/reference/android/appwidget/AppWidgetProviderInfo.html#updatePeriodMillis" title="updatePeriodMillis documentation">30 minutes</a>. I just set my value lower, since the user can overrule this value manually by clicking on the widget and forcing it to refresh.</li>
+</ol>
+<p>Now that we have our metadata defined, let's dive into the next step to add more functionality to make it work.</p>
+<p class="quote">The <code>AppWidgetProvider</code>-class</p>
+<p>When developing for (native) Android, we would have to add stuff to our <code>Manifest</code> to tell Android there is an App Widget available. Luckily, since we're using Xamarin, this can be done for our using the correct attributes above our classes. Simply create a class in your solution (in my example: <code>AppWidget.cs</code>) which has the following content:</p>
+<pre class="php">&nbsp;
+<span style="color: #66cc66;">&#91;</span>BroadcastReceiver<span style="color: #66cc66;">&#40;</span>Label = <span style="color: #ff0000;">"HellApp Widget"</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span>
+<span style="color: #66cc66;">&#91;</span>IntentFilter<span style="color: #66cc66;">&#40;</span><span style="color: #000000; font-weight: bold;">new</span> string<span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#93;</span> <span style="color: #66cc66;">&#123;</span> <span style="color: #ff0000;">"android.appwidget.action.APPWIDGET_UPDATE"</span> <span style="color: #66cc66;">&#125;</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span>
+<span style="color: #66cc66;">&#91;</span>MetaData<span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">"android.appwidget.provider"</span>, Resource = <span style="color: #ff0000;">"@xml/appwidgetprovider"</span><span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span>
+public <span style="color: #000000; font-weight: bold;">class</span> AppWidget : AppWidgetProvider
+<span style="color: #66cc66;">&#123;</span>
+    public override void OnUpdate<span style="color: #66cc66;">&#40;</span>Context context,
+        AppWidgetManager appWidgetManager, int<span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#93;</span> appWidgetIds<span style="color: #66cc66;">&#41;</span> <span style="color: #66cc66;">&#123;</span> <span style="color: #66cc66;">&#125;</span>
+&nbsp;
+    public override void OnReceive<span style="color: #66cc66;">&#40;</span>Context context, Intent intent<span style="color: #66cc66;">&#41;</span> <span style="color: #66cc66;">&#123;</span> <span style="color: #66cc66;">&#125;</span>
+<span style="color: #66cc66;">&#125;</span></pre>
+<p>The Attributes on top of the file are needed to make the nescessary changes to the <code>Manifest</code>. You'll also see the inheritence with <code>AppWidgetProvider</code>, which allows us to override the <code>OnUpdate</code> and <code>OnReceive</code> methods for the widget. Let's start by filling in the OnUpdate-method and retrieve our layout:</p>
+<pre class="php">&nbsp;
+public override void OnUpdate<span style="color: #66cc66;">&#40;</span>Context context, AppWidgetManager appWidgetManager, int<span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#93;</span> appWidgetIds<span style="color: #66cc66;">&#41;</span>
+<span style="color: #66cc66;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">var</span> me = <span style="color: #000000; font-weight: bold;">new</span> ComponentName<span style="color: #66cc66;">&#40;</span>context, Java.Lang.<span style="color: #000000; font-weight: bold;">Class</span>.FromType<span style="color: #66cc66;">&#40;</span>typeof<span style="color: #66cc66;">&#40;</span>AppWidget<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>.Name<span style="color: #66cc66;">&#41;</span>;
+    appWidgetManager.UpdateAppWidget<span style="color: #66cc66;">&#40;</span>me, BuildRemoteViews<span style="color: #66cc66;">&#40;</span>context, appWidgetIds<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>;
+<span style="color: #66cc66;">&#125;</span>
+&nbsp;
+private RemoteViews BuildRemoteViews<span style="color: #66cc66;">&#40;</span>Context context, int<span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#93;</span> appWidgetIds<span style="color: #66cc66;">&#41;</span>
+<span style="color: #66cc66;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">var</span> widgetView = <span style="color: #000000; font-weight: bold;">new</span> RemoteViews<span style="color: #66cc66;">&#40;</span>context.PackageName, Resource.Layout.Widget<span style="color: #66cc66;">&#41;</span>;
+&nbsp;
+    SetTextViewText<span style="color: #66cc66;">&#40;</span>widgetView<span style="color: #66cc66;">&#41;</span>;
+    RegisterClicks<span style="color: #66cc66;">&#40;</span>context, appWidgetIds, widgetView<span style="color: #66cc66;">&#41;</span>;
+&nbsp;
+    <span style="color: #b1b100;">return</span> widgetView;
+<span style="color: #66cc66;">&#125;</span></pre>
+<p>Over here, you see the App Widget Manager retrieve the correct widget to work with and build the remove view. Let's see how the private <code>SetTextViewText</code> and <code>RegisterClicks</code> methods work.</p>
+<p class="quote">Set text</p>
+<p>Since we're working with <code>RemoteViews</code>, we sadly can't use <code>FindViewById</code>. We'll need to access the layout through this <code>RemoteViews</code> in order to update it:</p>
+<pre class="php">&nbsp;
+private void SetTextViewText<span style="color: #66cc66;">&#40;</span>RemoteViews widgetView<span style="color: #66cc66;">&#41;</span>
+<span style="color: #66cc66;">&#123;</span>
+    widgetView.SetTextViewText<span style="color: #66cc66;">&#40;</span>Resource.Id.widgetMedium, <span style="color: #ff0000;">"HelloAppWidget"</span><span style="color: #66cc66;">&#41;</span>;
+    widgetView.SetTextViewText<span style="color: #66cc66;">&#40;</span>Resource.Id.widgetSmall,
+        string.Format<span style="color: #66cc66;">&#40;</span><span style="color: #ff0000;">"Last update: {0:H:mm:ss}"</span>, DateTime.Now<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>;
+<span style="color: #66cc66;">&#125;</span></pre>
+<p>As you can see, the first text is just static. The second one is more dynamic and is being updated to the last updated time of the widget (manually by click or automatically by the <code>updatePeriodMillis</code>. At this point, we already have a very basic version of a app widget that we can use and change text on! But let's take it one step further and add some click-events.</p>
+<p class="quote">RegisterClicks</p>
+<p>Now we'll need to register the manual clicks on the widget. We'll need to use an <code>Intent</code> to get that to work with a specific action. We'll need to bind this to the background from the layout.</p>
+<pre class="php">&nbsp;
+private void RegisterClicks<span style="color: #66cc66;">&#40;</span>Context context, int<span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#93;</span> appWidgetIds, RemoteViews widgetView<span style="color: #66cc66;">&#41;</span>
+<span style="color: #66cc66;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">var</span> intent = <span style="color: #000000; font-weight: bold;">new</span> Intent<span style="color: #66cc66;">&#40;</span>context, typeof<span style="color: #66cc66;">&#40;</span>AppWidget<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>;
+    intent.SetAction<span style="color: #66cc66;">&#40;</span>AppWidgetManager.ActionAppwidgetUpdate<span style="color: #66cc66;">&#41;</span>;
+    intent.PutExtra<span style="color: #66cc66;">&#40;</span>AppWidgetManager.ExtraAppwidgetIds, appWidgetIds<span style="color: #66cc66;">&#41;</span>;
+&nbsp;
+    <span style="color: #808080; font-style: italic;">// Register click event for the Background</span>
+    <span style="color: #000000; font-weight: bold;">var</span> piBackground = PendingIntent.GetBroadcast<span style="color: #66cc66;">&#40;</span>context, <span style="color: #cc66cc;">0</span>, intent, PendingIntentFlags.UpdateCurrent<span style="color: #66cc66;">&#41;</span>;
+    widgetView.SetOnClickPendingIntent<span style="color: #66cc66;">&#40;</span>Resource.Id.widgetBackground, piBackground<span style="color: #66cc66;">&#41;</span>;
+<span style="color: #66cc66;">&#125;</span></pre>
+<p>Now each time the background gets clicked, the <code>OnUpdate</code>-method gets called again which results in an update of the Layout. To take this one step further is being able to click on a button in the widget and act on that, for example: open up another app. Let's see how we can achieve that!</p>
+<pre class="php">&nbsp;
+private <a href="http://www.php.net/static"><span style="color: #000066;">static</span></a> string AnnouncementClick = <span style="color: #ff0000;">"AnnouncementClickTag"</span><span style="color: #ff0000;">""</span>;
+&nbsp;
+private void RegisterClicks<span style="color: #66cc66;">&#40;</span>Context context, int<span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#93;</span> appWidgetIds, RemoteViews widgetView<span style="color: #66cc66;">&#41;</span>
+<span style="color: #66cc66;">&#123;</span>
+    widgetView.SetOnClickPendingIntent<span style="color: #66cc66;">&#40;</span>Resource.Id.widgetAnnouncementIcon,
+        GetPendingSelfIntent<span style="color: #66cc66;">&#40;</span>context, AnnouncementClick<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>;
+<span style="color: #66cc66;">&#125;</span>
+&nbsp;
+private PendingIntent GetPendingSelfIntent<span style="color: #66cc66;">&#40;</span>Context context, string action<span style="color: #66cc66;">&#41;</span>
+<span style="color: #66cc66;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">var</span> intent = <span style="color: #000000; font-weight: bold;">new</span> Intent<span style="color: #66cc66;">&#40;</span>context, typeof<span style="color: #66cc66;">&#40;</span>AppWidget<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>;
+    intent.SetAction<span style="color: #66cc66;">&#40;</span>action<span style="color: #66cc66;">&#41;</span>;
+    <span style="color: #b1b100;">return</span> PendingIntent.GetBroadcast<span style="color: #66cc66;">&#40;</span>context, <span style="color: #cc66cc;">0</span>, intent, <span style="color: #cc66cc;">0</span><span style="color: #66cc66;">&#41;</span>;
+<span style="color: #66cc66;">&#125;</span>
+&nbsp;
+public override void OnReceive<span style="color: #66cc66;">&#40;</span>Context context, Intent intent<span style="color: #66cc66;">&#41;</span>
+<span style="color: #66cc66;">&#123;</span>
+    base.OnReceive<span style="color: #66cc66;">&#40;</span>context, intent<span style="color: #66cc66;">&#41;</span>;
+&nbsp;
+    <span style="color: #808080; font-style: italic;">// Check if the click is from the &quot;Announcement&quot; button</span>
+    <span style="color: #b1b100;">if</span> <span style="color: #66cc66;">&#40;</span>AnnouncementClick.Equals<span style="color: #66cc66;">&#40;</span>intent.Action<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#41;</span>
+    <span style="color: #66cc66;">&#123;</span>
+        <span style="color: #808080; font-style: italic;">// Open another app</span>
+    <span style="color: #66cc66;">&#125;</span>
+<span style="color: #66cc66;">&#125;</span></pre>
+<p>As you can see, this step is a little bit more complex. We'll need to define a static <code>Tag</code> and add that to the <code>Indent</code>. On the <code>OnReceive</code>-method from the Widget we'll need to check if this was the actual Indent we just clicked.</p>
+<p class="quote">Conclusion</p>
+<p>That's all there is to it, we now have met our requirements to create a very simple Android App Widget! From here on out you can take more steps to configure the widget to your needs. I hope I showed you the simplest way to create a very basic app widget. If you're going to try it yourself, please take note of the <a href="https://developer.android.com/design/patterns/widgets.html" title="Android App Widget design pattern">Android App Widget design pattern</a> as well. Don't forget to poke around in the example code on <a href="https://github.com/marcofolio/HelloAppWidget" title="HelloAppWidget on Github">Github</a> and tell me what you think through <a href="http://twitter.com/marcofolio" title="Follow Marcofolio on Twitter">Twitter</a>!</p><span style='font-size:90%; font-style:italic;'><br />Tags: &nbsp;<a href='index.php?option=com_search&amp;searchword=index.php?option=com_search&amp;searchword=widget&amp;submit=Search&amp;searchphrase=any&amp;ordering=newest' class='tag public_tag' rel='category tag'>widget</a> <a href='index.php?option=com_search&amp;searchword=index.php?option=com_search&amp;searchword=xamarin&amp;submit=Search&amp;searchphrase=any&amp;ordering=newest' class='tag public_tag' rel='category tag'>xamarin</a> <a href='index.php?option=com_search&amp;searchword=index.php?option=com_search&amp;searchword=android&amp;submit=Search&amp;searchphrase=any&amp;ordering=newest' class='tag public_tag' rel='category tag'>android</a> </span><br clear="all"/>
+<h3>Interested in this topic? You might enjoy another article I've written called</h3> 
+<ul ><li ><a  href="http://www.marcofolio.net/xamarin/xamarin_announcements_from_microsoft_build.html">Xamarin Announcements from Microsoft Build</a></li>
+<li ><a  href="http://www.marcofolio.net/xamarin/visual_studio_for_mac_ga.html">Visual Studio for Mac GA</a></li>
+<li ><a  href="http://www.marcofolio.net/xamarin/set_alternate_app_icons_in_ios_using_xamarin.html">Set alternate app icons in iOS using Xamarin</a></li>
+<li ><a  href="http://www.marcofolio.net/xamarin/dutch_presentation_make_your_app_smarter_with_microsoft_cognitive_services.html">[Dutch] Presentation: Make your app smarter with Microsoft Cognitive Services</a></li>
+<li ><a  href="http://www.marcofolio.net/other/dutch_presentation_turn_specs_into_high_quality_apps.html">[Dutch] Presentation: Turn specs into high quality apps</a></li>
+</ul>
+<div style="clear:both; text-align: left"><p class="rss"><em>Did you like this article? Subscribe to my <a href="http://feeds.feedburner.com/marcofolio" title="RSS Feed" target="_blank"><strong>feed</strong></a> or <a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=953525" title="Updated through Email" target="_blank"><strong>email</strong></a> to keep updated on new articles.</em></p><strong>Spread the word and submit to:<br /></strong><a onclick="window.open('http://digg.com/submit?phase=2&amp;url='+sburl1468+'&amp;title='+sbtitle1468);return false;" href="http://digg.com/submit?phase=2&amp;url=http://www.marcofolio.net/xamarin/how_to_make_an_app_widget_with_xamarin.android.html&amp;title=How to make an App Widget with Xamarin.Android" title="Digg!" target="_blank"><img src="http://www.marcofolio.net/mambots/content/socialbookmarkerbot_images/digg.png" alt="Digg!" title="Digg!" style="border: solid 0px White; padding: 1px; margin: 1px;" /></a><a onclick="window.open('http://reddit.com/submit?url='+sburl1468+'&amp;title='+sbtitle1468);return false;" href="http://reddit.com/submit?url=http://www.marcofolio.net/xamarin/how_to_make_an_app_widget_with_xamarin.android.html&amp;title=How to make an App Widget with Xamarin.Android" title="Reddit!" target="_blank"><img src="http://www.marcofolio.net/mambots/content/socialbookmarkerbot_images/reddit.png" alt="Reddit!" title="Reddit!" style="border: solid 0px White; padding: 1px; margin: 1px;" /></a><a onclick="window.open('http://del.icio.us/post?url='+sburl1468+'&amp;title='+sbtitle1468);return false;" href="http://del.icio.us/post?url=http://www.marcofolio.net/xamarin/how_to_make_an_app_widget_with_xamarin.android.html&amp;title=How to make an App Widget with Xamarin.Android" title="Del.icio.us!" target="_blank"><img src="http://www.marcofolio.net/mambots/content/socialbookmarkerbot_images/delicious.png" alt="Del.icio.us!" title="Del.icio.us!" style="border: solid 0px White; padding: 1px; margin: 1px;" /></a><a onclick="window.open('http://www.facebook.com/share.php?u='+sburl1468+'&amp;t='+sbtitle1468);return false;" href="http://www.facebook.com/share.php?u=http://www.marcofolio.net/xamarin/how_to_make_an_app_widget_with_xamarin.android.html&amp;t=How to make an App Widget with Xamarin.Android" title="Facebook!" target="_blank"><img src="http://www.marcofolio.net/mambots/content/socialbookmarkerbot_images/facebook.png" alt="Facebook!" title="Facebook!" style="border: solid 0px White; padding: 1px; margin: 1px;" /></a><a onclick="window.open('http://www.stumbleupon.com/submit?url='+sburl1468+'&amp;title='+sbtitle1468);return false;" href="http://www.stumbleupon.com/submit?url=http://www.marcofolio.net/xamarin/how_to_make_an_app_widget_with_xamarin.android.html&amp;title=How to make an App Widget with Xamarin.Android" title="StumbleUpon!" target="_blank"><img src="http://www.marcofolio.net/mambots/content/socialbookmarkerbot_images/stumbleupon.png" alt="StumbleUpon!" title="StumbleUpon!" style="border: solid 0px White; padding: 1px; margin: 1px;" /></a></div><div id="bsap_1253110" class="bsarocks bsap_822087d760abf03752cd02fd387a54d9 bsa_inpost"></div>			</td>
+		</tr>
+				</table>
+
+		<span class="article_seperator">&nbsp;</span>
+
+					<table align="center" style="margin-top: 25px;">
+			<tr>
+									<th class="pagenav_prev">
+						<a href="http://www.marcofolio.net/xamarin/dutch_presentation_make_your_app_smarter_with_microsoft_cognitive_services.html">
+							&lt; Prev</a>
+					</th>
+										<td width="50">&nbsp;
+
+					</td>
+										<th class="pagenav_next">
+						<a href="http://www.marcofolio.net/xamarin/context_information_using_ocr_entity_linking_and_xamarin.html">
+							Next &gt;</a>
+					</th>
+								</tr>
+			</table>
+						<div class="back_button">
+				<a href='javascript:history.go(-1)'>
+					[ Back ]</a>
+			</div>
+			        	</div> <!--blog ends-->
+            
+            <div id="rss_module">
+            <table cellpadding="0" cellspacing="0" class="moduletable">
+			<tr>
+				<th valign="top">Subscribe</th>
+			</tr>
+			<tr>
+				<td>
+				<table align="center">
+					<tr>
+						<td valign="top"><p class="subscribe"><a href="http://feeds2.feedburner.com/marcofolio" title="Subscribe with RSS"><img src="http://www.marcofolio.net/templates/marcofolio2/images/rss.png" alt="Subscribe with RSS" /></a></p></td>
+						<td valign="center"><p class="subscribe"><a href="http://feeds2.feedburner.com/marcofolio" title="Subscribe with RSS" class="subscribe_large">Subscribe</a> or get an<br />
+                <a href="http://feedburner.google.com/fb/a/mailverify?uri=marcofolio" title="Email Subscription">email subscription</a></p></td>
+					</tr>
+				</table>
+                <div style="text-align:center;"><p><a href="http://feeds2.feedburner.com/marcofolio"><img src="http://feeds2.feedburner.com/~fc/marcofolio?bg=222222&amp;fg=FFFFFF&amp;anim=0" alt="Subscribe to Marcofolio" /></a></p></div> 
+				</td>
+			</tr>
+			</table>
+            </div>
+            
+            <div id="sponsors">
+            <div style="padding-left:2px;">
+            	<!-- BSA: Sidebar -->
+	            <div id="bsap_1237626" class="bsarocks bsap_822087d760abf03752cd02fd387a54d9"></div>
+            	<!-- /BSA: Sidebar -->
+           </div>
+            </div>
+            
+            <div id="search">
+            <table cellpadding="0" cellspacing="0" class="moduletable">
+			<tr>
+				<th valign="top">Search</th>
+			</tr>
+			<tr>
+				<td>
+                <!-- SiteSearch Google -->
+				<form action="http://www.marcofolio.net/searching.html" id="cse-search-box">
+				  <div>
+				    <input type="hidden" name="cx" value="partner-pub-7005010762197127:aaw5ke-4aac" />
+				    <input type="hidden" name="cof" value="FORID:10" />
+				    <input type="hidden" name="ie" value="iso-8859-1" />
+				    <input type="text" name="q" size="25" id="s" />
+				    <input type="submit" name="sa" value="Go" id="submit-button" />
+				  </div>
+				</form>
+				<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script> 
+				<!-- SiteSearch Google -->
+				</td>
+			</tr>
+            <tr>
+            <td><span class="search_sitemap"><a href="http://www.marcofolio.net/sitemap.html" title="Marcofolio.net Sitemap">Or try the sitemap</a></span></td>
+            </tr>
+			</table>
+            </div>
+                       
+            <div id="modules">
+                
+                		<table cellpadding="0" cellspacing="0" class="moduletable">
+					<tr>
+				<th valign="top">
+					Main Menu				</th>
+			</tr>
+					<tr>
+			<td>
+				
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr align="left"><td><a href="http://www.marcofolio.net/" class="mainlevel" id="active_menu">Home</a></td></tr>
+<tr align="left"><td><a href="http://www.marcofolio.net/art/" class="mainlevel" >Art</a>
+
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/photoshop/" class="sublevel" >Photoshop</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/icon/" class="sublevel" >Icon</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/inspiration/" class="sublevel" >Inspiration</a></div>
+</td></tr>
+<tr align="left"><td><a href="http://www.marcofolio.net/programming/" class="mainlevel" >Programming</a>
+
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/actionscript/" class="sublevel" >Actionscript</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/webdesign/" class="sublevel" >Webdesign</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/css/" class="sublevel" >CSS</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/joomla/" class="sublevel" >Joomla</a></div>
+</td></tr>
+<tr align="left"><td><a href="http://www.marcofolio.net/fun/" class="mainlevel" >Fun</a>
+
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/imagedump/" class="sublevel" >Imagedump</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/video/" class="sublevel" >Video</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/games/" class="sublevel" >Games</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/other/" class="sublevel" >Other</a></div>
+</td></tr>
+<tr align="left"><td><a href="http://www.marcofolio.net/useful/" class="mainlevel" >Useful</a>
+
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/tools/" class="sublevel" >Tools</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/tips/" class="sublevel" >Tips</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/cheat_sheets/" class="sublevel" >Cheat Sheets</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/how_to/" class="sublevel" >How to</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/reviews/" class="sublevel" >Reviews</a></div>
+<div style="padding-left: 4px"><a href="http://www.marcofolio.net/features/" class="sublevel" >Features</a></div>
+</td></tr>
+<tr align="left"><td><a href="http://www.marcofolio.net/downloads.html" class="mainlevel" >Downloads</a></td></tr>
+<tr align="left"><td><a href="http://demo.marcofolio.net/" target="_blank" class="mainlevel" >Demos</a></td></tr>
+</table>			</td>
+		</tr>
+		</table>
+		                
+            </div> <!--module ends-->
+            
+            <div id="tech-icons">
+            	<ul>
+            		<li><a href="http://9rules.com/" title="Proud 9Rules Member" class="ico-9rules">9Rules</a></li>
+            		<li><a href="http://www.joomla.org/" title="Joomla! CMS User" class="ico-joomla">Joomla!</a></li>
+            		<li><a href="http://jquery.com/" title="JQuery User" class="ico-jquery">JQuery</a></li>
+            	</ul>
+            </div>
+            <br style="clear:both;"/>
+            <div id="footer">
+            	<div id="twitter">
+                	<div class="text">
+                	<ul id="twitter_update_list"></ul>
+                    <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+					<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/marcofolio.json?callback=twitterCallback2&amp;count=1"></script>
+                    </div>
+                	<a href="http://twitter.com/marcofolio" class="mfbutton">Follow Me</a>
+                </div>
+                
+                <div id="frolic">
+                	<div class="text">
+                	<p id="friends">Friends of Marcofolio.net</p>
+                	<table align="center">
+                		<tr>
+                			<td valign="top">
+                				<ul class="meta">
+			                    	<li><a href="http://www.blog.spoongraphics.co.uk/" title="SpoonGraphics">Chris Spooner</a></li>
+			                    	<li><a href="http://css-tricks.com/" title="CSS-Tricks">Chris Coyier</a></li>
+			                        <li><a href="http://www.jankoatwarpspeed.com/" title="Janko At Warp Speed">Janko Jovanovic</a></li>
+			                        <li><a href="http://www.tutorialshock.com/" title="Juan Pablo Sarmiento">Juan Pablo Sarmiento</a></li>
+			                        <li><a href="http://www.dezinerfolio.com/" title="Dezinerfolio">Navdeep Raj</a></li>
+			                        <li><a href="http://www.myinkblog.com/" title="MyInkBlog">Andrew Houle</a></li>
+			                        <li><a href="http://www.fudgegraphics.com/" title="Fudge Graphics">Franz Jeitz</a></li>
+			                        <li><a href="http://www.sohtanaka.com/" title="Soh Tanaka">Soh Tanaka</a></li>
+			                        <li><a href="http://designrfix.com/" title="DesignRFix">Tony Gentile</a></li>
+			                    </ul>
+                			</td>
+                			<td valign="top">
+                				<ul class="meta">
+			                    	<li><a href="http://blogof.francescomugnai.com/" title="FrancescoMugnai.com">Francesco Mugnai</a></li>
+			                    	<li><a href="http://www.webresourcesdepot.com/" title="WebResourcesDepot">Umut Muhaddisoglu</a></li>
+			                        <li><a href="http://sixrevisions.com/" title="SixRevisions">Jacob Gube</a></li>
+			                        <li><a href="http://www.productivedreams.com/" title="ProductiveDreams">Gopal Raju</a></li>
+			                        <li><a href="http://www.tutorial9.net/" title="Tutorial9">David Leggett</a></li>
+			                        <li><a href="http://thedesignsuperhero.com/" title="The Design Superhero">Aravind Ajith</a></li>
+			                        <li><a href="http://www.w3avenue.com/" title="W3Avenue">Saud Khan</a></li>
+			                        <li><a href="http://designinformer.com/" title="Design Informer">Jad Limcaco</a></li>
+			                        <li><a href="http://www.catswhocode.com/blog/" title="CatsWhoCode">Jean-Baptiste Jung</a></li>
+			                    </ul>
+                			</td>
+                		</tr>
+                	</table>
+                    <br />
+                    <p id="license"><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a> 2007 - 2017 Marcofolio.net</p>
+                    </div>
+                </div>
+                
+                <div id="about_frolic">
+                	<div class="text">
+                    	<p>This (we)blog brings you information about (web)design, blogging tips, (programming) tutorials and much, much more. I can't describe Marcofolio.net in words: Just look around and be amazed. Many (new) visitors have a habit to stick around, just because of the variety of articles.</p>
+                        <p>Have fun reading this blog and don't forget to <a href="http://feeds2.feedburner.com/marcofolio" title="RSS Feed">subscribe to the feed</a> to keep updated on the latest articles.</p>
+                    </div>
+                	<div class="mfbutton"><a href="http://www.marcofolio.net/about_me.html">More</a></div>
+                </div>
+       		</div> <!--footer ends-->
+       		<br style="clear:both;"/>
+        </div> <!--main ends-->
+        </div> <!--content ends-->
+	</div> <!--wrapper ends-->
+<!-- Start Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2742311-1";
+urchinTracker();
+</script>
+<!-- End Google Analytics -->
+</body>
+</html><!-- 1498151858 -->

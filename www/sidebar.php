@@ -1,9 +1,15 @@
 <?php
 use ClippingBlog\BLL\ArtigoBLL;
+use ClippingBlog\BLL\TagBLL;
 use ClippingBlog\BLL\App;
+use ClippingBlog\Model\ArtigoInfo;
 
 $regraArtigo = new ArtigoBLL();
+$regraTag = new TagBLL();
 $artigo = App::getArtigo();
+
+$artigos = $regraArtigo->listarPopular(ArtigoInfo::ATIVO, 7);
+$tags = $regraTag->listarPopular();
 
 ?>
 <div class="col-md-4 form-vertical">
@@ -37,52 +43,74 @@ $artigo = App::getArtigo();
         </div>
         <!-- /input-group -->
     </div>
+    <?php $tagsArray = array_partition($tags, 3); ?>
     <div class="well">
-        <h4><i class="fa fa-tags"></i> Popular Tags:</h4>
+        <h4><i class="fa fa-tags"></i> Tags Populares:</h4>
         <div class="row">
-            <div class="col-lg-6">
+            <?php foreach ($tagsArray as $col) : ?>
+            <div class="col-md-4">
                 <ul class="list-unstyled">
-                    <li><a href=""><span class="badge badge-info">Windows 8</span></a>
+                <?php foreach ($col as $tag) : ?>
+                    <li>
+                        <a href="<?php echo $tag->getUrl(); ?>">
+                            <span class="badge badge-info"><?php echo $tag->getNome(); ?></span>
+                        </a>
                     </li>
-                    <li><a href=""><span class="badge badge-info">C#</span></a>
-                    </li>
-                    <li><a href=""><span class="badge badge-info">Windows Forms</span></a>
-                    </li>
-                    <li><a href=""><span class="badge badge-info">WPF</span></a>
-                    </li>
+                <?php endforeach; ?>
                 </ul>
             </div>
-            <div class="col-lg-6">
-                <ul class="list-unstyled">
-                    <li><a href=""><span class="badge badge-info">Bootstrap</span></a>
-                    </li>
-                    <li><a href=""><span class="badge badge-info">Joomla!</span></a>
-                    </li>
-                    <li><a href=""><span class="badge badge-info">CMS</span></a>
-                    </li>
-                    <li><a href=""><span class="badge badge-info">Java</span></a>
-                    </li>
-                </ul>
-            </div>
+            <?php endforeach; ?>
         </div>
+    </div>
+    <div class="well">
+        <h4><i class="fa fa-fire"></i> Artigos Populares:</h4>
+        <ul>
+            <?php foreach ($artigos as $artigo) : ?>
+            <li><a href="<?php echo $artigo->getUrl(); ?>"><?php echo $artigo->getTitulo(); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
     </div>
     <div class="well">
         <h4><i class="fa fa-thumbs-o-up"></i> Follow me!</h4>
         <ul>
-            <p><a title="Facebook" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x"></i></span></a> <a title="Twitter" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x"></i></span></a> <a title="Google+" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-google-plus fa-stack-1x"></i></span></a> <a title="Linkedin" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x"></i></span></a> <a title="GitHub" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-github fa-stack-1x"></i></span></a> <a title="Bitbucket" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-bitbucket fa-stack-1x"></i></span></a></p>
-        </ul>
-    </div>
-    <!-- /well -->
-    <!-- /well -->
-    <div class="well">
-        <h4><i class="fa fa-fire"></i> Popular Posts:</h4>
-        <ul>
-            <li><a href="">WPF vs. Windows Forms-Which is better?</a></li>
-            <li><a href="">How to create responsive website with Bootstrap?</a></li>
-            <li><a href="">The best Joomla! templates 2014</a></li>
-            <li><a href="">ASP .NET cms list</a></li>
-            <li><a href="">C# Hello, World! program</a></li>
-            <li><a href="">Java random generator</a></li>
+            <p>
+                <a title="Facebook" href="">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x"></i>
+                    </span>
+                </a>
+                <a title="Twitter" href="">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x"></i>
+                    </span>
+                </a>
+                <a title="Google+" href="">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-google-plus fa-stack-1x"></i>
+                    </span>
+                </a>
+                <a title="Linkedin" href="">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-linkedin fa-stack-1x"></i>
+                    </span>
+                </a>
+                <a title="GitHub" href="">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-github fa-stack-1x"></i>
+                    </span>
+                </a>
+                <a title="Bitbucket" href="">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-bitbucket fa-stack-1x"></i>
+                    </span>
+                </a>
+            </p>
         </ul>
     </div>
 </div>

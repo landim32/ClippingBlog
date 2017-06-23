@@ -30,11 +30,14 @@ if ( $handle = opendir($pathJson) ) {
                 $artigoCrawler->setRegexTitulo( $config->titulo );
                 $artigoCrawler->setRegexData( $config->data );
                 $artigoCrawler->setRegexAutor( $config->autor );
+                $artigoCrawler->setAutorPadrao( $config->autor_padrao );
                 $artigoCrawler->setRegexTexto( $config->texto );
                 $artigoCrawler->setRegexUrlFonte( $config->url_fonte );
                 //$artigoCrawler->test($config->test_file);
 
                 $artigoCrawler->setURL($config->url);
+                //$artigoCrawler->setPort(443);
+                $artigoCrawler->setUserAgentString("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 $artigoCrawler->addContentTypeReceiveRule("#text/html#");
                 $artigoCrawler->addURLFilterRule("#\.(jpg|jpeg|gif|png|js|css)$# i");
                 $artigoCrawler->enableCookieHandling(true);

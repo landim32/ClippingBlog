@@ -9,10 +9,11 @@
 namespace ClippingBlog\BLL;
 
 use ClippingBlog\Model\ArtigoRetornoInfo;
+use ClippingBlog\Model\TagInfo;
 use Exception;
 use ClippingBlog\DAL\DB;
 use ClippingBlog\DAL\ArtigoDAL;
-use ClippingBlog\DAL\CategoriaDAL;
+use ClippingBlog\DAL\TagDAL;
 use ClippingBlog\Model\ArtigoInfo;
 
 class ArtigoBLL
@@ -34,28 +35,39 @@ class ArtigoBLL
      */
     public function listar($codSituacao = 0) {
         $dal = new ArtigoDAL();
-        return $dal->listar($codSituacao);
+        return $dal->listar($codSituacao, ArtigoDAL::ORDENAR_DATA);
     }
 
     /**
      * @param int $codSituacao
+     * @param int $limite
+     * @return ArtigoInfo[]
+     */
+    public function listarPopular($codSituacao = 0, $limite = 0) {
+        $dal = new ArtigoDAL();
+        return $dal->listar($codSituacao, ArtigoDAL::ORDENAR_PAGEVIEW, $limite);
+    }
+
+    /**
+     * @param int $cod_situacao
+     * @param string $tag_slug
      * @param int $pg Pagina atual
      * @param int $numpg Quantidade de itens visualizados
      * @return ArtigoRetornoInfo
      */
-    public function listarPaginado($codSituacao = 0, $pg = 1, $numpg = 10) {
+    public function listarPaginado($cod_situacao = 0, $tag_slug = "", $pg = 1, $numpg = 10) {
         $dal = new ArtigoDAL();
-        return $dal->listarPaginado($codSituacao, $pg, $numpg);
+        return $dal->listarPaginado($cod_situacao, $tag_slug, $pg, $numpg);
     }
 
     /**
-     * @param int $idCategoria
+     * @param int $id_tag
      * @param int $codSituacao
      * @return ArtigoInfo[]
      */
-    public function listarPorCategoria($idCategoria, $codSituacao = 0) {
+    public function listarPorTag($id_tag, $codSituacao = 0) {
         $dal = new ArtigoDAL();
-        return $dal->listarPorCategoria($idCategoria, $codSituacao);
+        return $dal->listarPorTag($id_tag, $codSituacao);
     }
 
     /**
@@ -68,6 +80,15 @@ class ArtigoBLL
     }
 
     /**
+     * @param string $url_fonte
+     * @return ArtigoInfo
+     */
+    public function pegarPorUrl($url_fonte) {
+        $dal = new ArtigoDAL();
+        return $dal->pegarPorUrl($url_fonte);
+    }
+
+    /**
      * @param string $slug
      * @return ArtigoInfo
      */
@@ -77,20 +98,20 @@ class ArtigoBLL
     }
 
     /**
-     * @param int $id_categoria
+     * @param int $id_tag
      * @param string $slug
      * @return string
      */
-    private function slugValido($id_categoria, $slug)
+    private function slugValido($id_tag, $slug)
     {
-        $categoria = $this->pegarPorSlug($slug);
-        if (!is_null($categoria) && $categoria->getId() != $id_categoria) {
+        $artigo = $this->pegarPorSlug($slug);
+        if (!is_null($artigo) && $artigo->getId() != $id_tag) {
             $out = array();
             preg_match_all("#(.*?)-(\d{1,2})#i", $slug, $out, PREG_PATTERN_ORDER);
             if (!isNullOrEmpty($out[1][0]) && is_numeric($out[2][0])) {
-                $slug = $this->slugValido($id_categoria, $out[1][0] . "-" . (intval($out[2][0]) + 1));
+                $slug = $this->slugValido($id_tag, $out[1][0] . "-" . (intval($out[2][0]) + 1));
             } else
-                $slug = $this->slugValido($id_categoria, $slug . '-2');
+                $slug = $this->slugValido($id_tag, $slug . '-2');
         }
         return $slug;
     }
@@ -106,6 +127,9 @@ class ArtigoBLL
         if (isNullOrEmpty($artigo->getTitulo())) {
             throw new Exception("Preencha o título do artigo.");
         }
+        $titulo = trim( strip_tags( trim( $artigo->getTitulo() ) ) );
+        $artigo->setTitulo( $titulo );
+
         if (isNullOrEmpty($artigo->getSlug())) {
             $artigo->setSlug( sanitize_slug($artigo->getTitulo()) );
         }
@@ -118,6 +142,35 @@ class ArtigoBLL
     }
 
     /**
+     * @param int $id_artigo
+     * @param int $id_tag
+     */
+    private function inserirTag($id_artigo, $id_tag) {
+        $dal = new ArtigoDAL();
+        if (!($dal->pegarQuantidadeTag($id_artigo, $id_tag) > 0)) {
+            $dal->inserirTag($id_artigo, $id_tag);
+        }
+    }
+
+    /**
+     * @param ArtigoInfo $artigo
+     */
+    private function atualizarTag($artigo) {
+        $dal = new ArtigoDAL();
+        $regraTag = new TagBLL();
+        $dal->limparTags($artigo->getId());
+        foreach ($artigo->listarTag() as $tag) {
+            if ($tag->getId() > 0) {
+                $id_tag = $tag->getId();
+            }
+            else {
+                $id_tag = $regraTag->inserirOuAlterar($tag);
+            }
+            $this->inserirTag($artigo->getId(), $id_tag);
+        }
+    }
+
+    /**
      * @param ArtigoInfo $artigo
      * @throws Exception
      * @return int
@@ -126,20 +179,11 @@ class ArtigoBLL
         $this->validar($artigo);
         $id_artigo = null;
         $dal = new ArtigoDAL();
-        $dalCategoria = new CategoriaDAL();
         try {
             DB::beginTransaction();
             $id_artigo = $dal->inserir($artigo);
-            $dal->limparCategoria($id_artigo);
-            foreach ($artigo->listarCategoria() as $categoria) {
-                if (!($categoria->getId() > 0)) {
-                    $id_categoria = $dalCategoria->inserir($categoria);
-                }
-                else {
-                    $id_categoria = $categoria->getId();
-                }
-                $dal->inserirCategoria($id_artigo, $id_categoria);
-            }
+            $artigo->setId($id_artigo);
+            $this->atualizarTag($artigo);
             DB::commit();
         }
         catch (Exception $e) {
@@ -156,20 +200,10 @@ class ArtigoBLL
     public function alterar($artigo) {
         $this->validar($artigo);
         $dal = new ArtigoDAL();
-        $dalCategoria = new CategoriaDAL();
         try {
             DB::beginTransaction();
             $dal->alterar($artigo);
-            $dal->limparCategoria($artigo->getId());
-            foreach ($artigo->listarCategoria() as $categoria) {
-                if (!($categoria->getId() > 0)) {
-                    $id_categoria = $dalCategoria->inserir($categoria);
-                }
-                else {
-                    $id_categoria = $categoria->getId();
-                }
-                $dal->inserirCategoria($artigo->getId(), $id_categoria);
-            }
+            $this->atualizarTag($artigo);
             DB::commit();
         }
         catch (Exception $e) {
@@ -185,12 +219,49 @@ class ArtigoBLL
         $dal = new ArtigoDAL();
         try {
             DB::beginTransaction();
-            $dal->limparCategoria($id_artigo);
+            $dal->limparTags($id_artigo);
             $dal->excluir($id_artigo);
             DB::commit();
         }
         catch (Exception $e) {
             DB::rollBack();
+        }
+    }
+
+    /**
+     * @param int $id_artigo
+     */
+    public function adicionarPageview($id_artigo) {
+        $dal = new ArtigoDAL();
+        $dal->adicionarPageview($id_artigo);
+    }
+
+    /**
+     * @param ArtigoInfo $artigo
+     * @return bool
+     */
+    public function gerarTagAutomatico($artigo) {
+        $regraTag = new TagBLL();
+        $tags = $regraTag->listarTagPrincipal();
+
+        foreach ($tags as $slug => $nome) {
+            $titulo = $artigo->getTitulo();
+            $texto = $artigo->getTexto();
+            if (!(stripos($titulo, $slug) === false)) {
+                $tag = new TagInfo();
+                $tag->setId( 0 );
+                $tag->setNome( $nome );
+                $artigo->adicionarTag($tag);
+            }
+            else {
+                if (!(stripos($texto, $slug) === false)) {
+                    $tag = new TagInfo();
+                    $tag->setId( 0 );
+                    $tag->setNome( $nome );
+                    $artigo->adicionarTag($tag);
+                }
+            }
+            $this->alterar($artigo);
         }
     }
 }

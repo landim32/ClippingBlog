@@ -8334,3 +8334,18 @@ button.close {
     font-size: 12px;
   }
 }
+.badge-primary {
+  background-color: #337ab7;
+}
+.badge-success {
+  background-color: #5cb85c;
+}
+.badge-info {
+  background-color: #5bc0de;
+}
+.badge-warning {
+  background-color: #f0ad4e;
+}
+.badge-danger {
+  background-color: #d9534f;
+}

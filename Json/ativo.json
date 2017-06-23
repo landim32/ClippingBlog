@@ -1,0 +1,11 @@
+[
+  {
+    "url": "https://stackoverflow.com",
+    "url_artigo": "#^http://www.phpit.com.br/artigos/([a-z,A-Z,\\-,_]+)\\.phpit$#i",
+    "titulo": "#<h1 class=\"headline\">(.*?)</h1>#i",
+    "texto": "#<div class=\"article\">.*?<span class=\"divider-small\"></span>(.*?)<div class=\"sharedaddy sd-sharing-enabled\">#s",
+    "autor_padrao": "Rafael Jaques",
+    "data": "#<meta property=\"article:published_time\" content=\"(\\d{4}-\\d{2}-\\d{2})T.*\"/>#i",
+    "test_file": "phpit.html"
+  }
+]

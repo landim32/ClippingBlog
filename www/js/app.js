@@ -1,21 +1,30 @@
 var codeEditor = null;
 
-function mensagem_erro(mensagem) {
-    var html = '';
-    html += "";
-}
-
 function artigo_visualizar(artigo) {
     $("#artigo-titulo").html( artigo.titulo );
     var html = '<div class="form-span">';
-    $.each(artigo.tags_lista, function( index, value ) {
-        html += '<a href="/blog/tag/' + value + '"><span class="badge badge-info">' + value + '</span></a> ';
+    $.each(artigo.tags, function( index, tag ) {
+        html += '<a href="/blog/tag/' + tag.slug + '"><span class="badge badge-info">' + tag.nome + '</span></a> ';
     });
     html += '</div>';
     $("#artigo-tags").html( html );
     $("#artigo-data").html( "<div class='form-span'>" + artigo.data_str + '</div>' );
     $("#artigo-autor").html("<div class='form-span'>" +  artigo.autor + '</div>' );
     $("#artigo-texto").html( artigo.texto );
+    var situacao = '';
+    var cod_situacao = parseInt(artigo.cod_situacao);
+    switch (cod_situacao) {
+        case 1:
+            situacao = '<label class="label label-success">Ativo</label>';
+            break;
+        case 2:
+            situacao = '<label class="label label-warning">Rascunho</label>';
+            break;
+        case 3:
+            situacao = '<label class="label label-danger">Inativo</label>';
+            break;
+    }
+    $("#artigo-situacao").html( situacao );
     $("#artigo-botao").hide();
 }
 
@@ -45,7 +54,14 @@ function artigo_editar(artigo) {
         matchBrackets: true,
         value: artigo.texto
     });
-    $("#tags").val(artigo.tags);
+
+    var tags = '';
+    $.each(artigo.tags, function( index, tag ) {
+        tags += ',' + tag.nome;
+    });
+    tags.substr(1);
+
+    $("#tags").val( tags.substr(1) );
     $("#tags").tagsinput({
         allowDuplicates: false,
         tagClass: 'label label-default'
@@ -114,6 +130,13 @@ $(document).ready(function() {
         e.preventDefault();
 
         var id_artigo = $(this).attr("data-artigo");
+
+        var tags = [];
+        $.each($("#tags").tagsinput('items'), function( index, tag ) {
+            tags.push({id_tag: 0, slug: '', nome: tag});
+        });
+        //alert(tags);
+
         var artigo = {
             id_artigo: id_artigo,
             titulo: $("#titulo").val(),
@@ -121,7 +144,7 @@ $(document).ready(function() {
             autor: $("#autor").val(),
             texto: codeEditor.getValue(),
             cod_situacao: $("#cod_situacao").val(),
-            tags: $("#tags").val()
+            tags: tags
         };
 
         var $btn = $(this);
@@ -185,6 +208,68 @@ $(document).ready(function() {
                 alert(request.responseText);
             }
         });
+        return false;
+    });
+
+    $(".artigo-excluir").click(function (e) {
+        e.preventDefault();
+
+        if (confirm("Tem certeza?") == true) {
+            var id_artigo = $(this).attr("data-artigo");
+            var $btn = $(this);
+            $btn.button('loading');
+            $.ajax({
+                method: "PUT",
+                dataType: "json",
+                url: "/api/ArtigoBLL/excluir",
+                data: id_artigo,
+                success: function (data) {
+                    if (data && data.error) {
+                        alert(data.error);
+                        $btn.button('reset');
+                    }
+                    else {
+                        location.href = '/blog';
+                        //$btn.button('reset');
+                    }
+                },
+                error: function (request, status, error) {
+                    $btn.button('reset');
+                    alert(request.responseText);
+                }
+            });
+        }
+        return false;
+    });
+    $(".artigo-item-excluir").click(function (e) {
+        e.preventDefault();
+
+        if (confirm("Tem certeza?") == true) {
+            var id_artigo = $(this).attr("data-artigo");
+            var $btn = $(this);
+            $btn.button('loading');
+            $.ajax({
+                method: "PUT",
+                dataType: "json",
+                url: "/api/ArtigoBLL/excluir",
+                data: id_artigo,
+                success: function (data) {
+                    if (data && data.error) {
+                        alert(data.error);
+                        $btn.button('reset');
+                    }
+                    else {
+                        $( "#artigo-" + id_artigo ).fadeOut("slow", function() {
+                            $btn.button('reset');
+                        });
+                    }
+                },
+                error: function (request, status, error) {
+                    $btn.button('reset');
+                    alert(request.responseText);
+                }
+            });
+        }
         return false;
     });
 });

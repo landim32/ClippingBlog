@@ -1,0 +1,1498 @@
+
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+
+<head>
+
+    <title>c# - Developing for Windows 7 and above - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Developing for Windows 7 and above" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I want to make an Windows Desktop Application for Windows 7 and above.
+
+Can someone tell me how can I start? I have tried searching on Google for developing apps for Windows; all I’ve found so far..." />
+    <meta property="og:url" content="https://stackoverflow.com/questions/44714097/developing-for-windows-7-and-above"/>
+    <link rel="canonical" href="https://stackoverflow.com/questions/44714097/developing-for-windows-7-and-above" />
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.sstatic.net/Js/stub.en.js?v=53164c7f0a73"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/all.css?v=bf50228bbe1e">
+
+    <meta name="twitter:app:country" content="US" />
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:iphone" content="871299723" />
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/44714097/developing-for-windows-7-and-above" />
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+    <meta name="twitter:app:id:ipad" content="871299723" />
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/44714097/developing-for-windows-7-and-above" />
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/44714097/developing-for-windows-7-and-above">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+
+        StackExchange.ready(function () {
+
+            StackExchange.using("snippets", function () {
+                StackExchange.snippets.initSnippetRenderer();
+            });
+
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+
+            StackExchange.question.init({votesCast:[],autoShowCommentHelp:true,showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:44714097});
+
+            styleCode();
+
+            StackExchange.realtime.subscribeToQuestion('1', '44714097');
+            StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+        });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1498207087,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"a5d1235cbe648420953d1db5b988bba0","rep":1,"isRegistered":true,"userType":3,"userId":8150666,"accountId":2344506,"gravatar":"<div class=\"gravatar-wrapper-32\"><img src=\"https://lh3.googleusercontent.com/-kB0PRB17bAE/AAAAAAAAAAI/AAAAAAAAABI/9Bf2ztLhyIw/photo.jpg?sz=32\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"https://stackoverflow.com/users/8150666/rodrigo-landim","canSeeDeletedPosts":false,"canSeeNewHeaderDesign":true,"ab":{"devstory_onboarding_exp":{"v":"opt_out_of_match_emails","g":2}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true,"forceHttpsImages":true},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"b95a63fed95a","js/moderator.en.js":"9b009c97b3e7","js/full-anon.en.js":"822f3e2d71f5","js/full.en.js":"926d8e709ab4","js/wmd.en.js":"4390bc71ab1e","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"834f9e606700","js/help.en.js":"f9152eb55343","js/tageditor.en.js":"248fce004255","js/tageditornew.en.js":"1eb507c92c59","js/inline-tag-editing.en.js":"7581a98341e4","js/revisions.en.js":"2faaeaae2529","js/review.en.js":"2c44ac033b37","js/tagsuggestions.en.js":"7dfec0d2a2d7","js/post-validation.en.js":"a7e865b3e4da","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"c98f94c7ae53","js/keyboard-shortcuts.en.js":"dbaca3a7451d","js/external-editor.en.js":"463e9ede63aa","js/adops.en.js":"9a6a7812a212","js/external-editor.en.js":"463e9ede63aa","js/snippet-javascript.en.js":"ca40b13b0854","js/snippet-javascript-codemirror.en.js":"8ef0d6ddff66"});
+        StackExchange.using("gps", function() {
+            StackExchange.gps.init(true);
+        });
+    </script>
+
+    <noscript id="noscript-css"><style type="text/css">body,.so-header{margin-top:1.9em}</style></noscript>
+</head>
+<body class="question-page new-topbar">
+<script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+<iframe id="adzerk-user-match" width="0" height="0" frameborder="0" scrolling="no" onload="window.AUMIframeDone=true"
+        src="https://ssum-sec.casalemedia.com/usermatch?s=183712&amp;cb=https%3A%2F%2Fengine.adzerk.net%2Fudb%2F22%2Fsync%2Fi.gif%3FpartnerId%3D1%26userId%3D"
+        style="display: none;" marginheight="0" marginwidth="0"></iframe>
+
+<div id="notify-container"></div>
+<div id="custom-header"></div>
+
+
+<header class="so-header js-so-header _fixed">
+    <div class="-container">
+        <div class="-main">
+            <a href="https://stackoverflow.com" class="-logo js-gps-track _glyph"
+               data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+
+                <span class="-img">Stack Overflow</span>
+            </a>
+
+            <nav class="navigation" role="navigation" aria-label="site navigation">
+                <ol class="-list">
+                    <li class="-item _current">
+                        <a id="nav-questions" href="/questions" class="-link js-gps-track"
+                           data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">Questions</a>
+                    </li>
+
+                    <li class="-item">
+                        <a id="nav-jobs" href="/jobs?med=site-ui&amp;ref=jobs-tab" class="-link js-gps-track"
+                           data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">Developer Jobs</a>
+                    </li>
+                    <li class="-item">
+                        <a id="nav-docs" href="/documentation" class="-link js-gps-track"
+                           data-gps-track="top_nav.click({is_current:false, location:2, destination:7})">Documentation <small class='beta-badge'>beta</small></a>
+                    </li>
+                    <li class="-item">
+                        <a id="nav-tags" href="/tags" class="-link js-gps-track"
+                           data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">Tags</a>
+                    </li>
+
+                    <li class="-item">
+                        <a id="nav-users" href="/users" class="-link js-gps-track"
+                           data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">Users</a>
+                    </li>
+
+                </ol>
+            </nav>
+
+            <form id="search" action="/search" method="get" class="searchbar" autocomplete="off" role="search">
+                <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"/></svg>
+                <input name="q" type="text" placeholder="Search..." value="" tabindex="1" autocomplete="off" maxlength="240" class="f-input js-search-field" />
+                <button type="submit" class="btn js-search-submit">
+                    <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"/></svg>
+                </button>
+            </form>
+
+        </div>
+
+
+
+
+
+        <div class="-actions">
+            <a href="/users/8150666/rodrigo-landim" class="my-profile js-gps-track" data-gps-track="profile_summary.click()">
+                <div class="gravatar-wrapper-24" title="Rodrigo Landim"><img src="https://lh3.googleusercontent.com/-kB0PRB17bAE/AAAAAAAAAAI/AAAAAAAAABI/9Bf2ztLhyIw/photo.jpg?sz=48" alt="" width="24" height="24" class="-avatar js-avatar-me"></div>
+
+
+                <div class="-rep js-header-rep" title="your reputation: 1">1</div>
+
+                <div class="-badges">
+
+                </div>
+            </a>
+            <nav class="secondary-nav">
+                <div class="-dialog-container js-topbar-dialog-corral">
+
+
+                    <div class="topbar-dialog siteSwitcher-dialog dno">
+                        <div class="header">
+                            <h3><a href="https://stackoverflow.com">current community</a>
+                            </h3>
+                        </div>
+                        <div class="modal-content current-site-container">
+                            <ul class="current-site">
+                                <li>
+                                    <div class="related-links">
+                                        <a href="https://stackoverflow.com/help" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:14 })"
+                                        >help</a>
+                                        <a href="https://chat.stackoverflow.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+                                        >chat</a>
+                                        <a href="https://stackoverflow.com/users/logout" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:8 })"
+                                        >log out</a>
+                                    </div>
+
+                                    <a href="https://stackoverflow.com"
+                                       class="current-site-link site-link js-gps-track"
+                                       data-id="1"
+                                       data-gps-track="site_switcher.click({ item_type:3 })">
+                                        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+                                        Stack Overflow
+                                    </a>
+
+                                </li>
+                                <li class="related-site">
+                                    <div class="L-shaped-icon-container">
+                                        <span class="L-shaped-icon"></span>
+                                    </div>
+
+
+                                    <a href="https://meta.stackoverflow.com"
+                                       class="site-link js-gps-track"
+                                       data-id="552"
+                                       data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
+                                        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+                                        Meta Stack Overflow
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="header" id="your-communities-header">
+                            <h3>
+                                <a href="https://stackexchange.com/users/2344506/?tab=accounts">your communities</a>
+                            </h3>
+
+                            <a href="#" id="edit-pinned-sites">edit</a>
+                            <a href="#" id="cancel-pinned-sites" style="display: none;">cancel</a>
+                        </div>
+                        <div class="modal-content" id="your-communities-section">
+
+                            <ul class="my-sites">
+                                <li>
+
+                                    <a href="https://stackoverflow.com"
+                                       class="site-link js-gps-track"
+                                       data-id="1"
+                                       data-gps-track="site.switch({ target_site:1, item_type:3 }),site_switcher.click({ item_type:1 })">
+                                        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+                                        Stack Overflow
+                                        <span class="rep-score">1</span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                            <div class="pinned-site-editor-container" style="display: none;">
+                                <input id="js-site-search-txt"
+                                       type="text"
+                                       class="site-filter-input"
+                                       value=""
+                                       placeholder="Add a Stack Exchange community"/>
+                                <input type="submit" id="pin-site-btn" value="Add" disabled="disabled"/>
+                                <ul class="js-found-sites found-sites"></ul>
+                                <ul class="pinned-site-list sortable" data-custom-list="False">
+                                </ul>
+                                <input type="submit" value="Save" id="save-pinned-sites-btn" disabled="disabled"/>
+                                <a href="#" id="reset-pinned-sites">reset to default list</a>
+                            </div>
+                        </div>
+
+                        <div class="header">
+                            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+                            </h3>
+                            <a href="https://stackoverflow.blog" class="fr">company blog</a>
+                        </div>
+                        <div class="modal-content">
+                            <div class="child-content"></div>
+                        </div>
+                    </div>
+                    <div class="topbar-dialog help-dialog js-help-dialog dno">
+                        <div class="modal-content">
+                            <ul>
+                                <li>
+                                    <a href="/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                                        Tour
+                                        <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                                        Help Center
+                                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://meta.stackoverflow.com" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                        Meta
+                                        <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                        About Us
+                                        <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                        Business
+                                        <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <ol class="-list">
+                    <li class="-item">
+                        <a href="#" class="-link js-inbox-button" title="Recent inbox messages">
+                            <svg role="icon" class="svg-icon iconInbox" width="20" height="18" viewBox="0 0 20 18"><path d="M15.19 1H4.63a1.92 1.92 0 0 0-1.85 1.35L0 10.79V15a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4.21l-2.87-8.44A2 2 0 0 0 15.19 1zm-.28 10l-2 2h-6l-2-2H1.96L4.4 3.68A1 1 0 0 1 5.35 3h9.12a1 1 0 0 1 .95.68L17.86 11h-2.95z"/></svg>
+                            <span class="indicator-badge js-unread-count _important" style="display: none;"></span>
+                        </a>
+                    </li>
+                    <li class="-item">
+                        <a href="#" class="-link js-achievements-button" title="Recent achievements: reputation, badges, and privileges earned" data-unread-class="_highlighted-positive">
+                            <svg role="icon" class="svg-icon iconAchievements" width="18" height="18" viewBox="0 0 18 18"><path d="M15 2V1H3v1H0v4c0 1.6 1.4 3 3 3v1c.4 1.5 3 2.6 5 3v2H5s-1 1.5-1 2h10c0-.4-1-2-1-2h-3v-2c2-.4 4.6-1.5 5-3V9c1.6-.2 3-1.4 3-3V2h-3zM3 7c-.5 0-1-.5-1-1V4h1v3zm8.4 2.5L9 8 6.6 9.4l1-2.7L5 5h3l1-2.7L10 5h2.8l-2.3 1.8 1 2.7h-.1zM16 6c0 .5-.5 1-1 1V4h1v2z"/></svg>
+                            <span class="indicator-badge js-unread-count _positive" style="display: none;"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="-item"><a href="#" class="-link js-help-button" title="Help Center and other resources">
+                        <svg role="icon" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16.001A8 8 0 0 0 9 1zm.812 12.126c-.02.716-.55 1.157-1.238 1.137-.659-.02-1.177-.49-1.157-1.209.02-.715.566-1.17 1.225-1.15.691.021 1.194.507 1.17 1.222zm1.956-5.114c-.168.237-.546.542-1.02.912l-.527.361c-.257.197-.417.43-.502.695-.044.141-.076.507-.084.752-.004.048-.032.156-.181.156H7.883c-.165 0-.185-.096-.18-.144.023-.667.12-1.218.397-1.66.374-.594 1.426-1.221 1.426-1.221.161-.12.286-.25.382-.39.177-.24.321-.51.321-.8 0-.333-.08-.65-.293-.915-.249-.31-.518-.458-1.036-.458-.51 0-.808.257-1.021.594-.213.338-.177.735-.177 1.097H5.746c0-1.366.357-2.238 1.112-2.752.51-.35 1.162-.502 1.921-.502.996 0 1.788.184 2.487.715.647.49.988 1.181.988 2.113 0 .575-.2 1.057-.486 1.447z"/></svg>
+                    </a></li>
+                    <li class="-item">
+                        <a href="https://stackexchange.com" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 169 Stack Exchange sites">
+                            <svg role="icon" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M1 13a2 2 0 0 0 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zM15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 6h16v4H1V6z"/></svg>
+                        </a>
+                    </li>
+
+
+                </ol>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<script>
+    StackExchange.ready(function () { StackExchange.topbar.init(); });
+    StackExchange.scrollPadding.setPaddingTop(60, 10);     </script>
+
+<div class="container">
+
+
+
+    <div id="content" class="snippet-hidden">
+
+
+
+
+
+        <div itemscope itemtype="http://schema.org/Question">
+            <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+            <div id="question-header">
+                <h1 itemprop="name"><a href="/questions/44714097/developing-for-windows-7-and-above" class="question-hyperlink">Developing for Windows 7 and above [on hold]</a></h1>
+
+
+                <div class="aside-cta" role="navigation" aria-label="ask new question">
+                    <a href="/questions/ask" class="btn">Ask Question</a>
+                </div>
+            </div>
+            <div id="mainbar" role="main" aria-label="question and answers">
+
+
+
+                <div class="question" data-questionid="44714097"  id="question">
+
+                    <script>
+                        var ados = ados || {}; ados.run = ados.run || [];
+                        ados.run.push(function () { ados_add_placement(22,8277,"adzerk526306053",4).setZone(43); });
+                    </script>
+                    <div class="everyonelovesstackoverflow" id="adzerk526306053"></div>    <table>
+                    <tr>
+                        <td class="votecell">
+
+
+                            <div class="vote">
+                                <input type="hidden" name="_id_" value="44714097">
+                                <a class="vote-up-off" title="This question shows research effort; it is useful and clear (click again to undo)">up vote</a>
+                                <span itemprop="upvoteCount" class="vote-count-post ">-2</span>
+                                <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful (click again to undo)">down vote</a>
+
+                                <a class="star-off" href="#">favorite</a>
+                                <div class="favoritecount"><b></b></div>
+
+
+                            </div>
+
+                        </td>
+
+                        <td class="postcell">
+                            <div>
+                                <div class="post-text" itemprop="text">
+
+                                    <p>I want to make an Windows Desktop Application for Windows 7 and above. </p>
+
+                                    <p>Can someone tell me how can I start? I have tried searching on Google for developing apps for Windows; all I’ve found so far is UWP (Universal Windows Platform) which I believe works for Windows 10 and above. I have even checked the Microsoft docs and all they are telling is about Windows 10 apps, not a word about versions below it.</p>
+
+                                    <p>Can someone tell me if I make an app for Windows 10 will it work with earlier versions too? As the main requirement is developing for Windows 7.</p>
+
+                                    <p>I have been doing coding for 3-4 years so I know coding. I just want to start from right path. Please guide me.</p>
+                                </div>
+                                <div class="post-taglist">
+                                    <a href="/questions/tagged/c%23" class="post-tag" title="show questions tagged &#39;c#&#39;" rel="tag">c#</a> <a href="/questions/tagged/visual-studio" class="post-tag" title="show questions tagged &#39;visual-studio&#39;" rel="tag">visual-studio</a> <a href="/questions/tagged/xamarin" class="post-tag" title="show questions tagged &#39;xamarin&#39;" rel="tag">xamarin</a> <a href="/questions/tagged/window" class="post-tag" title="show questions tagged &#39;window&#39;" rel="tag">window</a>
+                                </div>
+                                <table class="fw">
+                                    <tr>
+                                        <td class="vt">
+                                            <div class="post-menu"><a href="/q/44714097/8150666" title="short permalink to this question" class="short-link" id="link-post-44714097">share</a><span class="lsep">|</span><a href="/posts/44714097/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>
+                                        </td>
+                                        <td class="post-signature owner">
+                                            <div class="user-info ">
+                                                <div class="user-action-time">
+                                                    asked <span title="2017-06-23 06:01:43Z" class="relativetime">2 hours ago</span>
+                                                </div>
+                                                <div class="user-gravatar32">
+                                                    <a href="/users/5232040/anmol"><div class="gravatar-wrapper-32"><img src="https://graph.facebook.com/551816588301723/picture?type=large" alt="" width="32" height="32"></div></a>
+                                                </div>
+                                                <div class="user-details">
+                                                    <a href="/users/5232040/anmol">Anmol</a>
+                                                    <div class="-flair">
+                                                        <span class="reputation-score" title="reputation score " dir="ltr">19</span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="special-status" colspan="2">
+                            <div class="question-status">
+                                <h2>                    <b>put on hold</b> as off-topic by <a href="/users/1506454/ash">ASh</a>, <a href="/users/368354/lennart">Lennart</a>, <a href="/users/704848/edchum">EdChum</a>, <a href="/users/996815/vertexwahn">Vertexwahn</a>, <a href="/users/5785362/tofro">tofro</a> <span dir="ltr"><span title="2017-06-23 08:16:33Z" class="relativetime">21 mins ago</span></span>
+                                </h2>
+                                <p>This question appears to be off-topic. The users who voted to close gave this specific reason:<ul class="close-as-off-topic-status-list"><li>&quot;Questions asking us to <b>recommend or find a book, tool, software library, tutorial or other off-site resource</b> are off-topic for Stack Overflow as they tend to attract opinionated answers and spam. Instead, <a href="http://meta.stackoverflow.com/questions/254393">describe the problem</a> and what has been done so far to solve it.&quot; &ndash; Lennart, EdChum, Vertexwahn, tofro</li></ul><span class="close-status-suffix">If this question can be reworded to fit the rules in the <a href="/help/closed-questions">help center</a>, please <a href="/posts/44714097/edit">edit the question</a>.</span></p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="votecell"></td>
+                        <td>
+                            <div id="comments-44714097" class="comments  dno">
+                                <table>
+                                    <tbody data-remaining-comments-count="0"
+                                           data-canpost="false"
+                                           data-cansee="true"
+                                           data-comments-unavailable="false"
+                                           data-addlink-disabled="true">
+
+                                    <tr><td></td><td></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="comments-link-44714097" data-rep=50 data-reg=true>
+
+                                <a class="js-add-link comments-link disabled-link "
+                                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                                >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+                                <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+                            </div>
+                        </td>
+                    </tr>        </table>
+                </div>
+
+                <div id="answers">
+
+                    <a name="tab-top"></a>
+                    <div id="answers-header">
+                        <div class="subheader answers-subheader">
+                            <h2>
+                                2 Answers
+                                <span style="display:none;" itemprop="answerCount">2</span>
+                            </h2>
+                            <div>
+                                <div id="tabs">
+                                    <a href="/questions/44714097/developing-for-windows-7-and-above?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+                                        active</a>
+                                    <a href="/questions/44714097/developing-for-windows-7-and-above?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+                                        oldest</a>
+                                    <a class="youarehere" href="/questions/44714097/developing-for-windows-7-and-above?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+                                        votes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <a name="44714624"></a>
+                    <div id="answer-44714624" class="answer" data-answerid="44714624"  itemscope itemtype="http://schema.org/Answer">
+                        <table>
+                            <tr>
+                                <td class="votecell">
+
+
+                                    <div class="vote">
+                                        <input type="hidden" name="_id_" value="44714624">
+                                        <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+                                        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+                                        <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+
+
+
+
+                                    </div>
+
+                                </td>
+
+
+
+                                <td class="answercell">
+                                    <div class="post-text" itemprop="text">
+                                        <p>Jason is right to a point, UWP is the modern way,  but I would actually recommend WPF which was designed to replace Windows Forms.</p>
+
+                                        <p>It uses modern techniques and methods  with C# like Caml for the UI layout, MVVM, View Model bindings etc, and it's all transferable skills into UWP and Xamarin mobile apps.  As an aside Xamarin Forms are looking to build out WPF apps in future releases for true cross platform apps so it's a good framework to learn for Windows desktop.</p>
+
+                                        <p>Start here - <a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/getting-started/walkthrough-my-first-wpf-desktop-application" rel="nofollow noreferrer">https://docs.microsoft.com/en-us/dotnet/framework/wpf/getting-started/walkthrough-my-first-wpf-desktop-application</a></p>
+                                    </div>
+                                    <table class="fw">
+                                        <tr>
+                                            <td class="vt">
+                                                <div class="post-menu"><a href="/a/44714624/8150666" title="short permalink to this answer" class="short-link" id="link-post-44714624">share</a><span class="lsep">|</span><a href="/posts/44714624/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+
+
+
+                                            <td align="right" class="post-signature">
+
+
+                                                <div class="user-info ">
+                                                    <div class="user-action-time">
+                                                        answered <span title="2017-06-23 06:37:58Z" class="relativetime">2 hours ago</span>
+                                                    </div>
+                                                    <div class="user-gravatar32">
+                                                        <a href="/users/5466071/andy-flisher"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c5a6b2977f4686b1d33b5c50de28ebb1?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+                                                    </div>
+                                                    <div class="user-details">
+                                                        <a href="/users/5466071/andy-flisher">Andy Flisher</a>
+                                                        <div class="-flair">
+                                                            <span class="reputation-score" title="reputation score " dir="ltr">146</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="votecell"></td>
+                                <td>
+                                    <div id="comments-44714624" class="comments ">
+                                        <table>
+                                            <tbody data-remaining-comments-count="0"
+                                                   data-canpost="false"
+                                                   data-cansee="true"
+                                                   data-comments-unavailable="false"
+                                                   data-addlink-disabled="true">
+
+
+
+                                            <tr id="comment-76412008" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">Thanks for such a detailed answer. I will definitely follow this. Also one thing I just found is ElectronJS which lets me build cross platform apps. Is it good?</span>
+                                                        &ndash;&nbsp;<a href="/users/5232040/anmol"
+                                                                        title="19 reputation"
+                                                                        class="comment-user owner">Anmol</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 06:50:43Z" class="relativetime-clean">1 hour ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76412121" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">Never used it, but guessing it&#39;s one of many JavaScript to &#39;some other&#39; framework languages, C# and WPF is one of the native ways of doing Windows apps, the &#39;proper&#39; way if you like - but just my opinion</span>
+                                                        &ndash;&nbsp;<a href="/users/5466071/andy-flisher"
+                                                                        title="146 reputation"
+                                                                        class="comment-user">Andy Flisher</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 06:53:58Z" class="relativetime-clean">1 hour ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76412894" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">Thanks for your reply. I will definitely look into this. It&#39;s possible to make Windows Desktop app on Mac?</span>
+                                                        &ndash;&nbsp;<a href="/users/5232040/anmol"
+                                                                        title="19 reputation"
+                                                                        class="comment-user owner">Anmol</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 07:18:36Z" class="relativetime-clean">1 hour ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76413185" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">At the moment, broadly, no, but keep an eye on Xamarin Forms, it achieves that currently for mobile apps and is moving towards this as I type</span>
+                                                        &ndash;&nbsp;<a href="/users/5466071/andy-flisher"
+                                                                        title="146 reputation"
+                                                                        class="comment-user">Andy Flisher</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 07:27:01Z" class="relativetime-clean">1 hour ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76413346" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">hmm... dang. Will install Windows on Mac then! That&#39;s why I am not seeing Windows Form App in Visual Studio New Project Templates!</span>
+                                                        &ndash;&nbsp;<a href="/users/5232040/anmol"
+                                                                        title="19 reputation"
+                                                                        class="comment-user owner">Anmol</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 07:31:13Z" class="relativetime-clean">1 hour ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div id="comments-link-44714624" data-rep=50 data-reg=true>
+
+                                        <a class="js-add-link comments-link disabled-link "
+                                           title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                                        >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+                                        <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+                                    </div>
+                                </td>
+                            </tr>    </table>
+                    </div>
+                    <script>
+                        var ados = ados || {}; ados.run = ados.run || [];
+                        ados.run.push(function () { ados_add_placement(22,8277,"adzerk1259002078",4).setZone(44); });
+                    </script>
+                    <div class="everyonelovesstackoverflow" id="adzerk1259002078"></div>
+
+                    <a name="44714396"></a>
+                    <div id="answer-44714396" class="answer" data-answerid="44714396"  itemscope itemtype="http://schema.org/Answer">
+                        <table>
+                            <tr>
+                                <td class="votecell">
+
+
+                                    <div class="vote">
+                                        <input type="hidden" name="_id_" value="44714396">
+                                        <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+                                        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+                                        <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+
+
+
+
+                                    </div>
+
+                                </td>
+
+
+
+                                <td class="answercell">
+                                    <div class="post-text" itemprop="text">
+                                        <p>You are right that UWP is for Windows 10 and above, so I would stay away from that in your case.</p>
+
+                                        <p>What you should start with is a simple basic Windows Form development in C#.</p>
+
+                                        <p>Download and install Visual Studio 2017 Community Edition from here:  <a href="https://www.visualstudio.com/downloads/" rel="nofollow noreferrer">https://www.visualstudio.com/downloads/</a></p>
+
+                                        <p>Then I suggest looking for tutorials online for Windows Form apps in C# which can guide you through it.</p>
+
+                                        <p>Here are a couple that could help.</p>
+
+                                        <p><a href="http://www.guru99.com/c-windows-forms-application.html" rel="nofollow noreferrer">http://www.guru99.com/c-windows-forms-application.html</a></p>
+
+                                        <p><a href="https://www.youtube.com/watch?v=yGHzNunW8M8" rel="nofollow noreferrer">https://www.youtube.com/watch?v=yGHzNunW8M8</a></p>
+
+                                        <p>There are more but they are for older VS Studio versions, but the principals are the same even if the UI is a bit different.</p>
+
+                                        <p>The DotNet Framework takes away a bit the dependency upon a specific windows version.  As longer as your windows version can run the DotNet Framework version you are targetting (compiling for) then it will work in most cases.  </p>
+
+                                        <p>Best to first find out which DotNet framework version is installed on your target PC and then build for that, or upgrade it.</p>
+
+                                        <p>It might look a bit different on different windows version, so if you are compiling on a different platform to what you are running on then it is best to make sure that you do testing on your target platform.</p>
+
+                                        <p>This shows how to change your target DotNet version in Visual Studio:  <a href="https://www.youtube.com/watch?v=E36kiGWfGCQ" rel="nofollow noreferrer">https://www.youtube.com/watch?v=E36kiGWfGCQ</a></p>
+                                    </div>
+                                    <table class="fw">
+                                        <tr>
+                                            <td class="vt">
+                                                <div class="post-menu"><a href="/a/44714396/8150666" title="short permalink to this answer" class="short-link" id="link-post-44714396">share</a><span class="lsep">|</span><a href="/posts/44714396/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+                                            <td align="right" class="post-signature">
+                                                <div class="user-info ">
+                                                    <div class="user-action-time">
+                                                        <a href="/posts/44714396/revisions" title="show all edits to this post">edited <span title="2017-06-23 07:00:21Z" class="relativetime">1 hour ago</span></a>
+                                                    </div>
+                                                    <div class="user-gravatar32">
+
+                                                    </div>
+                                                    <div class="user-details">
+
+                                                        <div class="-flair">
+
+                                                        </div>
+                                                    </div>
+                                                </div>    </td>
+
+
+
+                                            <td align="right" class="post-signature">
+
+
+                                                <div class="user-info user-hover">
+                                                    <div class="user-action-time">
+                                                        answered <span title="2017-06-23 06:23:11Z" class="relativetime">2 hours ago</span>
+                                                    </div>
+                                                    <div class="user-gravatar32">
+                                                        <a href="/users/847962/jason-kaisersmith"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/df4f950410d9414965d07f97e23ea7b3?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+                                                    </div>
+                                                    <div class="user-details">
+                                                        <a href="/users/847962/jason-kaisersmith">jason.kaisersmith</a>
+                                                        <div class="-flair">
+                                                            <span class="reputation-score" title="reputation score " dir="ltr">1,007</span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="16 bronze badges"><span class="badge3"></span><span class="badgecount">16</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="votecell"></td>
+                                <td>
+                                    <div id="comments-44714396" class="comments ">
+                                        <table>
+                                            <tbody data-remaining-comments-count="0"
+                                                   data-canpost="false"
+                                                   data-cansee="true"
+                                                   data-comments-unavailable="false"
+                                                   data-addlink-disabled="true">
+
+
+
+                                            <tr id="comment-76411441" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">Thanks for such a detailed answer. I will definitely follow this. Also one thing I just found is ElectronJS which lets me build cross platform apps. Is it good?</span>
+                                                        &ndash;&nbsp;<a href="/users/5232040/anmol"
+                                                                        title="19 reputation"
+                                                                        class="comment-user owner">Anmol</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 06:33:11Z" class="relativetime-clean">2 hours ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76412293" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">Sorry, I don&#39;t know it.  Any cross platform program will have disadvantages compared to a native program, but if you really need cross platform it is good.  However, I would not consider Windows 7 -&gt; Windows 10 to such be a different platform that you need such a program.  This is more targetted at people who need to develop for windows &amp; linux &amp; mobile etc.</span>
+                                                        &ndash;&nbsp;<a href="/users/847962/jason-kaisersmith"
+                                                                        title="1,007 reputation"
+                                                                        class="comment-user">jason.kaisersmith</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 06:59:28Z" class="relativetime-clean">1 hour ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76412612" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">Hmm you&#39;re right. Thanks for those links, really helpful. Can&#39;t I make windows app using Mac?</span>
+                                                        &ndash;&nbsp;<a href="/users/5232040/anmol"
+                                                                        title="19 reputation"
+                                                                        class="comment-user owner">Anmol</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 07:09:06Z" class="relativetime-clean">1 hour ago</span></span>
+                                                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76413576" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">This might be useful:  <a href="https://stormpath.com/blog/ultimate-guide-to-using-visual-studio-on-a-mac" rel="nofollow noreferrer">stormpath.com/blog/&hellip;</a></span>
+                                                        &ndash;&nbsp;<a href="/users/847962/jason-kaisersmith"
+                                                                        title="1,007 reputation"
+                                                                        class="comment-user">jason.kaisersmith</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 07:37:08Z" class="relativetime-clean">1 hour ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="comment-76414487" class="comment ">
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class=" comment-score">
+                                                                &nbsp;&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td class="comment-text">
+                                                    <div style="display: block;" class="comment-body">
+                                                        <span class="comment-copy">Thanks. Great link. :)</span>
+                                                        &ndash;&nbsp;<a href="/users/5232040/anmol"
+                                                                        title="19 reputation"
+                                                                        class="comment-user owner">Anmol</a>
+                                                        <span class="comment-date" dir="ltr"><span title="2017-06-23 08:01:58Z" class="relativetime-clean">36 mins ago</span></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div id="comments-link-44714396" data-rep=50 data-reg=true>
+
+                                        <a class="js-add-link comments-link disabled-link "
+                                           title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                                        >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+                                        <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href=# onclick=""></a>
+                                    </div>
+                                </td>
+                            </tr>    </table>
+                    </div>
+
+
+
+                    <h2 class="bottom-notice" data-loc="1">
+                        Not the answer you&#39;re looking for?							Browse other questions tagged <a href="/questions/tagged/c%23" class="post-tag" title="show questions tagged &#39;c#&#39;" rel="tag">c#</a> <a href="/questions/tagged/visual-studio" class="post-tag" title="show questions tagged &#39;visual-studio&#39;" rel="tag">visual-studio</a> <a href="/questions/tagged/xamarin" class="post-tag" title="show questions tagged &#39;xamarin&#39;" rel="tag">xamarin</a> <a href="/questions/tagged/window" class="post-tag" title="show questions tagged &#39;window&#39;" rel="tag">window</a>  or <a href="/questions/ask">ask your own question</a>.						</h2>
+                </div>
+            </div>
+            <div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+
+
+
+                <script>
+                    window.showNewUser = false;
+
+                </script>
+
+                <div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+                    <h4>Hello World!</h4>
+                    <div>
+                        <p>This is a collaboratively edited question and answer site for <b>professional and enthusiast programmers</b>. It's 100% free.</p><p>Got a question about the site itself? <a href="https://meta.stackoverflow.com">meta</a> is the place to talk about things like what questions are appropriate, what tags we should use, etc.</p>
+                        <p class="ar">
+                            <a href="/tour?mnu=1">about &raquo;</a>&nbsp;&nbsp;&nbsp;
+                            <a href="/help?mnu=1">help &raquo;</a>
+                            &nbsp; <a href="https://meta.stackoverflow.com">meta &raquo;</a>
+                        </p>
+                    </div>
+                </div>
+                <script>
+                    if (showNewUser) {
+                        document.getElementById('newuser-box').style.display = '';
+                    }
+                </script>						    <div class="module question-stats">
+                <table id="qinfo">
+                    <tr>
+                        <td>
+                            <p class="label-key">asked</p>
+                        </td>
+                        <td style="padding-left: 10px">
+                            <p class="label-key" title="2017-06-23 06:01:43Z"><b>today</b></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="label-key">viewed</p>
+                        </td>
+
+                        <td style="padding-left: 10px">
+                            <p class="label-key">
+                                <b>33 times</b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="label-key">active</p>
+                        </td>
+                        <td style="padding-left: 10px">
+                            <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2017-06-23 07:00:21Z">today</a></b></p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+                <div class="module community-bulletin" data-tracker="cb=1">
+                    <div class="related">
+                        <div class="bulletin-title">
+                            Featured on Meta
+                        </div>
+                        <hr />
+                        <div class="spacer">
+                            <div class="bulletin-item-type">
+                                <a href="https://meta.stackexchange.com/questions/297423/setting-up-a-hackerone-security-bug-bounty-program" class="question-hyperlink">
+                                    <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+                            </div>
+                            <div class="bulletin-item-content">
+                                <a href="https://meta.stackexchange.com/questions/297423/setting-up-a-hackerone-security-bug-bounty-program" class="question-hyperlink">Setting Up a HackerOne Security Bug Bounty Program</a>
+                            </div>
+                            <br class="cbt" />
+                        </div>
+                        <div class="spacer">
+                            <div class="bulletin-item-type">
+                                <a href="https://meta.stackoverflow.com/questions/350836/please-change-the-review-icon-back-to-a-text-link" class="question-hyperlink">
+                                    <div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>                </a>
+                            </div>
+                            <div class="bulletin-item-content">
+                                <a href="https://meta.stackoverflow.com/questions/350836/please-change-the-review-icon-back-to-a-text-link" class="question-hyperlink">Please change the review icon back to a text link</a>
+                            </div>
+                            <br class="cbt" />
+                        </div>
+                        <div class="bulletin-title">
+                            Hot Meta Posts
+                        </div>
+                        <hr />
+                        <div class="spacer">
+                            <div class="bulletin-item-type">
+                                <span title="Vote score (upvotes - downvotes)">4</span>
+                            </div>
+                            <div class="bulletin-item-content">
+                                <a href="https://meta.stackoverflow.com/questions/351104/handling-un-readable-questions" class="question-hyperlink">Handling un-readable questions</a>
+                            </div>
+                            <br class="cbt" />
+                        </div>
+                        <div class="spacer">
+                            <div class="bulletin-item-type">
+                                <span title="Vote score (upvotes - downvotes)">4</span>
+                            </div>
+                            <div class="bulletin-item-content">
+                                <a href="https://meta.stackoverflow.com/questions/351122/what-do-reviewers-see-when-i-flag-an-answer" class="question-hyperlink">What do reviewers see when I flag an answer?</a>
+                            </div>
+                            <br class="cbt" />
+                        </div>
+                        <div class="spacer">
+                            <div class="bulletin-item-type">
+                                <span title="Vote score (upvotes - downvotes)">17</span>
+                            </div>
+                            <div class="bulletin-item-content">
+                                <a href="https://meta.stackoverflow.com/questions/351075/what-to-do-with-questions-where-the-author-inserted-gibberish-to-bypass-the-mini" title="What to do with questions where the author inserted gibberish to bypass the minimum length check?" class="question-hyperlink">What to do with questions where the author inserted gibberish to bypass the&hellip;</a>
+                            </div>
+                            <br class="cbt" />
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var ados = ados || {}; ados.run = ados.run || [];
+                    ados.run.push(function () { ados_add_placement(22,8277,"adzerk509188417",[5,17,2221,1129,43]).setZone(45); });
+                </script>
+                <div class="everyonelovesstackoverflow" id="adzerk509188417"></div>
+                <div id="hireme"></div>
+                <script>
+                    window.clc_request = 'AhPibiwTutQIOsYjAHFIqgICAAAAAgAAAANQAAAAfGMjfHZpc3VhbC1zdHVkaW98eGFtYXJpbnx3aW5kb3d8eC11c2VyLXJlZ2lzdGVyZWR8eC1jcm9zcy1zaXRlLXNlcnZlcmZhdWx0LmNvbXwA9GI5zWew7FjE2w';;!function load(n){var u,r;try{if("function"!=typeof[].indexOf)return;if(!window.addEventListener)return;if(!n.allowed)return;if(!RegExp(n.allowed).test(location.hostname))return;var t=window,i=t.document,f=n.wv;if(i.hidden&&f)return void i.addEventListener("visibilitychange",function e(){i.hidden||(load(n),i.removeEventListener("visibilitychange",e))});if(t.clc=t.clc||{},t.clc.init=t.clc.init||[],n.autoload&&t.clc.init.push(function(n){return n.load()}),t.clc.options){for(u in t.clc.options)n[u]=t.clc.options[u];t.clc.options=n}else t.clc.options=n;r=i.createElement("script");r.async=!0;r.src=n.lib;i.body.appendChild(r)}catch(o){}}.call(null, {"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=15f527bc6c30","u":"https://clc.stackoverflow.com/markup.js","azw":true,"kt":2000,"tto":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"h":"clc.stackoverflow.com","autoload":true,"allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$","wv":true});        </script>
+
+
+
+
+                <div class="module sidebar-related">
+                    <h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer"><a href="/q/661105" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">4</div></a><a href="/questions/661105/windows-development-for-hardcore-java-guy" class="question-hyperlink">Windows development for hardcore Java guy</a></div><div class="spacer"><a href="/q/17134522" title="Vote score (upvotes - downvotes)"><div class="answer-votes large">425</div></a><a href="/questions/17134522/does-anyone-have-benchmarks-code-results-comparing-performance-of-android-ap" class="question-hyperlink">Does anyone have benchmarks (code &amp; results) comparing performance of Android apps written in Xamarin C# and Java?</a></div><div class="spacer"><a href="/q/28586642" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">82</div></a><a href="/questions/28586642/windows-gui-wpf-or-winrt-2015" class="question-hyperlink">Windows GUI: WPF or WinRT (2015+)</a></div><div class="spacer"><a href="/q/31302396" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="/questions/31302396/want-to-add-multiple-contact-for-sharing-information-in-windows-phone-8-1-app-de" class="question-hyperlink">Want to add multiple contact for sharing information in windows phone 8.1 app developement</a></div><div class="spacer"><a href="/q/31885979" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">20</div></a><a href="/questions/31885979/windows-10-uwp-app-setting-window-size-on-desktop" class="question-hyperlink">Windows 10 UWP app - Setting window size on desktop</a></div><div class="spacer"><a href="/q/34716208" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="/questions/34716208/windows-phone-application-development-for-windows-phone-8-and-10" class="question-hyperlink">windows phone application development for windows phone 8 and 10</a></div><div class="spacer"><a href="/q/35628017" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="/questions/35628017/xamarin-monogame-cross-platform-on-windows-using-visual-studio" class="question-hyperlink">Xamarin-Monogame cross platform on Windows, using Visual Studio</a></div><div class="spacer"><a href="/q/39363215" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="/questions/39363215/what-technology-i-should-use-while-developing-a-windows-app" class="question-hyperlink">What Technology I should use while developing a windows App</a></div><div class="spacer"><a href="/q/39753184" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="/questions/39753184/cross-platform-development-on-mac-using-xamarin-visual-studio-eclipse-advice" class="question-hyperlink">Cross-platform development on Mac using Xamarin/Visual Studio/Eclipse advice</a></div><div class="spacer"><a href="/q/43642635" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="/questions/43642635/visual-studio-requires-windows-10" class="question-hyperlink">Visual Studio requires windows 10?</a></div>
+                    </div>
+                </div>
+
+
+                <div id="hot-network-questions" class="module tex2jax_ignore">
+                    <h4>
+                        <a href="https://stackexchange.com/questions?tab=hot"
+                           class="js-gps-track"
+                           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+                            Hot Network Questions
+                        </a>
+                    </h4>
+                    <ul>
+                        <li >
+                            <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="https://math.stackexchange.com/questions/2330936/looking-for-a-rigorous-analysis-book" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Looking for a rigorous analysis book
+                        </a>
+
+                        </li>
+                        <li >
+                            <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="https://graphicdesign.stackexchange.com/questions/93699/generating-a-circular-image-from-planar-source" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Generating a circular image from planar source
+                        </a>
+
+                        </li>
+                        <li >
+                            <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/93349/should-i-put-volunteer-firefighter-on-my-developer-resume" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Should I put volunteer firefighter on my developer resume?
+                        </a>
+
+                        </li>
+                        <li >
+                            <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="https://stackoverflow.com/questions/44619165/github-satanically-messing-with-my-readme" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            GitHub satanically messing with my README
+                        </a>
+
+                        </li>
+                        <li >
+                            <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/376372/how-to-vertically-center-elements-of-tikz-matrix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            How to Vertically Center Elements of tikz Matrix
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="https://electronics.stackexchange.com/questions/312551/using-neodymium-magnets-as-wire-connectors" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Using Neodymium Magnets as wire connectors?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-superuser" title="Super User"></div><a href="https://superuser.com/questions/1221930/list-files-bigger-than-specified-size-then-create-md5sum-or-sha256sum-on-them" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            List files bigger than specified size then create md5sum or sha256sum on them
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/395033/why-is-you-ve-brought-a-knife-to-a-gun-fight-considered-to-be-a-mixed-metaphor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Why is &quot;You’ve brought a knife to a gun fight&quot; considered to be a mixed metaphor?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="https://worldbuilding.stackexchange.com/questions/84252/what-factors-in-the-future-could-lead-to-a-dystopia-in-which-precious-metals-a" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            What factors, in the future, could lead to a dystopia in which precious metals and gems have no value?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="https://aviation.stackexchange.com/questions/39193/is-there-an-official-record-of-the-pilot-with-the-most-logged-flight-time" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Is there an official record of the pilot with the most logged flight time?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/127946/gif-jif-jif-gif" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Gif - Jif, Jif - Gif
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-sqa" title="Software Quality Assurance &amp; Testing Stack Exchange"></div><a href="https://sqa.stackexchange.com/questions/27919/senior-management-expected-bug-discovery-rate-to-match-their-expectation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:244 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Senior management expected bug discovery rate to match their expectation
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="https://askubuntu.com/questions/928308/is-it-possible-to-use-ubuntu-without-ram-at-all" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Is it possible to use ubuntu without ram at all?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="https://movies.stackexchange.com/questions/75180/why-didnt-jon-snow-recognize-summer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Why didn&#39;t Jon Snow recognize Summer?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/102102/do-sorcery-points-have-any-value-at-level-2" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Do sorcery points have any value at level 2?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/127609/output-a-pyramid-or-highway" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Output a Pyramid (or Highway)
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/93327/how-representative-of-a-company-is-a-bad-interview-process" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            How representative of a company is a bad interview process?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="https://aviation.stackexchange.com/questions/39174/is-it-possible-to-upgrade-a-boeing-747-8-and-airbus-a380s-engines-for-greater-s" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Is it possible to upgrade a Boeing 747-8 and Airbus A380&#39;s engines for greater speed?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/395138/term-for-type-of-fast-food-restaurant" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Term for type of fast food restaurant
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-german" title="German Language Stack Exchange"></div><a href="https://german.stackexchange.com/questions/37379/who-built-the-hall-in-reality" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:253 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Who built the hall in reality?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="https://mathoverflow.net/questions/272787/extra-euler-factors-in-one-definition-of-the-l-function-of-a-twist-of-a-modula" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            &quot;Extra Euler factors&quot; in one definition of the L-function of a twist of a modular form
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="https://rpg.stackexchange.com/questions/102112/can-the-ua-rangers-animal-companion-get-a-feat-instead-of-an-asi" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Can the UA ranger&#39;s animal companion get a feat instead of an ASI?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="https://security.stackexchange.com/questions/162021/what-is-the-purpose-of-confirming-old-password-to-create-a-new-password" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            What is the purpose of confirming old password to create a new password?
+                        </a>
+
+                        </li>
+                        <li class="dno js-hidden">
+                            <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/93309/how-do-i-address-poor-performance-that-is-exacerbated-by-religious-beliefs" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            How do I address poor performance that is exacerbated by religious beliefs?
+                        </a>
+
+                        </li>
+                    </ul>
+
+                    <a href="#"
+                       class="show-more js-show-more js-gps-track"
+                       data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+                        more hot questions
+                    </a>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(function(){$.get('/posts/44714097/ivc/3a12');});
+            </script>
+            <noscript>
+                <div><img src="/posts/44714097/ivc/3a12" class="dno" alt="" width="0" height="0"></div>
+            </noscript><div style="display:none" id="prettify-lang">lang-cs</div></div>
+
+
+    </div>
+</div>
+
+<footer id="footer" class="s-footer categories" role="contentinfo">
+    <div class="-container g-column">
+        <ul class="-menu g-row">
+
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 1 })" href="https://stackoverflow.com/company/about">about us</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 2 })" href="/tour">tour</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 3 })" href="/help">help</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 4 })" href="https://stackoverflow.blog?blb=1">blog</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 5 })" href="https://chat.stackoverflow.com">chat</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 6 })" href="https://data.stackexchange.com">data</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 7 })" href="https://stackexchange.com/legal">legal</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 8 })" href="https://stackexchange.com/legal/privacy-policy">privacy policy</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 9 })" href="https://stackoverflow.com/company/work-here">work here</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 10 })" href="https://www.stackoverflowbusiness.com/advertise">advertising info</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 11 })" href="https://stackoverflow.com/jobs/directory/developer-jobs">developer jobs directory</a></li>
+
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 12 })" onclick='StackExchange.switchMobile("on")'>mobile</a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 13 })" href="/contact"><strong>contact us</strong></a></li>
+            <li class="-item g-col"><a class="js-gps-track -link" data-gps-track="footer.click({ location: 2, link: 14 })" href="https://meta.stackoverflow.com"><strong>feedback</strong></a></li>
+            <li class="-item g-col">
+
+            </li>
+        </ul>
+        <div class="-toc g-row" id="footer-sites">
+            <table>
+                <tr>
+                    <th colspan=3>
+                        <strong>Technology</strong>
+                    </th>
+                    <th >
+                        <strong>Life / Arts</strong>
+                    </th>
+                    <th >
+                        <strong>Culture / Recreation</strong>
+                    </th>
+                    <th >
+                        <strong>Science</strong>
+                    </th>
+                    <th >
+                        <strong>Other</strong>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <ol>
+                            <li><a href="//stackoverflow.com" class="-link js-gps-track" title="professional and enthusiast programmers" data-gps-track="footer.click({ location: 2, link: 25 })">Stack Overflow</a></li>
+                            <li><a href="//serverfault.com" class="-link js-gps-track" title="system and network administrators" data-gps-track="footer.click({ location: 2, link: 25 })">Server Fault</a></li>
+                            <li><a href="//superuser.com" class="-link js-gps-track" title="computer enthusiasts and power users" data-gps-track="footer.click({ location: 2, link: 25 })">Super User</a></li>
+                            <li><a href="//webapps.stackexchange.com" class="-link js-gps-track" title="power users of web applications" data-gps-track="footer.click({ location: 2, link: 25 })">Web Applications</a></li>
+                            <li><a href="//askubuntu.com" class="-link js-gps-track" title="Ubuntu users and developers" data-gps-track="footer.click({ location: 2, link: 25 })">Ask Ubuntu</a></li>
+                            <li><a href="//webmasters.stackexchange.com" class="-link js-gps-track" title="pro webmasters" data-gps-track="footer.click({ location: 2, link: 25 })">Webmasters</a></li>
+                            <li><a href="//gamedev.stackexchange.com" class="-link js-gps-track" title="professional and independent game developers" data-gps-track="footer.click({ location: 2, link: 25 })">Game Development</a></li>
+                            <li><a href="//tex.stackexchange.com" class="-link js-gps-track" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems" data-gps-track="footer.click({ location: 2, link: 25 })">TeX - LaTeX</a></li>
+                            <li><a href="//softwareengineering.stackexchange.com" class="-link js-gps-track" title="professionals, academics, and students working within the systems development life cycle" data-gps-track="footer.click({ location: 2, link: 25 })">Software Engineering</a></li>
+                            <li><a href="//unix.stackexchange.com" class="-link js-gps-track" title="users of Linux, FreeBSD and other Un*x-like operating systems" data-gps-track="footer.click({ location: 2, link: 25 })">Unix &amp; Linux</a></li>
+                            <li><a href="//apple.stackexchange.com" class="-link js-gps-track" title="power users of Apple hardware and software" data-gps-track="footer.click({ location: 2, link: 25 })">Ask Different (Apple)</a></li>
+                            <li><a href="//wordpress.stackexchange.com" class="-link js-gps-track" title="WordPress developers and administrators" data-gps-track="footer.click({ location: 2, link: 25 })">WordPress Development</a></li>
+                        </ol></td><td><ol>
+                    <li><a href="//gis.stackexchange.com" class="-link js-gps-track" title="cartographers, geographers and GIS professionals" data-gps-track="footer.click({ location: 2, link: 25 })">Geographic Information Systems</a></li>
+                    <li><a href="//electronics.stackexchange.com" class="-link js-gps-track" title="electronics and electrical engineering professionals, students, and enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Electrical Engineering</a></li>
+                    <li><a href="//android.stackexchange.com" class="-link js-gps-track" title="enthusiasts and power users of the Android operating system" data-gps-track="footer.click({ location: 2, link: 25 })">Android Enthusiasts</a></li>
+                    <li><a href="//security.stackexchange.com" class="-link js-gps-track" title="information security professionals" data-gps-track="footer.click({ location: 2, link: 25 })">Information Security</a></li>
+                    <li><a href="//dba.stackexchange.com" class="-link js-gps-track" title="database professionals who wish to improve their database skills and learn from others in the community" data-gps-track="footer.click({ location: 2, link: 25 })">Database Administrators</a></li>
+                    <li><a href="//drupal.stackexchange.com" class="-link js-gps-track" title="Drupal developers and administrators" data-gps-track="footer.click({ location: 2, link: 25 })">Drupal Answers</a></li>
+                    <li><a href="//sharepoint.stackexchange.com" class="-link js-gps-track" title="SharePoint enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">SharePoint</a></li>
+                    <li><a href="//ux.stackexchange.com" class="-link js-gps-track" title="user experience researchers and experts" data-gps-track="footer.click({ location: 2, link: 25 })">User Experience</a></li>
+                    <li><a href="//mathematica.stackexchange.com" class="-link js-gps-track" title="users of Wolfram Mathematica" data-gps-track="footer.click({ location: 2, link: 25 })">Mathematica</a></li>
+                    <li><a href="//salesforce.stackexchange.com" class="-link js-gps-track" title="Salesforce administrators, implementation experts, developers and anybody in-between" data-gps-track="footer.click({ location: 2, link: 25 })">Salesforce</a></li>
+                    <li><a href="//expressionengine.stackexchange.com" class="-link js-gps-track" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS" data-gps-track="footer.click({ location: 2, link: 25 })">ExpressionEngine&#174; Answers</a></li>
+                    <li><a href="//crypto.stackexchange.com" class="-link js-gps-track" title="software developers, mathematicians and others interested in cryptography" data-gps-track="footer.click({ location: 2, link: 25 })">Cryptography</a></li>
+                </ol></td><td><ol>
+                    <li><a href="//codereview.stackexchange.com" class="-link js-gps-track" title="peer programmer code reviews" data-gps-track="footer.click({ location: 2, link: 25 })">Code Review</a></li>
+                    <li><a href="//magento.stackexchange.com" class="-link js-gps-track" title="users of the Magento e-Commerce platform" data-gps-track="footer.click({ location: 2, link: 25 })">Magento</a></li>
+                    <li><a href="//dsp.stackexchange.com" class="-link js-gps-track" title="practitioners of the art and science of signal, image and video processing" data-gps-track="footer.click({ location: 2, link: 25 })">Signal Processing</a></li>
+                    <li><a href="//raspberrypi.stackexchange.com" class="-link js-gps-track" title="users and developers of hardware and software for Raspberry Pi" data-gps-track="footer.click({ location: 2, link: 25 })">Raspberry Pi</a></li>
+                    <li><a href="//codegolf.stackexchange.com" class="-link js-gps-track" title="programming puzzle enthusiasts and code golfers" data-gps-track="footer.click({ location: 2, link: 25 })">Programming Puzzles &amp; Code Golf</a></li>
+                    <li>
+                        <a href="https://stackexchange.com/sites#technology" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                            more (7)
+                        </a>
+                    </li>
+                </ol>
+                </td>
+                    <td>
+                        <ol>
+                            <li><a href="//photo.stackexchange.com" class="-link js-gps-track" title="professional, enthusiast and amateur photographers" data-gps-track="footer.click({ location: 2, link: 25 })">Photography</a></li>
+                            <li><a href="//scifi.stackexchange.com" class="-link js-gps-track" title="science fiction and fantasy enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Science Fiction &amp; Fantasy</a></li>
+                            <li><a href="//graphicdesign.stackexchange.com" class="-link js-gps-track" title="Graphic Design professionals, students, and enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Graphic Design</a></li>
+                            <li><a href="//movies.stackexchange.com" class="-link js-gps-track" title="movie and tv enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Movies &amp; TV</a></li>
+                            <li><a href="//music.stackexchange.com" class="-link js-gps-track" title="musicians, students, and enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">Music: Practice &amp; Theory</a></li>
+                            <li><a href="//cooking.stackexchange.com" class="-link js-gps-track" title="professional and amateur chefs" data-gps-track="footer.click({ location: 2, link: 25 })">Seasoned Advice (cooking)</a></li>
+                            <li><a href="//diy.stackexchange.com" class="-link js-gps-track" title="contractors and serious DIYers" data-gps-track="footer.click({ location: 2, link: 25 })">Home Improvement</a></li>
+                            <li><a href="//money.stackexchange.com" class="-link js-gps-track" title="people who want to be financially literate" data-gps-track="footer.click({ location: 2, link: 25 })">Personal Finance &amp; Money</a></li>
+                            <li><a href="//academia.stackexchange.com" class="-link js-gps-track" title="academics and those enrolled in higher education" data-gps-track="footer.click({ location: 2, link: 25 })">Academia</a></li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#lifearts" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                                    more (8)
+                                </a>
+                            </li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol>
+                            <li><a href="//english.stackexchange.com" class="-link js-gps-track" title="linguists, etymologists, and serious English language enthusiasts" data-gps-track="footer.click({ location: 2, link: 25 })">English Language &amp; Usage</a></li>
+                            <li><a href="//skeptics.stackexchange.com" class="-link js-gps-track" title="scientific skepticism" data-gps-track="footer.click({ location: 2, link: 25 })">Skeptics</a></li>
+                            <li><a href="//judaism.stackexchange.com" class="-link js-gps-track" title="those who base their lives on Jewish law and tradition and anyone interested in learning more" data-gps-track="footer.click({ location: 2, link: 25 })">Mi Yodeya (Judaism)</a></li>
+                            <li><a href="//travel.stackexchange.com" class="-link js-gps-track" title="road warriors and seasoned travelers" data-gps-track="footer.click({ location: 2, link: 25 })">Travel</a></li>
+                            <li><a href="//christianity.stackexchange.com" class="-link js-gps-track" title="committed Christians, experts in Christianity and those interested in learning more" data-gps-track="footer.click({ location: 2, link: 25 })">Christianity</a></li>
+                            <li><a href="//ell.stackexchange.com" class="-link js-gps-track" title="speakers of other languages learning English" data-gps-track="footer.click({ location: 2, link: 25 })">English Language Learners</a></li>
+                            <li><a href="//japanese.stackexchange.com" class="-link js-gps-track" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language" data-gps-track="footer.click({ location: 2, link: 25 })">Japanese Language</a></li>
+                            <li><a href="//gaming.stackexchange.com" class="-link js-gps-track" title="passionate videogamers on all platforms" data-gps-track="footer.click({ location: 2, link: 25 })">Arqade (gaming)</a></li>
+                            <li><a href="//bicycles.stackexchange.com" class="-link js-gps-track" title="people who build and repair bicycles, people who train cycling, or commute on bicycles" data-gps-track="footer.click({ location: 2, link: 25 })">Bicycles</a></li>
+                            <li><a href="//rpg.stackexchange.com" class="-link js-gps-track" title="gamemasters and players of tabletop, paper-and-pencil role-playing games" data-gps-track="footer.click({ location: 2, link: 25 })">Role-playing Games</a></li>
+                            <li><a href="//anime.stackexchange.com" class="-link js-gps-track" title="anime and manga fans" data-gps-track="footer.click({ location: 2, link: 25 })">Anime &amp; Manga</a></li>
+                            <li><a href="//mechanics.stackexchange.com" class="-link js-gps-track" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles" data-gps-track="footer.click({ location: 2, link: 25 })">Motor Vehicle Maintenance &amp; Repair</a></li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#culturerecreation" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                                    more (17)
+                                </a>
+                            </li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol>
+                            <li><a href="//mathoverflow.net" class="-link js-gps-track" title="professional mathematicians" data-gps-track="footer.click({ location: 2, link: 25 })">MathOverflow</a></li>
+                            <li><a href="//math.stackexchange.com" class="-link js-gps-track" title="people studying math at any level and professionals in related fields" data-gps-track="footer.click({ location: 2, link: 25 })">Mathematics</a></li>
+                            <li><a href="//stats.stackexchange.com" class="-link js-gps-track" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization" data-gps-track="footer.click({ location: 2, link: 25 })">Cross Validated (stats)</a></li>
+                            <li><a href="//cstheory.stackexchange.com" class="-link js-gps-track" title="theoretical computer scientists and researchers in related fields" data-gps-track="footer.click({ location: 2, link: 25 })">Theoretical Computer Science</a></li>
+                            <li><a href="//physics.stackexchange.com" class="-link js-gps-track" title="active researchers, academics and students of physics" data-gps-track="footer.click({ location: 2, link: 25 })">Physics</a></li>
+                            <li><a href="//chemistry.stackexchange.com" class="-link js-gps-track" title="scientists, academics, teachers and students" data-gps-track="footer.click({ location: 2, link: 25 })">Chemistry</a></li>
+                            <li><a href="//biology.stackexchange.com" class="-link js-gps-track" title="biology researchers, academics, and students" data-gps-track="footer.click({ location: 2, link: 25 })">Biology</a></li>
+                            <li><a href="//cs.stackexchange.com" class="-link js-gps-track" title="students, researchers and practitioners of computer science" data-gps-track="footer.click({ location: 2, link: 25 })">Computer Science</a></li>
+                            <li><a href="//philosophy.stackexchange.com" class="-link js-gps-track" title="those interested in the study of the fundamental nature of knowledge, reality, and existence" data-gps-track="footer.click({ location: 2, link: 25 })">Philosophy</a></li>
+                            <li>
+                                <a href="https://stackexchange.com/sites#science" class="more js-gps-track" data-gps-track="footer.click({ location: 2, link: 26 })">
+                                    more (3)
+                                </a>
+                            </li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol>
+                            <li><a href="//meta.stackexchange.com" class="-link js-gps-track" title="meta-discussion of the Stack Exchange family of Q&amp;A websites" data-gps-track="footer.click({ location: 2, link: 25 })">Meta Stack Exchange</a></li>
+                            <li><a href="//stackapps.com" class="-link js-gps-track" title="apps, scripts, and development with the Stack Exchange API" data-gps-track="footer.click({ location: 2, link: 25 })">Stack Apps</a></li>
+                            <li><a href="//area51.stackexchange.com" class="-link js-gps-track" title="proposing new sites in the Stack Exchange network" data-gps-track="footer.click({ location: 2, link: 25 })">Area 51</a></li>
+                            <li><a href="https://www.stackoverflowbusiness.com/talent" class="-link js-gps-track" data-gps-track="footer.click({ location: 2, link: 25 })">Stack Overflow Talent</a></li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="g-col -copyright" id="copyright">
+            site design / logo &#169; 2017 Stack Exchange Inc; user contributions licensed under <a class="-link" href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a>
+            with <a class="-link" href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license">attribution required</a>
+        </div>
+        <div class="g-col -copyright _muted" id="svnrev">
+            rev 2017.6.23.26303
+        </div>
+
+    </div>
+</footer>
+
+<noscript>
+    <div id="noscript-warning">Stack Overflow works best with JavaScript enabled
+        <img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno">
+    </div>
+</noscript>
+<script>var z=document.createElement("script");z.type="text/javascript",z.async=!0,z.src="https://static.adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+
+
+    ados.run.push(function () {
+        setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+        ados_setKeywords('c%23,visual-studio,xamarin,window,x-user-registered,x-cross-site-serverfault.com');; ados_load();
+    });
+
+</script>
+
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-5620270-1', {'userId': '2344506' });
+    ga('create', 'UA-5620270-59', {name: 'pageData', sampleRate: 5, userId: '2344506' });
+    ga('set', 'dimension1', '2344506');
+    ga('pageData.set', 'dimension1', '2344506');
+    ga('set', 'dimension2', '|c#|visual-studio|xamarin|window|');
+    ga('pageData.set', 'dimension2', '|c#|visual-studio|xamarin|window|');
+    ga('send', 'pageview');
+    ga('pageData.send', 'pageview');
+    var _qevents = _qevents || [],
+        _comscore = _comscore || [];
+    (function () {
+        var ssl='https:'==document.location.protocol,
+            s=document.getElementsByTagName('script')[0],
+            qc=document.createElement('script');
+        qc.async = true;
+        qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+        s.parentNode.insertBefore(qc, s);
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+        var sc=document.createElement('script');
+        sc.async=true;
+        sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+        s.parentNode.insertBefore(sc, s);
+        _comscore.push({ c1: "2", c2: "17440561" });
+    })();
+
+</script>
+
+
+<script type="text/javascript">
+
+    (function(appendChild) {
+        Node.prototype.appendChild = function() {
+            var parent = this;
+            var newNode = arguments[0];
+            if (parent.nodeName === 'HEAD'
+                && newNode
+                && newNode.nodeName === 'SCRIPT'
+                && newNode.src) {
+
+                window.setTimeout(function() {
+                    var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                    var service = result[1];
+                    if (service) {
+                        if (service === 'Autocompletion') service =  2;
+                        else if (service === 'Place') service = 1;
+                        else service = 0;
+                        StackExchange.using('gps', function() {
+                            StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                        });
+                    }
+                }, 0);
+            }
+            return appendChild.apply(this, arguments);
+        };
+    })(Node.prototype.appendChild);
+</script>
+</body>
+</html>
