@@ -1,6 +1,7 @@
 <?php
 
 use ClippingBlog\BLL\ArtigoBLL;
+use ClippingBlog\BLL\UsuarioBLL;
 use ClippingBlog\BLL\App;
 use ClippingBlog\Model\ArtigoInfo;
 
@@ -12,8 +13,7 @@ App::setArtigo( $artigo );
 
 ?>
 <?php require( "header.php" ); ?>
-<?php require( "menu-principal.php" ); ?>
-    <div class="container" style="padding-top: 60px;">
+    <div class="container" style="padding-top: 40px;">
         <form class="form-horizontal" method="POST">
         <div class="col-md-8">
             <h1 id="artigo-titulo"><?php echo $artigo->getTitulo(); ?></h1>
@@ -25,7 +25,7 @@ App::setArtigo( $artigo );
                     <div class="form-span">
                         <?php foreach ($artigo->listarTag() as $tag) : ?>
                             <a href="<?php echo get_tema_path() . "/tag/" . $tag->getSlug(); ?>">
-                                <span class="badge badge-info"><?php echo $tag->getNome(); ?></span>
+                                <span class="badge"><?php echo $tag->getNome(); ?></span>
                             </a>
                         <?php endforeach; ?>
                     </div>
@@ -75,6 +75,7 @@ App::setArtigo( $artigo );
             <div>
                 Fonte: <a href="<?php echo $artigo->getUrlFonte(); ?>"><?php echo $artigo->getUrlFonte(); ?></a>
             </div>
+            <?php if (!(UsuarioBLL::pegarUsuarioAtual() > 0)) : ?>
             <div id="disqus_thread"></div>
             <script>
 
@@ -95,6 +96,7 @@ App::setArtigo( $artigo );
                 })();
             </script>
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <?php endif; ?>
         </div>
         </form>
         <?php require( "sidebar.php" ); ?>

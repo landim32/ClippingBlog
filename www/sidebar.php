@@ -1,5 +1,6 @@
 <?php
 use ClippingBlog\BLL\ArtigoBLL;
+use ClippingBlog\BLL\UsuarioBLL;
 use ClippingBlog\BLL\TagBLL;
 use ClippingBlog\BLL\App;
 use ClippingBlog\Model\ArtigoInfo;
@@ -32,7 +33,7 @@ $tags = $regraTag->listarPopular();
     </div>
     <?php endif; ?>
     <div class="well">
-        <h4><i class="fa fa-search"></i> Blog Search...</h4>
+        <h4><i class="fa fa-search"></i> Busca no Blog</h4>
         <div class="input-group">
             <input type="text" class="form-control">
             <span class="input-group-btn">
@@ -53,7 +54,7 @@ $tags = $regraTag->listarPopular();
                 <?php foreach ($col as $tag) : ?>
                     <li>
                         <a href="<?php echo $tag->getUrl(); ?>">
-                            <span class="badge badge-info"><?php echo $tag->getNome(); ?></span>
+                            <span class="badge"><?php echo $tag->getNome(); ?></span>
                         </a>
                     </li>
                 <?php endforeach; ?>
@@ -62,6 +63,16 @@ $tags = $regraTag->listarPopular();
             <?php endforeach; ?>
         </div>
     </div>
+    <?php if (!(UsuarioBLL::pegarUsuarioAtual() > 0)) : ?>
+        <!-- Sidebar Banner 1 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:336px;height:280px"
+             data-ad-client="ca-pub-5769680090282398"
+             data-ad-slot="6319497441"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    <?php endif; ?>
     <div class="well">
         <h4><i class="fa fa-fire"></i> Artigos Populares:</h4>
         <ul>
@@ -113,4 +124,14 @@ $tags = $regraTag->listarPopular();
             </p>
         </ul>
     </div>
+    <?php if (!(UsuarioBLL::pegarUsuarioAtual() > 0)) : ?>
+    <!-- Sidebar Banner 2 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-5769680090282398"
+         data-ad-slot="9272963841"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <?php endif; ?>
 </div>

@@ -16,10 +16,19 @@ $paginacao = admin_pagination(ceil($retorno->getTotal() / MAX_PAGE_COUNT));
 
 ?>
 <?php require( "header.php" ); ?>
-<?php require( "menu-principal.php" ); ?>
-    <div class="container" style="padding-top: 60px;">
-        <div class="col-md-8">
+    <div class="container">
+        <div class="col-md-8" style="padding-top: 40px;">
             <?php App::exibirAviso(); ?>
+            <?php if (!(UsuarioBLL::pegarUsuarioAtual() > 0)) : ?>
+            <!-- FullBanner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-5769680090282398"
+                 data-ad-slot="7796230641"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <?php endif; ?>
             <?php foreach ($retorno->getArtigos() as $artigo) : ?>
                 <div id="<?php echo "artigo-" . $artigo->getId(); ?>" class="artigo">
                     <h2><a href="<?php echo $artigo->getUrl(); ?>"><?php echo $artigo->getTitulo(); ?></a></h2>
@@ -31,7 +40,7 @@ $paginacao = admin_pagination(ceil($retorno->getTotal() / MAX_PAGE_COUNT));
                         <?php endif; ?>
                         <?php foreach ($artigo->listarTag() as $tag) : ?>
                             <a href="<?php echo get_tema_path() . "/tag/" . $tag->getSlug(); ?>">
-                                <span class="badge info"><?php echo $tag->getNome(); ?></span>
+                                <span class="badge"><?php echo $tag->getNome(); ?></span>
                             </a>
                         <?php endforeach; ?>
                         &nbsp; <i class="fa fa-clock-o"></i> <?php echo $artigo->getDataStr(); ?>
