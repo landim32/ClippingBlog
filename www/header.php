@@ -68,7 +68,19 @@ $urlAtual = "http://" . $_SERVER["HTTP_HOST"] . (!is_null($artigo) ? $artigo->ge
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <?php if (!(UsuarioBLL::pegarUsuarioAtual() > 0)) : ?>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script type="text/javascript">
+            (function(p,u,s,h){
+                p._pcq=p._pcq||[];
+                p._pcq.push(['_currentTime',Date.now()]);
+                s=u.createElement('script');
+                s.type='text/javascript';
+                s.async=true;
+                s.src='https://cdn.pushcrew.com/js/1eb4b01ba6e30abf92f1ef060854ce64.js';
+                h=u.getElementsByTagName('script')[0];
+                h.parentNode.insertBefore(s,h);
+            })(window,document);
+        </script>
     <?php endif; ?>
 </head>
 <body>
