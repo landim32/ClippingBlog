@@ -6,4 +6,11 @@
     "senha": "1234",
     "url": "http://emagine.com.br/equipe/rodrigo"
   }
+  {
+    "id_usuario": 2,
+    "email": "claudio@emagine.com.br",
+    "nome": "Cláudio Neto",
+    "senha": "1234",
+    "url": "http://emagine.com.br/equipe/claudio"
+  }
 ]
