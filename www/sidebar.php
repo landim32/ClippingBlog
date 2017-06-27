@@ -81,45 +81,47 @@ $tags = $regraTag->listarPopular();
         </ul>
     </div>
     <div class="well">
-        <h4><i class="fa fa-thumbs-o-up"></i> Follow me!</h4>
+        <h4><i class="fa fa-thumbs-o-up"></i> Siga-nos!</h4>
         <ul>
             <p>
-                <a title="Facebook" href="">
+                <?php if (defined("FACEBOOK_URL")) : ?>
+                <a title="Facebook" target="_blank" href="<?php echo FACEBOOK_URL; ?>">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-square-o fa-stack-2x"></i>
                         <i class="fa fa-facebook fa-stack-1x"></i>
                     </span>
                 </a>
-                <a title="Twitter" href="">
+                <?php endif; ?>
+                <?php if (defined("TWITTER_URL")) : ?>
+                <a title="Twitter" target="_blank" href="<?php echo TWITTER_URL; ?>">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-square-o fa-stack-2x"></i>
                         <i class="fa fa-twitter fa-stack-1x"></i>
                     </span>
                 </a>
-                <a title="Google+" href="">
+                <?php endif; ?>
+                <!--a title="Google+" href="">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-square-o fa-stack-2x"></i>
                         <i class="fa fa-google-plus fa-stack-1x"></i>
                     </span>
-                </a>
-                <a title="Linkedin" href="">
+                </a-->
+                <?php if (defined("LINKEDIN_URL")) : ?>
+                <a title="Linkedin" target="_blank" href="<?php echo LINKEDIN_URL; ?>">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-square-o fa-stack-2x"></i>
                         <i class="fa fa-linkedin fa-stack-1x"></i>
                     </span>
                 </a>
-                <a title="GitHub" href="">
+                <?php endif; ?>
+                <?php if (defined("GITHUB_URL")) : ?>
+                <a title="GitHub" target="_blank" href="<?php echo GITHUB_URL; ?>">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-square-o fa-stack-2x"></i>
                         <i class="fa fa-github fa-stack-1x"></i>
                     </span>
                 </a>
-                <a title="Bitbucket" href="">
-                    <span class="fa-stack fa-lg">
-                        <i class="fa fa-square-o fa-stack-2x"></i>
-                        <i class="fa fa-bitbucket fa-stack-1x"></i>
-                    </span>
-                </a>
+                <?php endif; ?>
             </p>
         </ul>
     </div>

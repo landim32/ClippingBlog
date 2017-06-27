@@ -276,4 +276,19 @@ class ArtigoBLL
             $this->alterar($artigo);
         }
     }
+
+    /**
+     * @param ArtigoInfo[] $artigos
+     * @return string
+     */
+    public function gerarEmailMarketing($artigos) {
+        App::setArtigos($artigos);
+        ob_start();
+        include dirname(__DIR__) . "/Template/email-header.inc.php";
+        include dirname(__DIR__) . "/Template/email-body.inc.php";
+        include dirname(__DIR__) . "/Template/email-footer.inc.php";
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    }
 }

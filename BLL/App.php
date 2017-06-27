@@ -15,6 +15,8 @@ class App
     const HOME = "home";
     const ARTIGO = "artigo";
     const TAG = "tag";
+    const NEWSLETTER = "news";
+
     const PAGINA_ATUAL = "pagina_atual";
     const SLUG_ATUAL = "slug_atual";
     const ARTIGOS = "artigos";

@@ -4,6 +4,8 @@ require dirname(__DIR__) . "/Core/function.inc.php";
 
 use ClippingBlog\BLL\App;
 use ClippingBlog\BLL\UsuarioBLL;
+use ClippingBlog\BLL\ArtigoBLL;
+use ClippingBlog\Model\ArtigoInfo;
 
 if (count($_GET) > 0) {
     if (array_key_exists("logout", $_GET) && $_GET["logout"] == "1") {
@@ -46,6 +48,11 @@ else {
 }
 if (App::getPagina() == App::HOME || App::getPagina() == App::TAG) {
     require dirname(__DIR__) . "/www/lista.inc.php";
+}
+elseif (App::getPagina() == App::NEWSLETTER) {
+    $regraArtigo = new ArtigoBLL();
+    $artigos = $regraArtigo->listarPopular(ArtigoInfo::ATIVO,8);
+    echo $regraArtigo->gerarEmailMarketing($artigos);
 }
 else {
     require dirname(__DIR__) . "/www/" . App::getPagina() . ".php";

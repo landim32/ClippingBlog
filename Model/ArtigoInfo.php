@@ -263,16 +263,17 @@ class ArtigoInfo implements JsonSerializable
     }
 
     /**
+     * @param int $limite
      * @return string
      */
-    public function getResumo() {
+    public function getResumo($limite = 300) {
         $texto = trim(strip_tags($this->getTexto()));
         $texto = str_replace("\n", " ", $texto);
         while (mb_strpos("  ", $texto) !== false) {
             $texto = str_replace("  ", " ", $texto);
         }
-        if (mb_strlen($texto) > 300) {
-            $texto = mb_substr($texto, 0, 297) . "...";
+        if (mb_strlen($texto) > $limite) {
+            $texto = mb_substr($texto, 0, $limite - 3) . "...";
         }
         return $texto;
     }
