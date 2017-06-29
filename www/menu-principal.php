@@ -9,7 +9,7 @@ $usuario = UsuarioBLL::pegarUsuarioAtual();
 $artigo = App::getArtigo();
 
 $regraTag = new TagBLL();
-$tags = $regraTag->listarPopular();
+$tags = $regraTag->listarPopular(10);
 
 ?>
 <nav class="navbar navbar-default">

@@ -43,12 +43,12 @@ $tags = $regraTag->listarPopular();
         </div>
         <!-- /input-group -->
     </div>
-    <?php $tagsArray = array_partition($tags, 3); ?>
+    <?php $tagsArray = array_partition($tags, 2); ?>
     <div class="well">
         <h4><i class="fa fa-tags"></i> Tags Populares:</h4>
         <div class="row">
             <?php foreach ($tagsArray as $col) : ?>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <ul class="list-unstyled">
                 <?php foreach ($col as $tag) : ?>
                     <li>

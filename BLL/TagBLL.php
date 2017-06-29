@@ -52,11 +52,12 @@ class TagBLL
     }
 
     /**
+     * @param int $limite
      * @return TagInfo[]
      */
-    public function listarPopular() {
+    public function listarPopular($limite = 0) {
         $dal = new TagDAL();
-        return $dal->listarPopular();
+        return $dal->listarPopular($limite);
     }
 
     /**

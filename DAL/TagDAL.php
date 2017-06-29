@@ -36,19 +36,30 @@ class TagDAL
     }
 
     /**
+     * @param int $limite
      * @return TagInfo[]
      */
-    public function listarPopular() {
-        $query = $this->query() . "
+    public function listarPopular($limite = 0) {
+        $query = "
+            SELECT 
+                tag.id_tag,
+                tag.slug,
+                tag.nome,
+                COUNT(artigo.pageview)
+            FROM tag
             INNER JOIN artigo_tag ON artigo_tag.id_tag = tag.id_tag
             INNER JOIN artigo ON artigo.id_artigo = artigo_tag.id_artigo
             WHERE artigo.cod_situacao = :cod_situacao
             GROUP BY
                 tag.id_tag,
                 tag.slug,
-                tag.nome
-            HAVING COUNT(artigo.id_artigo) > 0 
+                tag.nome 
+            HAVING COUNT(artigo.id_artigo) > 0
+            ORDER BY COUNT(artigo.pageview) DESC
         ";
+        if ($limite > 0) {
+            $query .= " LIMIT " . $limite . " ";
+        }
         $db = DB::getDB()->prepare($query);
         $db->bindValue(":cod_situacao", ArtigoInfo::ATIVO, PDO::PARAM_INT);
         $db->execute();
